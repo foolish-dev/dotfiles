@@ -1,0 +1,70 @@
+.monaco-editor .scroll-decoration {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .75) !important;
+    top: -6px !important;
+}
+
+.part.sidebar {
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, .25);
+    height: 100%;
+}
+
+.monaco-workbench .part.titlebar>.titlebar-container>.titlebar-left>.window-appicon:not(.codicon) {
+  display: none;
+}
+
+.monaco-editor-hover,
+.monaco-hover {
+    box-shadow: 0px 8px 32px rgba(0,0,0,.45) !important;
+    padding: 10px !important;
+    backdrop-filter: blur(3px) !important;
+    border-radius: 20px !important;
+    border: none !important
+}
+
+/* File Explorer Selected Item */
+.monaco-list.list_id_1 .monaco-list-row.selected {
+    opacity: 1 !important;
+}
+
+/* List item label name */
+.monaco-list.list_id_1 .monaco-list-row.selected .label-name {
+    color: #fff !important;
+    opacity: 1 !important;
+}
+
+/* File explorer action buttons */
+.monaco-workbench .part.sidebar .title-actions .actions-container {
+    display: none;
+}
+
+/* File Explorer Item Label */
+.monaco-tree .monaco-tree-row .label-name,
+.monaco-list .monaco-list-row
+.monaco-icon-label .label-name {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #FFF !important;
+}
+
+/* Sidebar top shadow */
+.monaco-scrollable-element>.shadow.top {
+    box-shadow: 0px 0px 10px rgba(0,0,0,.75) !important;
+    top: -3px !important;
+}
+
+/* Sidebar title */
+.monaco-workbench .part.sidebar>.title-label {
+    font-weight: bold;
+    font-size: 24px;
+}
+/* Scroll Bar */
+.slider {
+    position: absolute !important;
+    right: 1px !important;
+    width: 1px !important;
+  left: auto !important;
+}
+
+.codicon-toolbar-more, .codicon-word-wrap {
+    display: block !important;
+}
