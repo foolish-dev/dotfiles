@@ -1,5 +1,5 @@
 - **Window Manager** • [Hyprland](https://github.com/hyprwm/Hyprland).
-- **Shell** • [Zsh](https://www.zsh.org) & [Starship](https://github.com/starship/starship) Addon.
+- **Shell** • [Zsh](https://www.zsh.org) & [Starship](https://github.com/starship/starship), [Oh-My-Zsh](https://ohmyz.sh/) Addons.
 - **Terminal** • [WezTerm](https://github.com/wez/wezterm).
 - **Panel** • [Hyprpanel](https://hyprpanel.com/getting_started/installation.html).
 - **Notify Daemon** • [Hyprpanel](https://hyprpanel.com/getting_started/installation.html)(built in).
