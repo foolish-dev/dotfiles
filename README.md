@@ -7,6 +7,7 @@
 - **Launcher** • [Rofi](https://github.com/davatorium/rofi).
 - **File Manager** • [Dolphin](https://github.com/KDE/dolphin).
 - **IDE** • [VSCode](https://code.visualstudio.com/).
+- **Browser** • [Zen Browser](https://github.com/zen-browser/desktop) & [Bento](https://github.com/migueravila/Bento) addon.
 - **Music Player** • [Spotify-Adblock](https://aur.archlinux.org/packages/spotify-adblock) & [Spicetify](https://spicetify.app/docs/advanced-usage/installation/) addon.
 - **Discord** • [Vencord](https://vencord.dev/download/) addon.
 - **Fonts** • [JetBrainsMono](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono/), [JetBrainsMonoNerd](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd/), [Font Awesome](https://archlinux.org/packages/extra/any/ttf-font-awesome/).
