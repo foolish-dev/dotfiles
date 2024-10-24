@@ -47,7 +47,7 @@ cp -r ~/dotfiles/startship.toml/ ~/.config/
 - **Enable** • *Ctrl+Shift+P: Enable CSS & JS Loader*.
 - Install AUR [Visual Studio Code](https://aur.archlinux.org/packages/visual-studio-code-bin) for [Custom CSS & JS Loader](https://marketplace.visualstudio.com/itemdetails?itemName=be5invis.vscode-custom-css) To be avaliable within the marketplace.
 
-**Extensions**: Omni Theme, Fluent Icons, Prettier & Github Copilot.
+**Extensions**: Omni Theme, Fluent Icons, Prettier.
 
 ### Hyprpanel Config
 Open settings through dashboard and load the hyprland_config.json file through the import function.
