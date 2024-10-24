@@ -11,7 +11,7 @@
 - **Discord** • [Vencord](https://vencord.dev/download/) addon.
 - **Fonts** • [JetBrainsMono](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono/), [JetBrainsMonoNerd](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd/), [Font Awesome](https://archlinux.org/packages/extra/any/ttf-font-awesome/).
 
-## Installation
+# Installation
 
 _You should have everything installed, this will only make pre-existing config look pretty._
 
@@ -41,7 +41,10 @@ cp -r ~/dotfiles/neofetch/ ~/.config/
 cp -r ~/dotfiles/startship.toml/ ~/.config/
 ```
 
-##### IDE(extra)
+### IDE(extra)
 - For the css in VSCDots to work you must install [Custom CSS & JS Loader](https://marketplace.visualstudio.com/itemdetails?itemName=be5invis.vscode-custom-css) Extension.
 - **Enable** • *Ctrl+Shift+P: Enable CSS & JS Loader*.
 - Install AUR [Visual Studio Code](https://aur.archlinux.org/packages/visual-studio-code-bin) for [Custom CSS & JS Loader](https://marketplace.visualstudio.com/itemdetails?itemName=be5invis.vscode-custom-css) To be avaliable within the marketplace.
+
+### Hyprpanel Config
+Open settings through dashboard and load the hyprland_config.json file through the import function.
