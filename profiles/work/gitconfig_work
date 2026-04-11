@@ -1,0 +1,15 @@
+# Work-specific Git configuration
+# This file is included when using the 'work' profile
+
+[user]
+    # Set your work email
+    # email = your.name@company.com
+
+[core]
+    # Work-specific settings
+
+# Work proxy settings (if needed)
+# [http]
+#     proxy = http://proxy.company.com:8080
+# [https]
+#     proxy = http://proxy.company.com:8080

@@ -1,0 +1,413 @@
+#!/bin/zsh
+# ~/.zshrc - Zsh configuration file
+# Managed by dotfiles installer
+
+# =============================================================================
+# INSTANT PROMPT (for p10k/starship)
+# =============================================================================
+
+# Enable Powerlevel10k instant prompt (if using p10k)
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# =============================================================================
+# ZSH OPTIONS
+# =============================================================================
+
+# History
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt EXTENDED_HISTORY          # Write timestamp to history
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first
+setopt HIST_IGNORE_DUPS          # Don't record duplicates
+setopt HIST_IGNORE_ALL_DUPS      # Delete old duplicate
+setopt HIST_IGNORE_SPACE         # Don't record entries starting with space
+setopt HIST_FIND_NO_DUPS         # Don't display duplicates in search
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks
+setopt HIST_VERIFY               # Show command before executing from history
+setopt SHARE_HISTORY             # Share history between sessions
+setopt INC_APPEND_HISTORY        # Add commands immediately
+
+# Directory
+setopt AUTO_CD                   # cd by typing directory name
+setopt AUTO_PUSHD                # Push directory to stack
+setopt PUSHD_IGNORE_DUPS         # Don't push duplicates
+setopt PUSHD_SILENT              # Don't print stack after pushd/popd
+
+# Completion
+setopt COMPLETE_IN_WORD          # Complete from both ends
+setopt ALWAYS_TO_END             # Move cursor to end after completion
+setopt AUTO_MENU                 # Show completion menu on tab
+setopt COMPLETE_ALIASES          # Complete aliases
+setopt LIST_PACKED               # Compact completion list
+
+# Correction
+setopt CORRECT                   # Command correction
+setopt CORRECT_ALL               # Argument correction
+
+# Globbing
+setopt EXTENDED_GLOB             # Extended globbing
+setopt NO_CASE_GLOB              # Case insensitive globbing
+setopt NUMERIC_GLOB_SORT         # Sort numerically
+
+# Other
+setopt INTERACTIVE_COMMENTS      # Allow comments in shell
+setopt NO_BEEP                   # No beep
+setopt PROMPT_SUBST              # Enable prompt substitution
+
+# Create history directory
+[[ -d "${HISTFILE:h}" ]] || mkdir -p "${HISTFILE:h}"
+
+# =============================================================================
+# ENVIRONMENT
+# =============================================================================
+
+export EDITOR="${EDITOR:-vim}"
+export VISUAL="${VISUAL:-$EDITOR}"
+export PAGER="${PAGER:-less}"
+export LANG="${LANG:-en_US.UTF-8}"
+export LC_ALL="${LC_ALL:-en_US.UTF-8}"
+
+# XDG Base Directory
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+# Path
+typeset -U path
+path=(
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    $path
+)
+
+# Less configuration
+export LESS="-R -F -X -i -M -S"
+export LESSHISTFILE="${XDG_DATA_HOME}/less/history"
+
+# Man pages colors
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+# =============================================================================
+# COMPLETION SYSTEM
+# =============================================================================
+
+autoload -Uz compinit
+# Only regenerate .zcompdump once per day
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+else
+    compinit -C
+fi
+
+# Completion styling
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
+zstyle ':completion:*:warnings' format '%F{red}-- no matches found --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Cache completions
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
+
+# =============================================================================
+# KEY BINDINGS
+# =============================================================================
+
+# Use emacs key bindings
+bindkey -e
+
+# Better history search
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+
+# Word navigation
+bindkey '^[[1;5C' forward-word      # Ctrl+Right
+bindkey '^[[1;5D' backward-word     # Ctrl+Left
+bindkey '^[[H' beginning-of-line    # Home
+bindkey '^[[F' end-of-line          # End
+bindkey '^[[3~' delete-char         # Delete
+
+# Edit command in editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+# =============================================================================
+# PROMPT
+# =============================================================================
+
+# Git info
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+zstyle ':vcs_info:git:*' formats ' (%b%F{yellow}%m%u%c%f)'
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
+zstyle ':vcs_info:*' unstagedstr '%F{red}*%f'
+
+# Default prompt (will be overridden by starship if installed)
+PROMPT='%F{green}%n%f@%F{cyan}%m%f:%F{blue}%~%f${vcs_info_msg_0_}
+%# '
+RPROMPT='%F{yellow}[%*]%f'
+
+# =============================================================================
+# ALIASES
+# =============================================================================
+
+# Load aliases from separate file
+[[ -f ~/.aliases ]] && source ~/.aliases
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+alias -- -='cd -'
+
+# List (use exa/eza if available)
+if command -v eza &> /dev/null; then
+    alias ls='eza --color=auto --icons'
+    alias ll='eza -alF --icons'
+    alias la='eza -a --icons'
+    alias lt='eza -alF --icons --sort=modified'
+    alias tree='eza --tree --icons'
+elif command -v exa &> /dev/null; then
+    alias ls='exa --color=auto --icons'
+    alias ll='exa -alF --icons'
+    alias la='exa -a --icons'
+    alias lt='exa -alF --icons --sort=modified'
+    alias tree='exa --tree --icons'
+else
+    alias ls='ls --color=auto'
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias lt='ls -altr'
+fi
+alias l='ls -CF'
+alias lh='ls -alh'
+
+# Safety
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias ln='ln -i'
+
+# Grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Use bat if available
+if command -v bat &> /dev/null; then
+    alias cat='bat --paging=never'
+    alias less='bat'
+fi
+
+# Use ripgrep if available
+if command -v rg &> /dev/null; then
+    alias grep='rg'
+fi
+
+# Disk
+alias df='df -h'
+alias du='du -h'
+alias duf='du -sh * | sort -h'
+
+# Process
+alias ps='ps auxf'
+alias psg='ps aux | grep -v grep | grep -i'
+
+# Network
+alias ports='netstat -tulanp'
+alias myip='curl -s ifconfig.me'
+alias localip='hostname -I | awk "{print \$1}"'
+
+# Git shortcuts
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git pull'
+alias gd='git diff'
+alias gco='git checkout'
+alias gb='git branch'
+alias glog='git log --oneline --graph --decorate'
+
+# Misc
+alias c='clear'
+alias h='history'
+alias j='jobs -l'
+alias path='echo $PATH | tr ":" "\n"'
+alias now='date +"%Y-%m-%d %H:%M:%S"'
+alias week='date +%V'
+alias reload='source ~/.zshrc'
+alias zshrc='$EDITOR ~/.zshrc'
+
+# Suffix aliases (open files with programs)
+alias -s {md,txt,json,yaml,yml,toml}=$EDITOR
+alias -s {html,htm}=xdg-open
+alias -s {jpg,jpeg,png,gif}=xdg-open
+alias -s {pdf}=xdg-open
+
+# Global aliases
+alias -g G='| grep'
+alias -g L='| less'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g W='| wc -l'
+alias -g S='| sort'
+alias -g U='| uniq'
+
+# =============================================================================
+# FUNCTIONS
+# =============================================================================
+
+# Load functions from separate file
+[[ -f ~/.functions ]] && source ~/.functions
+
+# Create directory and cd into it
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Extract archives
+extract() {
+    if [[ -f "$1" ]]; then
+        case "$1" in
+            *.tar.bz2)   tar xjf "$1"     ;;
+            *.tar.gz)    tar xzf "$1"     ;;
+            *.tar.xz)    tar xJf "$1"     ;;
+            *.bz2)       bunzip2 "$1"     ;;
+            *.rar)       unrar x "$1"     ;;
+            *.gz)        gunzip "$1"      ;;
+            *.tar)       tar xf "$1"      ;;
+            *.tbz2)      tar xjf "$1"     ;;
+            *.tgz)       tar xzf "$1"     ;;
+            *.zip)       unzip "$1"       ;;
+            *.Z)         uncompress "$1"  ;;
+            *.7z)        7z x "$1"        ;;
+            *)           echo "'$1' cannot be extracted" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# Find file by name
+ff() {
+    find . -type f -iname "*$1*"
+}
+
+# Find directory by name
+fd() {
+    find . -type d -iname "*$1*"
+}
+
+# Quick backup
+bak() {
+    cp "$1" "$1.bak.$(date +%Y%m%d_%H%M%S)"
+}
+
+# Weather
+weather() {
+    curl -s "wttr.in/${1:-}"
+}
+
+# Cheat sheet
+cheat() {
+    curl -s "cheat.sh/$1"
+}
+
+# =============================================================================
+# PLUGINS (Manual loading without plugin manager)
+# =============================================================================
+
+# zsh-autosuggestions
+if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+elif [[ -f ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# zsh-syntax-highlighting (must be last)
+if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [[ -f ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# =============================================================================
+# TOOL INTEGRATIONS
+# =============================================================================
+
+# fzf
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+# fzf configuration
+if command -v fzf &> /dev/null; then
+    export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --inline-info"
+    if command -v fd &> /dev/null; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+fi
+
+# Starship prompt
+if command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
+
+# direnv
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
+# zoxide (better cd)
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init zsh)"
+fi
+
+# nvm (Node Version Manager)
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+[[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+
+# pyenv
+if command -v pyenv &> /dev/null; then
+    eval "$(pyenv init -)"
+fi
+
+# =============================================================================
+# LOCAL OVERRIDES
+# =============================================================================
+
+# Source local zshrc (machine-specific settings)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Source profile-specific settings
+[[ -f ~/.profile_local ]] && source ~/.profile_local
+
+# Source exports
+[[ -f ~/.exports ]] && source ~/.exports
+
+# Powerlevel10k configuration
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh

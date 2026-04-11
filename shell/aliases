@@ -1,0 +1,342 @@
+# ~/.aliases - Shared shell aliases
+# Managed by dotfiles installer
+
+# =============================================================================
+# NAVIGATION
+# =============================================================================
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~'
+alias -- -='cd -'
+
+# Directory shortcuts
+alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
+alias dc='cd ~/Documents'
+alias dev='cd ~/dev'
+alias proj='cd ~/projects'
+alias dot='cd ~/.dotfiles'
+
+# =============================================================================
+# LISTING
+# =============================================================================
+
+# Detect best ls alternative
+if command -v eza &> /dev/null; then
+    alias ls='eza --color=auto --icons --group-directories-first'
+    alias ll='eza -la --icons --group-directories-first'
+    alias la='eza -a --icons --group-directories-first'
+    alias lt='eza -la --icons --sort=modified'
+    alias lS='eza -la --icons --sort=size'
+    alias tree='eza --tree --icons'
+elif command -v exa &> /dev/null; then
+    alias ls='exa --color=auto --icons --group-directories-first'
+    alias ll='exa -la --icons --group-directories-first'
+    alias la='exa -a --icons --group-directories-first'
+    alias lt='exa -la --icons --sort=modified'
+    alias lS='exa -la --icons --sort=size'
+    alias tree='exa --tree --icons'
+else
+    alias ls='ls --color=auto'
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias lt='ls -altr'
+    alias lS='ls -alS'
+fi
+
+alias l='ls -CF'
+alias lh='ll -h'
+alias l.='ls -d .*'         # Hidden files only
+
+# =============================================================================
+# FILE OPERATIONS
+# =============================================================================
+
+# Safety first
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias ln='ln -i'
+
+# Verbose operations
+alias mkdir='mkdir -pv'
+alias rmdir='rmdir -v'
+
+# Better defaults
+if command -v bat &> /dev/null; then
+    alias cat='bat --paging=never'
+    alias less='bat'
+fi
+
+# =============================================================================
+# GREP & SEARCH
+# =============================================================================
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Use ripgrep if available
+if command -v rg &> /dev/null; then
+    alias rg='rg --smart-case'
+fi
+
+# Find shortcuts
+alias ff='find . -type f -name'
+alias fd='find . -type d -name'
+
+# =============================================================================
+# DISK & SYSTEM
+# =============================================================================
+
+alias df='df -h'
+alias du='du -h'
+alias duf='du -sh * | sort -h'
+alias dus='du -sh'
+alias free='free -h'
+
+# Process management
+alias ps='ps auxf'
+alias psg='ps aux | grep -v grep | grep -i'
+alias top='htop 2>/dev/null || top'
+
+# Memory
+alias meminfo='free -h -l -t'
+alias psmem='ps auxf | sort -nr -k 4 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3 | head -10'
+
+# =============================================================================
+# NETWORK
+# =============================================================================
+
+alias ports='netstat -tulanp 2>/dev/null || ss -tulanp'
+alias listening='netstat -an | grep LISTEN'
+alias myip='curl -s ifconfig.me'
+alias localip="hostname -I 2>/dev/null | awk '{print \$1}' || ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-9]\\+\\.\\)\\{3\\}[0-9]\\+\\)\\|[a-fA-F0-9:]\\+\\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias ping='ping -c 5'
+alias fastping='ping -c 100 -s 1'
+
+# Download
+alias wget='wget -c'
+
+# =============================================================================
+# GIT
+# =============================================================================
+
+alias g='git'
+alias gs='git status'
+alias gss='git status -s'
+alias ga='git add'
+alias gaa='git add --all'
+alias gap='git add --patch'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+alias gp='git push'
+alias gpf='git push --force-with-lease'
+alias gpl='git pull'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbd='git branch -d'
+alias gbD='git branch -D'
+alias gm='git merge'
+alias grb='git rebase'
+alias grbi='git rebase -i'
+alias glog='git log --oneline --graph --decorate'
+alias glogp='git log --oneline --graph --decorate --all'
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gstl='git stash list'
+alias gcp='git cherry-pick'
+alias gr='git remote'
+alias grv='git remote -v'
+alias grs='git restore'
+alias grss='git restore --staged'
+alias gbl='git blame'
+alias gcl='git clone'
+
+# Git log aliases
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glo='git log --oneline --decorate'
+alias gloo='git log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" --decorate'
+
+# =============================================================================
+# DOCKER
+# =============================================================================
+
+alias d='docker'
+alias dc='docker compose'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias dex='docker exec -it'
+alias dlog='docker logs -f'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dprune='docker system prune -af'
+alias dvprune='docker volume prune -f'
+
+# =============================================================================
+# KUBERNETES
+# =============================================================================
+
+alias k='kubectl'
+alias kg='kubectl get'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get svc'
+alias kgd='kubectl get deployments'
+alias kgn='kubectl get nodes'
+alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
+alias kl='kubectl logs'
+alias klf='kubectl logs -f'
+alias kex='kubectl exec -it'
+alias kaf='kubectl apply -f'
+alias kdf='kubectl delete -f'
+alias kctx='kubectl config use-context'
+alias kns='kubectl config set-context --current --namespace'
+
+# =============================================================================
+# PYTHON
+# =============================================================================
+
+alias py='python3'
+alias python='python3'
+alias pip='pip3'
+alias venv='python3 -m venv'
+alias activate='source venv/bin/activate'
+alias deact='deactivate'
+alias pipr='pip install -r requirements.txt'
+alias pipf='pip freeze > requirements.txt'
+
+# =============================================================================
+# NODE / NPM
+# =============================================================================
+
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nig='npm install -g'
+alias nr='npm run'
+alias ns='npm start'
+alias nt='npm test'
+alias nb='npm run build'
+alias nrd='npm run dev'
+
+# Yarn
+alias y='yarn'
+alias ya='yarn add'
+alias yad='yarn add --dev'
+alias yr='yarn run'
+alias ys='yarn start'
+
+# pnpm
+alias pn='pnpm'
+alias pna='pnpm add'
+alias pnr='pnpm run'
+
+# =============================================================================
+# MISC UTILITIES
+# =============================================================================
+
+alias c='clear'
+alias h='history'
+alias j='jobs -l'
+alias path='echo $PATH | tr ":" "\n"'
+alias now='date +"%Y-%m-%d %H:%M:%S"'
+alias week='date +%V'
+alias timestamp='date +%s'
+
+# Quick edit
+alias bashrc='${EDITOR:-vim} ~/.bashrc'
+alias zshrc='${EDITOR:-vim} ~/.zshrc'
+alias vimrc='${EDITOR:-vim} ~/.vimrc'
+alias aliases='${EDITOR:-vim} ~/.aliases'
+alias hosts='sudo ${EDITOR:-vim} /etc/hosts'
+
+# Reload shell config
+alias reload='exec $SHELL -l'
+alias rl='reload'
+
+# =============================================================================
+# SYSTEM ADMIN
+# =============================================================================
+
+# Package management (will use the right one based on system)
+if command -v apt &> /dev/null; then
+    alias update='sudo apt update && sudo apt upgrade'
+    alias install='sudo apt install'
+    alias search='apt search'
+elif command -v dnf &> /dev/null; then
+    alias update='sudo dnf upgrade'
+    alias install='sudo dnf install'
+    alias search='dnf search'
+elif command -v pacman &> /dev/null; then
+    alias update='sudo pacman -Syu'
+    alias install='sudo pacman -S'
+    alias search='pacman -Ss'
+elif command -v brew &> /dev/null; then
+    alias update='brew update && brew upgrade'
+    alias install='brew install'
+    alias search='brew search'
+fi
+
+# Permissions
+alias chx='chmod +x'
+alias chr='chmod -R'
+alias own='chown -R $USER:$USER'
+
+# =============================================================================
+# SHORTCUTS
+# =============================================================================
+
+# Open files/URLs
+if command -v xdg-open &> /dev/null; then
+    alias open='xdg-open'
+elif [[ "$OSTYPE" != "darwin"* ]]; then
+    alias open='start'
+fi
+
+# Clipboard (Linux)
+if command -v xclip &> /dev/null; then
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+elif command -v xsel &> /dev/null; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
+
+# Weather
+alias weather='curl -s "wttr.in"'
+alias weatherf='curl -s "wttr.in?format=3"'
+
+# Quick server
+alias serve='python3 -m http.server'
+alias phpserve='php -S localhost:8000'
+
+# Show IP info
+alias ipinfo='curl -s ipinfo.io | jq'
+
+# Get cheat sheets
+alias cheat='curl cheat.sh/'
+
+# =============================================================================
+# FUN
+# =============================================================================
+
+alias please='sudo'
+alias fucking='sudo'
+alias matrix='cmatrix'
+alias starwars='telnet towel.blinkenlights.nl'

@@ -1,0 +1,30 @@
+# Common packages to install
+# One package per line
+# Used by: install.sh --packages
+
+# Core utilities
+git
+curl
+wget
+htop
+tmux
+tree
+jq
+ripgrep
+fd-find
+fzf
+bat
+exa
+
+# Development
+vim
+neovim
+
+# Shell
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+
+# Misc
+starship
+direnv

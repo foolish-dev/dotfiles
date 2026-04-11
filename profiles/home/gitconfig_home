@@ -1,0 +1,10 @@
+# Home/Personal Git configuration
+# This file is included when using the 'home' profile
+
+[user]
+    # Set your personal email
+    # email = your.personal@email.com
+
+# Personal signing key
+# [user]
+#     signingkey = YOUR_PERSONAL_GPG_KEY
