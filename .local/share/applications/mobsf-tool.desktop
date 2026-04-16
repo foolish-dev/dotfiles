@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=MobSF
+GenericName=Mobile Security Framework
+Comment=Automated mobile application security testing framework
+Exec=kitty --title "MobSF" -e zsh -c "echo '  MobSF -- Mobile Security Framework'; echo '  Web UI: http://127.0.0.1:8000'; echo '  Usage: mobsf'; echo; exec zsh"
+Icon=mobsf
+Terminal=false
+Categories=X-BlackArch-Mobile;Security;
+Keywords=mobsf;mobile;android;ios;apk;

@@ -199,7 +199,7 @@ PKG_DEV=(
   lmstudio-bin
 )
 
-# Cybersecurity / Pentesting
+# Cybersecurity / Pentesting (core tools -- available in official + chaotic-aur)
 PKG_SEC=(
   nmap
   masscan
@@ -225,6 +225,8 @@ PKG_SEC=(
   feroxbuster
   ffuf
   dirb
+  dirsearch
+  wfuzz
   enum4linux
   smbclient
   smbmap
@@ -244,12 +246,27 @@ PKG_SEC=(
   net-tools
   arp-scan
   nbtscan
+  fping
+  netdiscover
   subfinder
   amass
   httpx
   nuclei
+  zaproxy
+  sslscan
+  testssl.sh
+  sslyze
+  net-snmp
+  onesixtyone
   strace
   ltrace
+  socat
+  proxychains-ng
+  macchanger
+  strongswan
+  vpnc
+  ike-scan
+  powershell-bin
 )
 
 # BlackArch tools (from blackarch repo)
@@ -273,6 +290,29 @@ PKG_BLACKARCH=(
   gau
   waybackurls
   katana
+  gospider
+  meg
+  unfurl
+  gf
+  dmitry
+  legion
+
+  # ── DNS / subdomain ─────────────────────────────────────────────────────
+  dnsenum
+  dnsmap
+  dnstracer
+  massdns
+  shuffledns
+  puredns
+  dnsx
+  alterx
+  tlsx
+  mapcidr
+  asnmap
+  cdncheck
+  naabu
+  uncover
+  chaos-client
 
   # ── Web exploitation ───────────────────────────────────────────────────
   blackarch-webapp
@@ -285,6 +325,10 @@ PKG_BLACKARCH=(
   jwt-tool
   graphqlmap
   nosqlmap
+  cadaver
+  davtest
+  skipfish
+  dirbuster
 
   # ── Exploitation frameworks ────────────────────────────────────────────
   blackarch-exploitation
@@ -292,9 +336,32 @@ PKG_BLACKARCH=(
   searchsploit
   routersploit
   crackmapexec
+  netexec
   evil-winrm
   covenant
   sliver
+  empire
+  powersploit
+  unicorn-powershell
+  veil
+  backdoor-factory
+  beef-xss
+
+  # ── Active Directory / Windows ──────────────────────────────────────────
+  kerbrute
+  enum4linux-ng
+  certipy
+  adidnsdump
+  bloodyad
+  ldeep
+  windapsearch
+  sprayhound
+  manspider
+  coercer
+  pkinittools
+  sccmhunter
+  nishang
+  windows-binaries
 
   # ── Password attacks ───────────────────────────────────────────────────
   blackarch-cracker
@@ -306,6 +373,12 @@ PKG_BLACKARCH=(
   medusa
   patator
   thc-pptp-bruter
+  hash-identifier
+  python-name-that-hash
+  rsmangler
+  username-anarchy
+  cupp
+  changeme
 
   # ── Wireless ───────────────────────────────────────────────────────────
   blackarch-wireless
@@ -316,6 +389,7 @@ PKG_BLACKARCH=(
   hostapd-mana
   fluxion
   airgeddon
+  yersinia
 
   # ── Privilege escalation / post-exploitation ───────────────────────────
   linpeas
@@ -329,6 +403,7 @@ PKG_BLACKARCH=(
   rubeus
   chisel
   ligolo-ng
+  pwncat
 
   # ── Reversing / binary ─────────────────────────────────────────────────
   blackarch-reversing
@@ -341,6 +416,15 @@ PKG_BLACKARCH=(
   one_gadget
   patchelf
 
+  # ── Mobile security ─────────────────────────────────────────────────────
+  android-apktool
+  jadx
+  dex2jar
+  objection
+  drozer
+  apkleaks
+  mobsf
+
   # ── Forensics ──────────────────────────────────────────────────────────
   blackarch-forensic
   autopsy
@@ -351,6 +435,7 @@ PKG_BLACKARCH=(
   pdf-parser
   oletools
   exiftool
+  regripper
 
   # ── Networking / MITM ──────────────────────────────────────────────────
   blackarch-networking
@@ -360,8 +445,12 @@ PKG_BLACKARCH=(
   tcpreplay
   hping
   ncrack
-  proxychains-ng
-  socat
+  dsniff
+  sslstrip
+  dns2tcp
+  iodine
+  ptunnel
+  snmpcheck
 
   # ── Social engineering ─────────────────────────────────────────────────
   blackarch-social
@@ -394,12 +483,28 @@ PKG_BLACKARCH=(
   radamsa
   zzuf
 
-  # ── Misc / utility ─────────────────────────────────────────────────────
+  # ── Secret scanning / supply chain ─────────────────────────────────────
+  trufflehog
+  gitleaks
+  notify
+  proxify
+  interactsh-client
+  simplehttpserver
+
+  # ── Cloud security ──────────────────────────────────────────────────────
+  pacu
+  scoutsuite
+  prowler
+
+  # ── Wordlists / resources ───────────────────────────────────────────────
   seclists
   wordlistctl
+  wordlists
+  dirbuster-wordlists
+  fuzzdb
+  payloadsallthethings
   webshells
   cyberchef
-  pwncat
 )
 
 # ── Install ────────────────────────────────────────────────────────────────

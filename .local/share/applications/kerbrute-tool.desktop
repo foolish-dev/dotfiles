@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Kerbrute
+GenericName=Kerberos Bruteforcer
+Comment=Kerberos pre-auth brute-forcing and user enumeration
+Exec=kitty --title "Kerbrute" -e zsh -c "echo '  Kerbrute -- Kerberos Bruteforce'; echo '  Usage: kerbrute userenum -d <domain> --dc <dc-ip> <userlist>'; echo '         kerbrute bruteuser -d <domain> --dc <dc-ip> <passlist> <user>'; echo; exec zsh"
+Icon=kerbrute
+Terminal=false
+Categories=X-BlackArch-Cracker;X-BlackArch-Windows;Security;
+Keywords=kerbrute;kerberos;ad;bruteforce;

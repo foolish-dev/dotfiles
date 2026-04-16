@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=BeEF
+GenericName=Browser Exploitation
+Comment=Browser Exploitation Framework for XSS and client-side attacks
+Exec=kitty --title "BeEF" -e zsh -c "echo '  BeEF -- Browser Exploitation Framework'; echo '  Usage: beef-xss'; echo '  Web UI: http://127.0.0.1:3000/ui/panel'; echo; exec zsh"
+Icon=beef
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=beef;browser;xss;exploitation;

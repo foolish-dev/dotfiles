@@ -284,7 +284,7 @@ The Noctalia dock and app launcher are pre-configured with pinned security tools
 
 **Launcher** (pinned): All dock apps plus SQLMap, Hydra, Hashcat, John the Ripper, Gobuster, Nikto, BloodHound, Evil-WinRM, Responder, Bettercap
 
-12 custom `.desktop` entries in `.local/share/applications/` provide launcher integration for terminal-based BlackArch tools. Each opens in Kitty with a usage hint.
+18 custom `.desktop` entries in `.local/share/applications/` provide launcher integration for terminal-based BlackArch tools. Each opens in Kitty with a usage hint.
 
 The Super key tap is handled by [keyd](https://github.com/rvaiya/keyd) (`etc/keyd/default.conf`), which maps Super tap to F13 while preserving all `Super+key` combos.
 
@@ -292,22 +292,29 @@ The Super key tap is handled by [keyd](https://github.com/rvaiya/keyd) (`etc/key
 
 ## BlackArch Tools
 
-The installer adds the BlackArch repository and pulls tools across 12 categories:
+The installer adds the BlackArch repository and pulls 300+ tools across 19 categories:
 
 | Category | Tools |
 |---|---|
-| Recon/OSINT | theharvester, sherlock, recon-ng, spiderfoot, katana, gau, waybackurls, hakrawler |
-| Web | wpscan, commix, dalfox, arjun, jwt-tool, nosqlmap, graphqlmap, paramspider |
-| Exploitation | evil-winrm, sliver, routersploit, searchsploit, crackmapexec |
-| Passwords | hashcat-utils, hcxtools, cewl, crunch, medusa, patator |
-| Wireless | bettercap, wifite, reaver, fluxion, airgeddon |
-| Privesc | linpeas, winpeas, pspy, mimikatz, bloodhound, chisel, ligolo-ng |
-| Reversing | rizin, cutter, angr, ropper, one_gadget, retdec |
-| Forensics | autopsy, yara, bulk-extractor, oletools |
-| Social Eng | SET, gophish, evilginx2 |
-| Crypto | hashpump, rsactftool, xortool |
-| Stego | stegseek, zsteg, stegsolve |
-| Fuzzing | afl++, boofuzz, radamsa |
+| Recon / OSINT | theharvester, sherlock, recon-ng, spiderfoot, katana, gau, waybackurls, hakrawler, gospider, dmitry, legion, maltego |
+| DNS / Subdomain | dnsenum, massdns, shuffledns, puredns, dnsx, alterx, naabu, asnmap, mapcidr, cdncheck, fierce, dnsmap |
+| Web | wpscan, commix, dalfox, arjun, jwt-tool, nosqlmap, graphqlmap, zaproxy, skipfish, cadaver, dirsearch, wfuzz |
+| Exploitation | evil-winrm, sliver, empire, netexec, beef-xss, routersploit, searchsploit, veil, unicorn-powershell |
+| Active Directory | kerbrute, certipy, enum4linux-ng, bloodyad, ldeep, windapsearch, coercer, manspider, sccmhunter, nishang |
+| Passwords | hashcat-utils, hcxtools, cewl, crunch, medusa, patator, cupp, changeme, rsmangler, name-that-hash |
+| Wireless | bettercap, wifite, reaver, fluxion, airgeddon, yersinia |
+| Privesc / Post | linpeas, winpeas, pspy, mimikatz, bloodhound, chisel, ligolo-ng, pwncat, rubeus, sharphound |
+| Reversing | rizin, cutter, angr, ropper, one_gadget, retdec, ghidra, radare2 |
+| Mobile | apktool, jadx, dex2jar, objection, drozer, apkleaks, mobsf |
+| Forensics | autopsy, yara, volatility3, bulk-extractor, oletools, regripper, pdf-parser |
+| Networking / MITM | mitmproxy, ettercap, dsniff, sslstrip, dns2tcp, iodine, ptunnel, hping, snmpcheck |
+| Social Eng | SET, gophish, evilginx2, king-phisher |
+| Crypto | hashpump, rsactftool, xortool, featherduster |
+| Stego | stegseek, zsteg, stegsolve, openstego, snow |
+| Fuzzing | afl++, boofuzz, radamsa, zzuf |
+| Secret Scanning | trufflehog, gitleaks, interactsh, proxify |
+| Cloud | pacu, scoutsuite, prowler |
+| Wordlists | seclists, payloadsallthethings, fuzzdb, rockyou, dirbuster-wordlists |
 
 <img src="assets/divider.svg" alt="" width="900"/>
 

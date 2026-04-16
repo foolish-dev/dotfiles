@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OWASP ZAP
+GenericName=Web App Scanner
+Comment=OWASP Zed Attack Proxy for web application security testing
+Exec=zaproxy
+Icon=zaproxy
+Terminal=false
+Categories=X-BlackArch-Webapp;Security;
+Keywords=zap;owasp;proxy;web;scanner;

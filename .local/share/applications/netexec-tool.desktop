@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=NetExec
+GenericName=Network Executor
+Comment=Network service exploitation tool (CrackMapExec successor)
+Exec=kitty --title "NetExec" -e zsh -c "echo '  NetExec -- Network Exploitation'; echo '  Usage: nxc smb <target> -u <user> -p <pass>'; echo '  Proto: smb, ssh, winrm, ldap, mssql, rdp, ftp'; echo; exec zsh"
+Icon=netexec
+Terminal=false
+Categories=X-BlackArch-Exploitation;X-BlackArch-Windows;Security;
+Keywords=netexec;nxc;crackmapexec;smb;winrm;

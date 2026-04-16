@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Empire
+GenericName=Post-Exploitation Framework
+Comment=PowerShell and Python post-exploitation agent framework
+Exec=kitty --title "Empire" -e zsh -c "echo '  Empire -- Post-Exploitation Framework'; echo '  Usage: sudo powershell-empire server'; echo '         sudo powershell-empire client'; echo; exec zsh"
+Icon=empire
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=empire;powershell;post-exploitation;c2;
