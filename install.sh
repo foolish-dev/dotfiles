@@ -117,6 +117,7 @@ PKG_CORE=(
   cava
   wlsunset
   sddm
+  sddm-astronaut-theme
   qt6-declarative
   layer-shell-qt
 )
