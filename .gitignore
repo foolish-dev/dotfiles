@@ -1,1 +1,33 @@
-/fish/fish_variables
+# Secrets / credentials
+.env
+.env.*
+*.pem
+*.key
+credentials.*
+secrets.*
+
+# Editor state
+.config/nvim/lazy-lock.json
+.config/nvim/plugin/
+.config/nvim/.luarc.json
+
+# Shell state
+.zsh_history
+.zcompdump*
+.zinit/
+
+# Cache / runtime
+.cache/
+.local/state/
+*.log
+*.swp
+*.swo
+*~
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Backups created by deploy.sh
+.dotfiles-backup/
+backups/
