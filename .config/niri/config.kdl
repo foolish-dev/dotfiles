@@ -355,3 +355,5 @@ binds {
     // ── Noctalia shell toggle (overview / control center) ─────────────
     Mod+Space            { spawn "noctalia-qs" "-c" "noctalia-shell" "--toggle-overview"; }
 }
+
+spawn-at-startup "qs" "-c" "noctalia-shell"
