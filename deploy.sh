@@ -13,9 +13,9 @@ BLU='\033[0;34m'
 YLW='\033[1;33m'
 RST='\033[0m'
 
-info()  { echo -e "${BLU}[*]${RST} $*"; }
-ok()    { echo -e "${GRN}[+]${RST} $*"; }
-warn()  { echo -e "${YLW}[!]${RST} $*"; }
+info() { echo -e "${BLU}[*]${RST} $*"; }
+ok() { echo -e "${GRN}[+]${RST} $*"; }
+warn() { echo -e "${YLW}[!]${RST} $*"; }
 
 BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 
@@ -26,7 +26,7 @@ link_item() {
   # Backup existing files/dirs that are NOT already our symlinks
   if [[ -e "$dest" || -L "$dest" ]]; then
     if [[ "$(readlink -f "$dest" 2>/dev/null)" == "$(readlink -f "$src" 2>/dev/null)" ]]; then
-      return  # already linked
+      return # already linked
     fi
     mkdir -p "$BACKUP_DIR"
     local rel="${dest#$HOME/}"
@@ -55,6 +55,9 @@ CONFIG_DIRS=(
   lazygit
   starship
   "systemd/user"
+  opencode
+  wal
+  neofetch
 )
 
 for dir in "${CONFIG_DIRS[@]}"; do
@@ -62,10 +65,10 @@ for dir in "${CONFIG_DIRS[@]}"; do
 done
 
 # ── Home-level dotfiles ────────────────────────────────────────────────────
-link_item "$DOTFILES/.zshrc"            "$HOME/.zshrc"
-link_item "$DOTFILES/.gitconfig"        "$HOME/.gitconfig"
+link_item "$DOTFILES/.zshrc" "$HOME/.zshrc"
+link_item "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
 link_item "$DOTFILES/.gitignore_global" "$HOME/.gitignore_global"
-link_item "$DOTFILES/.editorconfig"     "$HOME/.editorconfig"
+link_item "$DOTFILES/.editorconfig" "$HOME/.editorconfig"
 
 # ── Starship config (lives at ~/.config/starship.toml) ─────────────────────
 # Already handled via the starship directory, but starship expects the
@@ -94,17 +97,19 @@ systemctl --user daemon-reload 2>/dev/null || true
 # as systemd services by default. Uncomment if you prefer systemd management:
 # systemctl --user enable --now swww.service 2>/dev/null || true
 # systemctl --user enable --now cliphist.service 2>/dev/null || true
+systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
+  warn "  hexstrike-server.service failed to start (run install.sh first)"
 
 echo ""
 ok "=== Deployment complete ==="
 echo ""
 info "Summary:"
-info "  Configs: ~/.config/{niri,noctalia,kitty,fuzzel,nvim,tmux,lazygit,systemd/user}"
+info "  Configs: ~/.config/{niri,noctalia,kitty,fuzzel,nvim,tmux,lazygit,systemd/user,opencode,wal,neofetch}"
 info "  Shell:   ~/.zshrc"
 info "  Git:     ~/.gitconfig, ~/.gitignore_global"
 info "  Editor:  ~/.editorconfig"
 info "  Prompt:  ~/.config/starship.toml"
-info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat}"
+info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat,wallpaper,hexstrike-mcp}"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
   info "  Backups: $BACKUP_DIR"

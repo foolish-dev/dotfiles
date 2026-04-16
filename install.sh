@@ -13,14 +13,17 @@ CYN='\033[0;36m'
 BLD='\033[1m'
 RST='\033[0m'
 
-info()  { echo -e "${BLU}[*]${RST} $*"; }
-ok()    { echo -e "${GRN}[+]${RST} $*"; }
-warn()  { echo -e "${YLW}[!]${RST} $*"; }
-fail()  { echo -e "${RED}[-]${RST} $*"; exit 1; }
+info() { echo -e "${BLU}[*]${RST} $*"; }
+ok() { echo -e "${GRN}[+]${RST} $*"; }
+warn() { echo -e "${YLW}[!]${RST} $*"; }
+fail() {
+  echo -e "${RED}[-]${RST} $*"
+  exit 1
+}
 
 banner() {
   echo -e "${CYN}"
-  cat << 'EOF'
+  cat <<'EOF'
     _   ___      _   _  __         __       ___
    / | / (_)____(_) / |/ /___  ___/ /_____ / (_)___ _
   /  |/ / / ___/ / /    / __ \/ __/ __/ _ `/ / / _ `/
@@ -68,6 +71,22 @@ else
   ok "BlackArch repo already present."
 fi
 
+# ── Chaotic AUR repository ────────────────────────────────────────────────
+if ! grep -q '^\[chaotic-aur\]' /etc/pacman.conf 2>/dev/null; then
+  info "Adding Chaotic AUR repository ..."
+  sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+  sudo pacman-key --lsign-key 3056513887B78AEB
+  sudo pacman -U --noconfirm \
+    'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' \
+    'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+  printf '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n' |
+    sudo tee -a /etc/pacman.conf >/dev/null
+  sudo pacman -Sy
+  ok "Chaotic AUR repo added."
+else
+  ok "Chaotic AUR repo already present."
+fi
+
 # ── Package lists ──────────────────────────────────────────────────────────
 
 # Core Wayland / Niri / Noctalia
@@ -113,6 +132,8 @@ PKG_SHELL=(
   tree
   btop
   fastfetch
+  neofetch
+  python-pywal
   less
   man-db
 )
@@ -154,6 +175,8 @@ PKG_DEV=(
   stylua
   shfmt
   prettierd
+  opencode-bin
+  lmstudio-bin
 )
 
 # Cybersecurity / Pentesting
@@ -370,7 +393,8 @@ PKG_BLACKARCH=(
 
 # ── Install ────────────────────────────────────────────────────────────────
 install_pkgs() {
-  local label="$1"; shift
+  local label="$1"
+  shift
   local pkgs=("$@")
   info "Installing ${BLD}$label${RST} (${#pkgs[@]} packages) ..."
   $AUR -S --needed --noconfirm "${pkgs[@]}" 2>/dev/null || {
@@ -384,11 +408,11 @@ install_pkgs() {
 }
 
 install_pkgs "Core (Niri / Noctalia / Wayland)" "${PKG_CORE[@]}"
-install_pkgs "Shell & CLI tools"                 "${PKG_SHELL[@]}"
-install_pkgs "Fonts & Theming"                   "${PKG_FONTS[@]}"
-install_pkgs "Development"                       "${PKG_DEV[@]}"
-install_pkgs "Cybersecurity"                     "${PKG_SEC[@]}"
-install_pkgs "BlackArch"                         "${PKG_BLACKARCH[@]}"
+install_pkgs "Shell & CLI tools" "${PKG_SHELL[@]}"
+install_pkgs "Fonts & Theming" "${PKG_FONTS[@]}"
+install_pkgs "Development" "${PKG_DEV[@]}"
+install_pkgs "Cybersecurity" "${PKG_SEC[@]}"
+install_pkgs "BlackArch" "${PKG_BLACKARCH[@]}"
 
 # ── Set default shell ──────────────────────────────────────────────────────
 if [[ "$SHELL" != */zsh ]]; then
@@ -399,11 +423,11 @@ fi
 
 # ── Enable services ────────────────────────────────────────────────────────
 info "Enabling system services ..."
-sudo systemctl enable --now NetworkManager  2>/dev/null || true
-sudo systemctl enable --now bluetooth       2>/dev/null || true
-sudo systemctl enable --now docker          2>/dev/null || true
-sudo usermod -aG docker    "$USER"          2>/dev/null || true
-sudo usermod -aG wireshark "$USER"          2>/dev/null || true
+sudo systemctl enable --now NetworkManager 2>/dev/null || true
+sudo systemctl enable --now bluetooth 2>/dev/null || true
+sudo systemctl enable --now docker 2>/dev/null || true
+sudo usermod -aG docker "$USER" 2>/dev/null || true
+sudo usermod -aG wireshark "$USER" 2>/dev/null || true
 
 # ── Zinit (zsh plugin manager) ─────────────────────────────────────────────
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -426,6 +450,34 @@ if [[ ! -f /usr/share/wordlists/rockyou.txt ]]; then
     ok "rockyou.txt ready."
   fi
 fi
+
+# ── HexStrike AI MCP ──────────────────────────────────────────────────────
+HEXSTRIKE_DIR="$HOME/tools/hexstrike-ai"
+if [[ ! -d "$HEXSTRIKE_DIR" ]]; then
+  info "Cloning HexStrike AI ..."
+  mkdir -p "$HOME/tools"
+  git clone https://github.com/0x4m4/hexstrike-ai.git "$HEXSTRIKE_DIR"
+  ok "HexStrike AI cloned."
+else
+  info "Updating HexStrike AI ..."
+  git -C "$HEXSTRIKE_DIR" pull --ff-only 2>/dev/null || warn "  git pull skipped (local changes?)"
+fi
+
+if [[ ! -d "$HEXSTRIKE_DIR/hexstrike-env" ]]; then
+  info "Creating HexStrike Python venv ..."
+  python3 -m venv "$HEXSTRIKE_DIR/hexstrike-env"
+  ok "Venv created."
+fi
+
+info "Installing HexStrike Python dependencies ..."
+"$HEXSTRIKE_DIR/hexstrike-env/bin/pip" install --quiet --upgrade pip
+"$HEXSTRIKE_DIR/hexstrike-env/bin/pip" install --quiet -r "$HEXSTRIKE_DIR/requirements.txt"
+ok "HexStrike dependencies installed."
+
+# Enable and start the Flask backend as a user service
+systemctl --user daemon-reload 2>/dev/null || true
+systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
+  warn "  hexstrike-server.service not yet deployed -- run deploy.sh first."
 
 # ── Screenshots dir ────────────────────────────────────────────────────────
 mkdir -p ~/Pictures/Screenshots

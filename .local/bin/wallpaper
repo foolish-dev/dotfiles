@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# wallpaper -- set wallpaper and regenerate pywal color scheme
+# Usage: wallpaper <image> [extra swww-img flags]
+# Hooks: kitty (live reload), noctalia colors.json, niri reload
+set -euo pipefail
+
+IMAGE="${1:?Usage: wallpaper <image> [swww-img flags]}"
+shift || true  # remaining args passed to swww img
+
+[[ -f "$IMAGE" ]] || { echo "[-] File not found: $IMAGE"; exit 1; }
+IMAGE="$(realpath "$IMAGE")"
+
+# ── 1. Generate color scheme with pywal ───────────────────────────────────
+wal -i "$IMAGE" -n -q          # -n = skip setting wallpaper, -q = quiet
+echo "[+] pywal colors generated"
+
+# ── 2. Set wallpaper via swww ─────────────────────────────────────────────
+if swww query &>/dev/null 2>&1; then
+  swww img "$IMAGE" \
+    --transition-type grow \
+    --transition-pos 0.5,0.5 \
+    --transition-duration 1.2 \
+    --transition-fps 60 \
+    "$@"
+  echo "[+] Wallpaper set: $IMAGE"
+else
+  echo "[!] swww daemon not running -- start with: systemctl --user start swww.service"
+fi
+
+# ── 3. Reload kitty colors in all running instances ───────────────────────
+if command -v kitty &>/dev/null; then
+  kitty @ --to unix:/tmp/kitty \
+    set-colors --all --configured ~/.cache/wal/colors-kitty.conf \
+    2>/dev/null || true
+fi
+
+# ── 4. Write noctalia colors.json from pywal output ───────────────────────
+NOCTALIA_COLORS="$HOME/.config/noctalia/colors.json"
+WAL_COLORS="$HOME/.cache/wal/colors-noctalia.json"
+if [[ -f "$WAL_COLORS" ]]; then
+  cp "$WAL_COLORS" "$NOCTALIA_COLORS"
+  echo "[+] Noctalia colors updated"
+  # Signal noctalia-shell to reload colors if running
+  pkill -USR1 noctalia-shell 2>/dev/null || true
+fi
+
+echo "[+] Done. New colors active."

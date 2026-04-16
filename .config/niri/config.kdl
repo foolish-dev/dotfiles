@@ -10,7 +10,7 @@
 input {
     keyboard {
         xkb {
-            layout "us"
+            layout "gb"
             // options "caps:escape"  // uncomment to remap CapsLock -> Esc
         }
         repeat-delay 300
@@ -345,6 +345,9 @@ binds {
     Mod+Ctrl+M           { spawn "kitty" "--class" "metasploit" "-e" "msfconsole"; }
     Mod+Ctrl+N           { spawn "kitty" "--class" "nmap-term" "-e" "sh" "-c" "echo '--- nmap ready ---' && zsh"; }
     Mod+Ctrl+T           { spawn "kitty" "--class" "htop-term" "-e" "btop"; }
+
+    // ── AI / Local LLM ────────────────────────────────────────────────
+    Mod+Ctrl+A           { spawn "lm-studio"; }
 
     // ── Noctalia shell toggle (overview / control center) ─────────────
     Mod+Space            { spawn "noctalia-shell" "--toggle-overview"; }

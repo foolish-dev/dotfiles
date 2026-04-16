@@ -8,6 +8,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# ── Pywal -- restore terminal colors ─────────────────────────────────────
+(cat ~/.cache/wal/sequences 2>/dev/null &)
+source ~/.cache/wal/colors.sh 2>/dev/null || true
+
 # ── Zinit plugin manager ──────────────────────────────────────────────────
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [[ ! -d "$ZINIT_HOME" ]]; then
@@ -165,6 +169,15 @@ alias yayu="yay -Syu"
 alias sys="systemctl"
 alias sysu="systemctl --user"
 alias jctl="journalctl -xeu"
+
+# ── Aliases: LM Studio ────────────────────────────────────────────────────
+alias lms="lm-studio"
+alias lms-server="lm-studio --headless server start --port 1234"
+alias lms-stop="lm-studio --headless server stop"
+alias lms-status="curl -s http://localhost:1234/v1/models | jq '.data[].id' 2>/dev/null || echo 'LM Studio server not running'"
+alias lms-chat="curl -s http://localhost:1234/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{\"model\":\"local-model\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}' | jq '.choices[0].message.content'"
 
 # ── Aliases: Coding ────────────────────────────────────────────────────────
 alias py="python3"
@@ -395,3 +408,5 @@ fi
 if command -v direnv &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
+
+neofetch

@@ -6,16 +6,19 @@ Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and o
 
 | Layer | Tool |
 |---|---|
-| Distro | Arch Linux + [BlackArch](https://blackarch.org) repo |
+| Distro | Arch Linux + [BlackArch](https://blackarch.org) + [Chaotic AUR](https://aur.chaotic.cx) repos |
 | Compositor | [Niri](https://github.com/YaLTeR/niri) (scrollable tiling, Wayland) |
 | Desktop Shell | [Noctalia](https://github.com/noctalia-dev/noctalia-shell) (bar, dock, panels, notifications, lock screen) |
 | Terminal | Kitty |
 | Multiplexer | tmux (Ctrl-a prefix, lazygit/btop/fzf popups) |
 | Shell | Zsh + Zinit + Starship |
 | Editor | Neovim (lazy.nvim, 16 LSP servers, DAP, Treesitter) |
+| AI / LLM | [LM Studio](https://lmstudio.ai) (local models) + [OpenCode](https://opencode.ai) (AI coding agent) |
+| AI Security | [HexStrike AI](https://github.com/0x4m4/hexstrike-ai) MCP (150+ security tools via MCP) |
 | Git | delta side-by-side diffs, 30+ aliases, lazygit TUI |
 | Launcher | Fuzzel |
-| Theme | Tokyo Night (dark, transparent) |
+| Theme | Tokyo Night (dark, transparent) + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven colors) |
+| Fetch | neofetch (Arch ASCII, system info on shell start) |
 
 ## Quick Start
 
@@ -23,7 +26,7 @@ Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and o
 git clone https://github.com/foolish-dev/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 chmod +x install.sh deploy.sh
-./install.sh    # Arch only -- adds BlackArch repo, installs 250+ packages
+./install.sh    # Arch only -- adds BlackArch + Chaotic AUR repos, installs 250+ packages
 ./deploy.sh     # symlinks all configs into ~/.config/
 ```
 
@@ -36,18 +39,21 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   niri/config.kdl              compositor keybinds, layout, window rules
   noctalia/
     settings.json              bar, dock, panels, launcher settings
-    colors.json                Tokyo Night material colors
+    colors.json                Tokyo Night material colors (pywal-managed)
   nvim/
     init.lua                   lazy.nvim bootstrap
     lua/config/                options, keymaps, autocmds
     lua/plugins/               colorscheme, treesitter, lsp, editor, ui, coding
-  kitty/kitty.conf             terminal (0.92 opacity, Tokyo Night)
+  kitty/kitty.conf             terminal (0.92 opacity, pywal + Tokyo Night fallback)
   tmux/tmux.conf               multiplexer (vim nav, popups, Tokyo Night)
   lazygit/config.yml           git TUI (delta pager, Tokyo Night)
   fuzzel/fuzzel.ini            app launcher
   starship.toml                prompt
-  systemd/user/                noctalia-shell, cliphist, swww services
-.zshrc                         shell -- 80+ aliases, BlackArch tool shortcuts
+  opencode/opencode.json       AI agent config (LM Studio provider, HexStrike MCP)
+  wal/templates/               pywal templates (kitty, noctalia)
+  neofetch/config.conf         system fetch display
+  systemd/user/                noctalia-shell, cliphist, swww, hexstrike-server services
+.zshrc                         shell -- 80+ aliases, BlackArch tool shortcuts, pywal init
 .gitconfig                     delta diffs, 30+ aliases, nvim mergetool
 .gitignore_global              universal project ignores
 .editorconfig                  per-language formatting rules
@@ -57,7 +63,9 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   dev                          3-pane tmux IDE session
   gclone                       smart git clone (gh:user/repo shorthand)
   cheat                        quick reference sheets
-install.sh                     Arch + BlackArch package bootstrap
+  wallpaper                    set wallpaper + regenerate pywal colors + reload kitty/noctalia
+  hexstrike-mcp                MCP stdio bridge to HexStrike AI server
+install.sh                     Arch + BlackArch + Chaotic AUR package bootstrap
 deploy.sh                      symlink deployer with auto-backup
 ```
 
@@ -83,6 +91,7 @@ deploy.sh                      symlink deployer with auto-backup
 | `Super+Ctrl+W` | Wireshark |
 | `Super+Ctrl+B` | Burp Suite |
 | `Super+Ctrl+T` | btop |
+| `Super+Ctrl+A` | LM Studio |
 | `Print` | Screenshot |
 
 ### Tmux (prefix = Ctrl-a)
@@ -121,6 +130,47 @@ pyright, ruff, clangd, rust_analyzer, gopls, zls, ts_ls, bashls, lua_ls, html, c
 | `<leader>xx` | Diagnostics |
 | `<C-\>` | Float terminal |
 
+## LM Studio
+
+Local LLM inference via [LM Studio](https://lmstudio.ai). The installer pulls `lmstudio-bin` from Chaotic AUR.
+
+OpenCode is pre-configured as a provider (`http://127.0.0.1:1234/v1`) with starter models in `.config/opencode/opencode.json`. Load a model in LM Studio, start the server, then use `/models` in OpenCode.
+
+```bash
+lms                    # open LM Studio GUI
+lms-server             # start headless API server on :1234
+lms-stop               # stop the server
+lms-status             # list loaded models
+lms-chat               # quick test curl
+```
+
+## HexStrike AI MCP
+
+[HexStrike AI](https://github.com/0x4m4/hexstrike-ai) exposes 150+ offensive security tools to AI agents via MCP.
+
+The installer clones the repo to `~/tools/hexstrike-ai`, sets up a Python venv, and enables a systemd user service (`hexstrike-server.service`) running the Flask backend on `127.0.0.1:8888`. OpenCode connects through the `hexstrike-mcp` stdio bridge.
+
+```bash
+sysu status hexstrike-server   # check service status
+sysu restart hexstrike-server  # restart the backend
+```
+
+## Pywal
+
+[pywal](https://github.com/dylanaraps/pywal) generates a color scheme from your wallpaper and applies it to kitty, noctalia, and the terminal.
+
+```bash
+wallpaper ~/Pictures/bg.jpg    # set wallpaper + regenerate all colors
+```
+
+The `wallpaper` script:
+1. Runs `wal -i` to generate colors
+2. Sets the wallpaper via `swww img` with a grow transition
+3. Live-reloads kitty colors
+4. Copies the generated `colors-noctalia.json` into noctalia's config
+
+Tokyo Night is the static fallback before the first `wal` run.
+
 ## BlackArch Tools
 
 The installer adds the BlackArch repository and pulls tools across 12 categories:
@@ -139,6 +189,10 @@ The installer adds the BlackArch repository and pulls tools across 12 categories
 | Crypto | hashpump, rsactftool, xortool |
 | Stego | stegseek, zsteg, stegsolve |
 | Fuzzing | afl++, boofuzz, radamsa |
+
+## Chaotic AUR
+
+[Chaotic AUR](https://aur.chaotic.cx) provides pre-built AUR packages so you skip compilation. The installer adds the repo automatically (GPG key + mirrorlist + pacman.conf entry). Packages like `lmstudio-bin`, `opencode-bin`, and many others install instantly via pacman.
 
 ## Zsh Security Toolkit
 
@@ -162,6 +216,14 @@ proj                               # Fuzzy open a project in tmux
 mkproj myapp python                # Scaffold a Python project
 dev                                # Launch 3-pane tmux IDE
 gclone user/repo                   # Clone from GitHub + cd
+
+# Pywal / theming
+wallpaper ~/Pictures/bg.jpg        # Set wallpaper + regenerate colors
+
+# LM Studio
+lms                                # Open LM Studio
+lms-server                         # Start local API server
+lms-status                         # Show loaded models
 
 # Aliases (samples)
 nmap-stealth 10.10.10.1            # SYN scan, fragmented
