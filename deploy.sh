@@ -51,6 +51,8 @@ CONFIG_DIRS=(
   kitty
   fuzzel
   nvim
+  tmux
+  lazygit
   starship
   "systemd/user"
 )
@@ -60,7 +62,10 @@ for dir in "${CONFIG_DIRS[@]}"; do
 done
 
 # ── Home-level dotfiles ────────────────────────────────────────────────────
-link_item "$DOTFILES/.zshrc" "$HOME/.zshrc"
+link_item "$DOTFILES/.zshrc"            "$HOME/.zshrc"
+link_item "$DOTFILES/.gitconfig"        "$HOME/.gitconfig"
+link_item "$DOTFILES/.gitignore_global" "$HOME/.gitignore_global"
+link_item "$DOTFILES/.editorconfig"     "$HOME/.editorconfig"
 
 # ── Starship config (lives at ~/.config/starship.toml) ─────────────────────
 # Already handled via the starship directory, but starship expects the
@@ -94,9 +99,12 @@ echo ""
 ok "=== Deployment complete ==="
 echo ""
 info "Summary:"
-info "  Configs: ~/.config/{niri,noctalia,kitty,fuzzel,nvim,systemd/user}"
+info "  Configs: ~/.config/{niri,noctalia,kitty,fuzzel,nvim,tmux,lazygit,systemd/user}"
 info "  Shell:   ~/.zshrc"
+info "  Git:     ~/.gitconfig, ~/.gitignore_global"
+info "  Editor:  ~/.editorconfig"
 info "  Prompt:  ~/.config/starship.toml"
+info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat}"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
   info "  Backups: $BACKUP_DIR"
