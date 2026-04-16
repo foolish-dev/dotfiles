@@ -131,6 +131,14 @@ alias df="df -h"
 alias du="du -h"
 alias free="free -h"
 
+# ── Aliases: Tmux ──────────────────────────────────────────────────────────
+alias t="tmux"
+alias ta="tmux attach -t"
+alias tl="tmux list-sessions"
+alias tn="tmux new-session -s"
+alias tk="tmux kill-session -t"
+alias td="tmux detach"
+
 # ── Aliases: Git ───────────────────────────────────────────────────────────
 alias g="git"
 alias gs="git status -sb"
@@ -161,11 +169,16 @@ alias jctl="journalctl -xeu"
 # ── Aliases: Coding ────────────────────────────────────────────────────────
 alias py="python3"
 alias pip="pip3"
-alias venv="python3 -m venv"
+alias venv="python3 -m venv .venv"
 alias activate="source .venv/bin/activate"
 alias cargo-w="cargo watch -x run"
 alias mk="make -j$(nproc)"
 alias lg="lazygit"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias dcl="docker compose logs -f"
+alias dps="docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'"
 
 # ── Aliases: Networking & Cybersecurity ────────────────────────────────────
 alias myip="curl -s ifconfig.me && echo"
@@ -234,6 +247,39 @@ alias sha256="sha256sum"
 alias trivy-image="trivy image"
 alias trivy-fs="trivy fs ."
 alias docker-bench="docker run --rm -it docker/docker-bench-security"
+
+# ── Aliases: BlackArch Tools ───────────────────────────────────────────────
+# OSINT / recon
+alias harvest="theHarvester -d"
+alias recon-ng="recon-ng"
+alias spiderfoot-web="spiderfoot -l 127.0.0.1:5001"
+alias sublist3r-enum="sublist3r -d"
+
+# Web exploitation
+alias wpscan-enum="wpscan --enumerate ap,at,u --url"
+alias commix-test="commix --url"
+alias dalfox-scan="dalfox url"
+alias jwt-crack="jwt_tool"
+
+# Exploitation
+alias searchsploit="searchsploit"
+alias evilwinrm="evil-winrm -i"
+alias routersploit="rsf"
+
+# Wireless
+alias wifite-auto="sudo wifite --kill"
+alias bettercap-sniff="sudo bettercap -iface"
+
+# Privesc / post
+alias linpeas="curl -sL https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh"
+alias winpeas-get="curl -sLO https://github.com/peass-ng/PEASS-ng/releases/latest/download/winPEASany.exe"
+alias pspy32="curl -sLO https://github.com/DominicBreuker/pspy/releases/latest/download/pspy32"
+alias pspy64="curl -sLO https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64"
+
+# Wordlists
+alias seclist="ls /usr/share/seclists/"
+alias rockyou="cat /usr/share/wordlists/rockyou.txt"
+alias wordlists="find /usr/share/wordlists /usr/share/seclists -name '*.txt' 2>/dev/null | head -30"
 
 # ── Functions: Cybersecurity ───────────────────────────────────────────────
 

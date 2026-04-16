@@ -98,6 +98,7 @@ PKG_CORE=(
 # Terminal / Shell / Prompt
 PKG_SHELL=(
   kitty
+  tmux
   zsh
   starship
   fzf
@@ -129,6 +130,7 @@ PKG_FONTS=(
 PKG_DEV=(
   neovim
   git
+  git-delta
   lazygit
   github-cli
   base-devel
@@ -148,6 +150,10 @@ PKG_DEV=(
   docker-compose
   podman
   stow
+  editorconfig-core-c
+  stylua
+  shfmt
+  prettierd
 )
 
 # Cybersecurity / Pentesting
