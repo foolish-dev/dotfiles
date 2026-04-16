@@ -119,6 +119,12 @@ PKG_CORE=(
   keyd
   sddm
   sddm-astronaut-theme
+  sddm-theme-noctalia-git
+  sddm-theme-tokyo-night-git
+  sddm-sugar-dark
+  sddm-lain-wired-theme
+  qt5-graphicaleffects
+  qt5-quickcontrols2
   qt6-declarative
   layer-shell-qt
 )

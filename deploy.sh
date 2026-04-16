@@ -143,6 +143,27 @@ if [[ -d "$DOTFILES/etc/sddm.conf.d" ]]; then
   done
 fi
 
+# ── SDDM theme configs (astronaut Tokyo Night variants) ──────────────────
+ASTRONAUT_DIR="/usr/share/sddm/themes/sddm-astronaut-theme"
+if [[ -d "$ASTRONAUT_DIR" && -d "$DOTFILES/etc/sddm-themes" ]]; then
+  info "Deploying custom SDDM astronaut theme configs ..."
+  for conf in "$DOTFILES/etc/sddm-themes"/*.conf; do
+    [[ -f "$conf" ]] || continue
+    sudo cp "$conf" "$ASTRONAUT_DIR/Themes/$(basename "$conf")"
+    ok "  Copied $(basename "$conf") -> astronaut Themes/"
+  done
+
+  # Copy a Tokyo Night wallpaper as default SDDM background
+  if [[ -f "$DOTFILES/wallpapers/samurai.png" ]]; then
+    sudo cp "$DOTFILES/wallpapers/samurai.png" "$ASTRONAUT_DIR/Backgrounds/tokyonight.png"
+    ok "  Set default SDDM background: samurai.png"
+  fi
+
+  # Set tokyo-night as the active astronaut variant
+  sudo sed -i 's|^ConfigFile=.*|ConfigFile=Themes/tokyo-night.conf|' "$ASTRONAUT_DIR/metadata.desktop"
+  ok "  Activated: tokyo-night variant"
+fi
+
 echo ""
 ok "=== Deployment complete ==="
 echo ""
@@ -156,7 +177,7 @@ info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat,wallpaper,hexstrike-
 info "  Apps:    ~/.local/share/applications/{metasploit,nmap,sqlmap,hydra,...}.desktop"
 info "  Walls:   ~/Pictures/Wallpapers/ (23 Tokyo Night wallpapers)"
 info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
-info "  SDDM:   /etc/sddm.conf.d/niri.conf"
+info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut tokyo-night theme"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
   info "  Backups: $BACKUP_DIR"
