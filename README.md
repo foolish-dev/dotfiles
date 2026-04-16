@@ -282,7 +282,19 @@ The Noctalia dock and app launcher are pre-configured with pinned security tools
 
 **Dock** (bottom bar): Kitty, Firefox, Nautilus, Neovim, LM Studio, Wireshark, Burp Suite, Metasploit, Nmap, Iaito, Autopsy, btop
 
-**Launcher** (pinned): All dock apps plus SQLMap, Hydra, Hashcat, John the Ripper, Gobuster, Nikto, BloodHound, Evil-WinRM, Responder, Bettercap
+**Launcher** (26 pinned apps, ordered by workflow):
+
+| Group | Apps |
+|---|---|
+| Core | Kitty, Firefox, Neovim, LM Studio |
+| Web Testing | Wireshark, Burp Suite, ZAP |
+| Exploitation | Metasploit, Empire, BeEF |
+| Scanning | Nmap, SQLMap, Nikto, Gobuster |
+| Passwords | Hydra, Hashcat, John the Ripper |
+| AD / Windows | NetExec, Kerbrute, BloodHound, Evil-WinRM |
+| Network | Responder, Bettercap |
+| Mobile | MobSF |
+| Reversing / Forensics | Iaito, Autopsy |
 
 18 custom `.desktop` entries in `.local/share/applications/` provide launcher integration for terminal-based BlackArch tools. Each opens in Kitty with a usage hint.
 
