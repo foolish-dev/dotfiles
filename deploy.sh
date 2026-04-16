@@ -53,7 +53,6 @@ CONFIG_DIRS=(
   nvim
   tmux
   lazygit
-  starship
   "systemd/user"
   opencode
   wal
@@ -100,6 +99,16 @@ systemctl --user daemon-reload 2>/dev/null || true
 systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
   warn "  hexstrike-server.service failed to start (run install.sh first)"
 
+# ── SDDM config (system-wide, requires sudo) ─────────────────────────────
+if [[ -d "$DOTFILES/etc/sddm.conf.d" ]]; then
+  info "Deploying SDDM config to /etc/sddm.conf.d/ ..."
+  sudo mkdir -p /etc/sddm.conf.d
+  for conf in "$DOTFILES/etc/sddm.conf.d"/*; do
+    [[ -f "$conf" ]] && sudo cp "$conf" "/etc/sddm.conf.d/$(basename "$conf")"
+    ok "  Copied $(basename "$conf")"
+  done
+fi
+
 echo ""
 ok "=== Deployment complete ==="
 echo ""
@@ -110,11 +119,12 @@ info "  Git:     ~/.gitconfig, ~/.gitignore_global"
 info "  Editor:  ~/.editorconfig"
 info "  Prompt:  ~/.config/starship.toml"
 info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat,wallpaper,hexstrike-mcp}"
+info "  SDDM:   /etc/sddm.conf.d/niri.conf"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
   info "  Backups: $BACKUP_DIR"
 fi
 echo ""
-info "Log out, select 'niri' from your display manager, and log back in."
+info "Log out, select 'niri' from SDDM, and log back in."
 info "Open a terminal (Super+Return) and run 'nvim' -- plugins install automatically."
 echo ""

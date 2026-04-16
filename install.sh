@@ -92,6 +92,7 @@ fi
 # Core Wayland / Niri / Noctalia
 PKG_CORE=(
   niri
+  noctalia-qs
   noctalia-shell
   xwayland-satellite
   swww
@@ -112,6 +113,12 @@ PKG_CORE=(
   swaybg
   mako
   wev
+  ddcutil
+  cava
+  wlsunset
+  sddm
+  qt6-declarative
+  layer-shell-qt
 )
 
 # Terminal / Shell / Prompt
@@ -187,7 +194,6 @@ PKG_SEC=(
   wireshark-qt
   tcpdump
   netcat
-  socat
   openbsd-netcat
   bind
   whois
@@ -209,7 +215,6 @@ PKG_SEC=(
   enum4linux
   smbclient
   smbmap
-  exploitdb
   binwalk
   foremost
   steghide
@@ -220,20 +225,16 @@ PKG_SEC=(
   python-pwntools
   impacket
   responder
-  proxychains-ng
   tor
   openvpn
   wireguard-tools
   net-tools
   arp-scan
   nbtscan
-  dnsrecon
   subfinder
   amass
   httpx
   nuclei
-  volatility3
-  python-pycryptodome
   strace
   ltrace
 )
@@ -304,7 +305,6 @@ PKG_BLACKARCH=(
   airgeddon
 
   # ── Privilege escalation / post-exploitation ───────────────────────────
-  blackarch-exploitation
   linpeas
   winpeas
   pspy
@@ -341,7 +341,6 @@ PKG_BLACKARCH=(
 
   # ── Networking / MITM ──────────────────────────────────────────────────
   blackarch-networking
-  bettercap
   mitmproxy
   ettercap
   arpspoof
@@ -349,7 +348,6 @@ PKG_BLACKARCH=(
   hping
   ncrack
   proxychains-ng
-  chisel
   socat
 
   # ── Social engineering ─────────────────────────────────────────────────
@@ -426,6 +424,7 @@ info "Enabling system services ..."
 sudo systemctl enable --now NetworkManager 2>/dev/null || true
 sudo systemctl enable --now bluetooth 2>/dev/null || true
 sudo systemctl enable --now docker 2>/dev/null || true
+sudo systemctl enable sddm 2>/dev/null || true
 sudo usermod -aG docker "$USER" 2>/dev/null || true
 sudo usermod -aG wireshark "$USER" 2>/dev/null || true
 

@@ -17,6 +17,7 @@ Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and o
 | AI Security | [HexStrike AI](https://github.com/0x4m4/hexstrike-ai) MCP (150+ security tools via MCP) |
 | Git | delta side-by-side diffs, 30+ aliases, lazygit TUI |
 | Launcher | Fuzzel |
+| Display Manager | [SDDM](https://github.com/sddm/sddm) (breeze theme, Niri session auto-detected) |
 | Theme | Tokyo Night (dark, transparent) + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven colors) |
 | Fetch | neofetch (Arch ASCII, system info on shell start) |
 
@@ -52,7 +53,7 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   opencode/opencode.json       AI agent config (LM Studio provider, HexStrike MCP)
   wal/templates/               pywal templates (kitty, noctalia)
   neofetch/config.conf         system fetch display
-  systemd/user/                noctalia-shell, cliphist, swww, hexstrike-server services
+  systemd/user/                cliphist, swww, hexstrike-server services
 .zshrc                         shell -- 80+ aliases, BlackArch tool shortcuts, pywal init
 .gitconfig                     delta diffs, 30+ aliases, nvim mergetool
 .gitignore_global              universal project ignores
@@ -65,6 +66,7 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   cheat                        quick reference sheets
   wallpaper                    set wallpaper + regenerate pywal colors + reload kitty/noctalia
   hexstrike-mcp                MCP stdio bridge to HexStrike AI server
+etc/sddm.conf.d/niri.conf      SDDM display manager config (deployed to /etc)
 install.sh                     Arch + BlackArch + Chaotic AUR package bootstrap
 deploy.sh                      symlink deployer with auto-backup
 ```
