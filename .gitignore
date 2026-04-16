@@ -19,6 +19,7 @@ secrets.*
 # Cache / runtime
 .cache/
 .local/state/
+.config/systemd/user/*.wants/
 *.log
 *.swp
 *.swo
