@@ -152,6 +152,11 @@ PKG_FONTS=(
   noto-fonts-cjk
   noto-fonts-emoji
   papirus-icon-theme
+  bibata-cursor-theme
+  tokyonight-gtk-theme-git
+  kvantum
+  qt5ct
+  qt6ct
 )
 
 # Development

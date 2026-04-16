@@ -57,6 +57,10 @@ CONFIG_DIRS=(
   opencode
   wal
   neofetch
+  gtk-3.0
+  gtk-4.0
+  qt5ct
+  qt6ct
 )
 
 for dir in "${CONFIG_DIRS[@]}"; do

@@ -126,7 +126,7 @@ layer-rule {
 // Cursor
 // ---------------------------------------------------------------------------
 cursor {
-    xcursor-theme "Adwaita"
+    xcursor-theme "Bibata-Modern-Classic"
     xcursor-size 24
 }
 
@@ -152,10 +152,13 @@ hotkey-overlay {
 // ---------------------------------------------------------------------------
 environment {
     QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt5ct"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
     GDK_BACKEND "wayland"
+    GTK_THEME "Tokyonight-Dark-BL"
     MOZ_ENABLE_WAYLAND "1"
-    XCURSOR_THEME "Adwaita"
+    XCURSOR_THEME "Bibata-Modern-Classic"
     XCURSOR_SIZE "24"
     // XDG
     XDG_CURRENT_DESKTOP "niri"
