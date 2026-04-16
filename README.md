@@ -31,10 +31,17 @@ Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and o
 
 ## Quick Start
 
+**One-liner (fresh Arch install):**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/foolish-dev/dotfiles/main/bootstrap.sh | bash
+```
+
+**Manual install:**
+
 ```bash
 git clone https://github.com/foolish-dev/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-chmod +x install.sh deploy.sh
 ./install.sh    # Arch only -- adds BlackArch + Chaotic AUR repos, installs 250+ packages
 ./deploy.sh     # symlinks all configs into ~/.config/
 ```
@@ -75,6 +82,7 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   wallpaper                    set wallpaper + regenerate pywal colors + reload kitty/noctalia
   hexstrike-mcp                MCP stdio bridge to HexStrike AI server
 etc/sddm.conf.d/niri.conf      SDDM display manager config (deployed to /etc)
+bootstrap.sh                   one-liner installer (curl | bash)
 install.sh                     Arch + BlackArch + Chaotic AUR package bootstrap
 deploy.sh                      symlink deployer with auto-backup
 ```
