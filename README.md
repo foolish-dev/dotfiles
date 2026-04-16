@@ -38,9 +38,10 @@
 | AI / LLM | [LM Studio](https://lmstudio.ai) (local models) + [OpenCode](https://opencode.ai) (AI coding agent) |
 | AI Security | [HexStrike AI](https://github.com/0x4m4/hexstrike-ai) MCP (150+ security tools via MCP) |
 | Git | delta side-by-side diffs, 30+ aliases, lazygit TUI |
-| Launcher | Fuzzel |
-| Display Manager | [SDDM](https://github.com/sddm/sddm) (breeze theme, Niri session auto-detected) |
+| Launcher | Noctalia app launcher (Super key tap via [keyd](https://github.com/rvaiya/keyd)) + Fuzzel |
+| Display Manager | [SDDM](https://github.com/sddm/sddm) (5 themes, Tokyo Night default, `sddm-theme` switcher) |
 | Theme | Tokyo Night (dark, transparent) + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven colors) |
+| Wallpapers | 23 curated Tokyo Night wallpapers (Arch, cyberpunk, Japanese art, minimal) |
 | Fetch | neofetch (Arch ASCII, system info on shell start) |
 
 <img src="assets/divider.svg" alt="" width="900"/>
@@ -99,7 +100,14 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   cheat                        quick reference sheets
   wallpaper                    set wallpaper + regenerate pywal colors + reload kitty/noctalia
   hexstrike-mcp                MCP stdio bridge to HexStrike AI server
-etc/sddm.conf.d/niri.conf      SDDM display manager config (deployed to /etc)
+  sddm-theme                   fzf-powered SDDM theme switcher
+.local/share/applications/     BlackArch .desktop entries (metasploit, nmap, sqlmap, ...)
+wallpapers/                    23 curated Tokyo Night wallpapers (4K)
+assets/                        README SVG images (header, dividers, palette, architecture)
+etc/
+  sddm.conf.d/niri.conf       SDDM display manager config (deployed to /etc)
+  sddm-themes/                 custom astronaut theme configs (tokyo-night, cyberpunk)
+  keyd/default.conf            Super key tap -> Noctalia launcher (via keyd)
 bootstrap.sh                   one-liner installer (curl | bash)
 install.sh                     Arch + BlackArch + Chaotic AUR package bootstrap
 deploy.sh                      symlink deployer with auto-backup
@@ -113,8 +121,10 @@ deploy.sh                      symlink deployer with auto-backup
 
 | Key | Action |
 |---|---|
+| `Super` (tap) | Noctalia app launcher (via keyd) |
+| `Super+D` | Noctalia app launcher |
+| `Super+Space` | Noctalia control center |
 | `Super+Return` | Terminal |
-| `Super+D` | Launcher |
 | `Super+B` | Firefox |
 | `Super+N` | Neovim |
 | `Super+H/J/K/L` | Focus window |
@@ -216,6 +226,67 @@ The `wallpaper` script:
 4. Copies the generated `colors-noctalia.json` into noctalia's config
 
 Tokyo Night is the static fallback before the first `wal` run.
+
+<img src="assets/divider.svg" alt="" width="900"/>
+
+## SDDM Themes
+
+Five SDDM themes are installed, with two custom Tokyo Night configs for the [astronaut](https://github.com/Keyitdev/sddm-astronaut-theme) theme (Qt6):
+
+| Theme | Style |
+|---|---|
+| `tokyo-night` | Tokyo Night palette, blurred form, JetBrainsMono, samurai background |
+| `tokyo-night-cyberpunk` | Neon red/cyan accents, sharp edges, matrix background |
+| `astronaut` | Default astronaut (space theme) |
+| `japanese_aesthetic` | Built-in astronaut variant |
+| `cyberpunk` | Built-in astronaut variant |
+| `sddm-theme-noctalia` | Made for Noctalia Shell |
+| `tokyo-night-sddm` | Original Tokyo Night SDDM (Qt5) |
+| `sddm-sugar-dark` | Clean minimal dark |
+| `sddm-lain-wired` | Serial Experiments Lain / cyberpunk |
+
+```bash
+sddm-theme                     # fzf picker for all installed themes
+sddm-theme tokyo-night         # switch directly
+sddm-theme cyberpunk            # any astronaut variant or standalone theme
+```
+
+The switcher handles config deployment, wallpaper copying, and SDDM metadata patching.
+
+<img src="assets/divider.svg" alt="" width="900"/>
+
+## Wallpapers
+
+23 curated Tokyo Night wallpapers are bundled in `wallpapers/` and symlinked to `~/Pictures/Wallpapers/` by `deploy.sh`:
+
+| Category | Wallpapers |
+|---|---|
+| Arch / Distro | `arch-night`, `arch-night-alt`, `arch-czechbol`, `kali` |
+| Dev / Minimal | `neovim`, `rust`, `python`, `c-lang`, `vim`, `stripes` |
+| Japanese Art | `samurai`, `dragon`, `hannya` |
+| Cyber / Tech | `matrix`, `tron`, `keyboard`, `heroes` |
+| Cityscapes | `cosmic-neo-tokyo`, `cosmic-tokyo`, `tokyonight-skyline`, `cafe-at-night` |
+| Abstract | `abstract-lock`, `fly` |
+
+```bash
+wallpaper ~/Pictures/Wallpapers/samurai.png    # set + regenerate pywal colors
+```
+
+Sourced from [tokyo-night/wallpapers](https://github.com/tokyo-night/wallpapers) (MIT), [czechbol/tokyonight-backgrounds](https://github.com/czechbol/tokyonight-backgrounds) (CC), and [atraxsrc/tokyonight-wallpapers](https://github.com/atraxsrc/tokyonight-wallpapers) (GPL-2.0).
+
+<img src="assets/divider.svg" alt="" width="900"/>
+
+## Noctalia Dock & Launcher
+
+The Noctalia dock and app launcher are pre-configured with pinned security tools. Press `Super` (tap) or `Super+D` to open the launcher.
+
+**Dock** (bottom bar): Kitty, Firefox, Nautilus, Neovim, LM Studio, Wireshark, Burp Suite, Metasploit, Nmap, Iaito, Autopsy, btop
+
+**Launcher** (pinned): All dock apps plus SQLMap, Hydra, Hashcat, John the Ripper, Gobuster, Nikto, BloodHound, Evil-WinRM, Responder, Bettercap
+
+12 custom `.desktop` entries in `.local/share/applications/` provide launcher integration for terminal-based BlackArch tools. Each opens in Kitty with a usage hint.
+
+The Super key tap is handled by [keyd](https://github.com/rvaiya/keyd) (`etc/keyd/default.conf`), which maps Super tap to F13 while preserving all `Super+key` combos.
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
