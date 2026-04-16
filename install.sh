@@ -28,7 +28,7 @@ banner() {
 /_/ |_/_/_/  /_/ /_/ |_\____/\__/\__/\__,_/_/_/\__,_/
 EOF
   echo -e "${RST}"
-  echo -e "${BLD}Arch Linux -- Niri + Noctalia + Cybersec Bootstrap${RST}"
+  echo -e "${BLD}Arch Linux + BlackArch -- Niri + Noctalia + Cybersec${RST}"
   echo -e "${CYN}$(printf '%.0s-' {1..52})${RST}"
   echo ""
 }
@@ -53,6 +53,20 @@ else
   AUR="yay"
 fi
 ok "AUR helper: $AUR"
+
+# ── BlackArch repository ──────────────────────────────────────────────────
+if ! pacman -Sl blackarch &>/dev/null; then
+  info "Adding BlackArch repository ..."
+  tmpdir=$(mktemp -d)
+  curl -sL https://blackarch.org/strap.sh -o "$tmpdir/strap.sh"
+  chmod +x "$tmpdir/strap.sh"
+  sudo "$tmpdir/strap.sh"
+  rm -rf "$tmpdir"
+  sudo pacman -Sy
+  ok "BlackArch repo added."
+else
+  ok "BlackArch repo already present."
+fi
 
 # ── Package lists ──────────────────────────────────────────────────────────
 
@@ -195,6 +209,159 @@ PKG_SEC=(
   ltrace
 )
 
+# BlackArch tools (from blackarch repo)
+PKG_BLACKARCH=(
+  # ── Recon / OSINT ──────────────────────────────────────────────────────
+  blackarch-recon
+  theharvester
+  sherlock
+  maltego
+  spiderfoot
+  recon-ng
+  photon
+  osrframework
+  whatweb
+  wafw00f
+  dnsrecon
+  fierce
+  sublist3r
+  assetfinder
+  hakrawler
+  gau
+  waybackurls
+  katana
+
+  # ── Web exploitation ───────────────────────────────────────────────────
+  blackarch-webapp
+  wpscan
+  xsser
+  commix
+  dalfox
+  arjun
+  paramspider
+  jwt-tool
+  graphqlmap
+  nosqlmap
+
+  # ── Exploitation frameworks ────────────────────────────────────────────
+  blackarch-exploitation
+  exploitdb
+  searchsploit
+  routersploit
+  crackmapexec
+  evil-winrm
+  covenant
+  sliver
+
+  # ── Password attacks ───────────────────────────────────────────────────
+  blackarch-cracker
+  hashcat-utils
+  hcxtools
+  hcxdumptool
+  cewl
+  crunch
+  medusa
+  patator
+  thc-pptp-bruter
+
+  # ── Wireless ───────────────────────────────────────────────────────────
+  blackarch-wireless
+  bettercap
+  wifite
+  pixiewps
+  reaver
+  hostapd-mana
+  fluxion
+  airgeddon
+
+  # ── Privilege escalation / post-exploitation ───────────────────────────
+  blackarch-exploitation
+  linpeas
+  winpeas
+  pspy
+  linenum
+  linux-exploit-suggester
+  mimikatz
+  bloodhound
+  sharphound
+  rubeus
+  chisel
+  ligolo-ng
+
+  # ── Reversing / binary ─────────────────────────────────────────────────
+  blackarch-reversing
+  rizin
+  cutter
+  iaito
+  retdec
+  angr
+  ropper
+  one_gadget
+  patchelf
+
+  # ── Forensics ──────────────────────────────────────────────────────────
+  blackarch-forensic
+  autopsy
+  bulk-extractor
+  scalpel
+  yara
+  volatility3
+  pdf-parser
+  oletools
+  exiftool
+
+  # ── Networking / MITM ──────────────────────────────────────────────────
+  blackarch-networking
+  bettercap
+  mitmproxy
+  ettercap
+  arpspoof
+  tcpreplay
+  hping
+  ncrack
+  proxychains-ng
+  chisel
+  socat
+
+  # ── Social engineering ─────────────────────────────────────────────────
+  blackarch-social
+  social-engineer-toolkit
+  gophish
+  king-phisher
+  evilginx2
+
+  # ── Crypto ─────────────────────────────────────────────────────────────
+  blackarch-crypto
+  hashpump
+  rsactftool
+  featherduster
+  python-pycryptodome
+  xortool
+
+  # ── Stego ──────────────────────────────────────────────────────────────
+  blackarch-stego
+  stegseek
+  zsteg
+  stegsolve
+  openstego
+  snow
+
+  # ── Fuzzing ────────────────────────────────────────────────────────────
+  blackarch-fuzzer
+  afl
+  afl++
+  boofuzz
+  radamsa
+  zzuf
+
+  # ── Misc / utility ─────────────────────────────────────────────────────
+  seclists
+  wordlistctl
+  webshells
+  cyberchef
+  pwncat
+)
+
 # ── Install ────────────────────────────────────────────────────────────────
 install_pkgs() {
   local label="$1"; shift
@@ -215,6 +382,7 @@ install_pkgs "Shell & CLI tools"                 "${PKG_SHELL[@]}"
 install_pkgs "Fonts & Theming"                   "${PKG_FONTS[@]}"
 install_pkgs "Development"                       "${PKG_DEV[@]}"
 install_pkgs "Cybersecurity"                     "${PKG_SEC[@]}"
+install_pkgs "BlackArch"                         "${PKG_BLACKARCH[@]}"
 
 # ── Set default shell ──────────────────────────────────────────────────────
 if [[ "$SHELL" != */zsh ]]; then
@@ -238,6 +406,19 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
   mkdir -p "$(dirname "$ZINIT_HOME")"
   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
   ok "Zinit installed."
+fi
+
+# ── Wordlists ──────────────────────────────────────────────────────────────
+if [[ ! -d /usr/share/seclists ]]; then
+  info "SecLists not found at /usr/share/seclists, checking for package ..."
+  $AUR -S --needed --noconfirm seclists 2>/dev/null || warn "  seclists not available as package"
+fi
+if [[ ! -f /usr/share/wordlists/rockyou.txt ]]; then
+  if [[ -f /usr/share/wordlists/rockyou.txt.gz ]]; then
+    info "Decompressing rockyou.txt ..."
+    sudo gzip -dk /usr/share/wordlists/rockyou.txt.gz
+    ok "rockyou.txt ready."
+  fi
 fi
 
 # ── Screenshots dir ────────────────────────────────────────────────────────
