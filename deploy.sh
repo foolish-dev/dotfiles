@@ -102,6 +102,15 @@ if [[ -d "$DOTFILES/.local/share/applications" ]]; then
   done
 fi
 
+# ── Wallpapers ─────────────────────────────────────────────────────────────
+if [[ -d "$DOTFILES/wallpapers" ]]; then
+  info "Deploying wallpapers to ~/Pictures/Wallpapers ..."
+  mkdir -p "$HOME/Pictures/Wallpapers"
+  for wp in "$DOTFILES/wallpapers"/*; do
+    [[ -f "$wp" ]] && link_item "$wp" "$HOME/Pictures/Wallpapers/$(basename "$wp")"
+  done
+fi
+
 # ── Enable user services ──────────────────────────────────────────────────
 info "Enabling user systemd services ..."
 systemctl --user daemon-reload 2>/dev/null || true
@@ -145,6 +154,7 @@ info "  Editor:  ~/.editorconfig"
 info "  Prompt:  ~/.config/starship.toml"
 info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat,wallpaper,hexstrike-mcp}"
 info "  Apps:    ~/.local/share/applications/{metasploit,nmap,sqlmap,hydra,...}.desktop"
+info "  Walls:   ~/Pictures/Wallpapers/ (23 Tokyo Night wallpapers)"
 info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
 info "  SDDM:   /etc/sddm.conf.d/niri.conf"
 info ""
