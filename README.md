@@ -1,4 +1,12 @@
-# dotfiles -- Arch Linux + BlackArch / Niri / Noctalia
+```
+        ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
+        ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
+        ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
+        ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║
+        ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
+        ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
+              Arch Linux + BlackArch  //  Niri + Noctalia  //  Tokyo Night
+```
 
 Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and offensive security.
 
