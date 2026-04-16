@@ -169,7 +169,7 @@ environment {
 // ---------------------------------------------------------------------------
 // Spawn at startup
 // ---------------------------------------------------------------------------
-spawn-at-startup "noctalia-qs" "-c" "noctalia-shell"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "xwayland-satellite"
 
@@ -246,10 +246,13 @@ binds {
     // ── Core ──────────────────────────────────────────────────────────
     Mod+Return          { spawn "kitty"; }
     Mod+Shift+Return    { spawn "kitty" "--class" "floating-term"; }
-    Mod+D               { spawn "fuzzel"; }
+    Mod+D               { spawn "qs" "ipc" "call" "launcher" "toggle"; }
     Mod+Q               { close-window; }
     Mod+Shift+E         { quit; }
     Mod+Shift+Slash     { show-hotkey-overlay; }
+
+    // ── Noctalia Launcher (Super tap via keyd -> F13) ─────────────────
+    F13                 { spawn "qs" "ipc" "call" "launcher" "toggle"; }
 
     // ── Reload ────────────────────────────────────────────────────────
     Mod+Shift+C         { spawn "niri" "msg" "action" "reload-config"; }
@@ -353,7 +356,5 @@ binds {
     Mod+Ctrl+A           { spawn "lm-studio"; }
 
     // ── Noctalia shell toggle (overview / control center) ─────────────
-    Mod+Space            { spawn "noctalia-qs" "-c" "noctalia-shell" "--toggle-overview"; }
+    Mod+Space            { spawn "qs" "ipc" "call" "controlCenter" "toggle"; }
 }
-
-spawn-at-startup "qs" "-c" "noctalia-shell"

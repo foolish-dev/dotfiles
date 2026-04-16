@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Bettercap
+GenericName=Network Attack Framework
+Comment=Swiss Army knife for WiFi, Bluetooth LE, and Ethernet network reconnaissance and MITM attacks
+Exec=kitty --title "Bettercap" -e zsh -c "echo '  Bettercap -- Network Attack Framework'; echo '  Usage: sudo bettercap -iface <interface>'; echo; exec zsh"
+Icon=bettercap
+Terminal=false
+Categories=X-BlackArch-Networking;X-BlackArch-Wireless;Security;
+Keywords=bettercap;mitm;network;wifi;bluetooth;

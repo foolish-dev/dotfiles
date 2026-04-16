@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=BloodHound
+GenericName=AD Attack Path Mapper
+Comment=Active Directory trust relationship and attack path visualization tool
+Exec=kitty --title "BloodHound" -e zsh -c "echo '  BloodHound -- AD Attack Paths'; echo '  Start neo4j first: sudo neo4j console'; echo '  Then run: bloodhound'; echo; exec zsh"
+Icon=bloodhound
+Terminal=false
+Categories=X-BlackArch-Recon;X-BlackArch-Windows;Security;
+Keywords=bloodhound;active;directory;ad;attack;path;

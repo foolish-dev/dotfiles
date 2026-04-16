@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Hashcat
+GenericName=Password Recovery
+Comment=Advanced GPU-based password recovery utility
+Exec=kitty --title "Hashcat" -e zsh -c "echo '  Hashcat -- GPU Password Recovery'; echo '  Usage: hashcat -m <type> -a <mode> <hash> <wordlist>'; echo; exec zsh"
+Icon=hashcat
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=hashcat;hash;crack;password;gpu;

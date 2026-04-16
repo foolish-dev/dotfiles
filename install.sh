@@ -116,6 +116,7 @@ PKG_CORE=(
   ddcutil
   cava
   wlsunset
+  keyd
   sddm
   sddm-astronaut-theme
   qt6-declarative
@@ -430,6 +431,7 @@ info "Enabling system services ..."
 sudo systemctl enable --now NetworkManager 2>/dev/null || true
 sudo systemctl enable --now bluetooth 2>/dev/null || true
 sudo systemctl enable --now docker 2>/dev/null || true
+sudo systemctl enable --now keyd 2>/dev/null || true
 sudo systemctl enable sddm 2>/dev/null || true
 sudo usermod -aG docker "$USER" 2>/dev/null || true
 sudo usermod -aG wireshark "$USER" 2>/dev/null || true

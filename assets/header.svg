@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1b26"/>
+      <stop offset="100%" style="stop-color:#24283b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7aa2f7"/>
+      <stop offset="50%" style="stop-color:#bb9af7"/>
+      <stop offset="100%" style="stop-color:#7dcfff"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7aa2f7;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#7aa2f7;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#bb9af7;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="textglow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="subtleglow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#414868" stroke-width="0.3" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Grid overlay -->
+  <rect width="900" height="300" rx="12" fill="url(#grid)"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="450" cy="130" rx="350" ry="80" fill="url(#glow)"/>
+
+  <!-- Decorative top line -->
+  <rect x="100" y="40" width="700" height="1.5" rx="1" fill="url(#accent)" opacity="0.6"/>
+
+  <!-- Decorative orbs -->
+  <circle cx="120" cy="40" r="3" fill="#f7768e" opacity="0.8"/>
+  <circle cx="135" cy="40" r="3" fill="#e0af68" opacity="0.8"/>
+  <circle cx="150" cy="40" r="3" fill="#9ece6a" opacity="0.8"/>
+
+  <!-- Shield icon left -->
+  <g transform="translate(155, 95)" opacity="0.5">
+    <path d="M0,5 L15,0 L30,5 L30,20 Q30,35 15,40 Q0,35 0,20 Z" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
+    <path d="M10,18 L14,22 L22,12" fill="none" stroke="#9ece6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Terminal icon right -->
+  <g transform="translate(715, 95)" opacity="0.5">
+    <rect x="0" y="0" width="32" height="24" rx="3" fill="none" stroke="#7aa2f7" stroke-width="1.5"/>
+    <path d="M7,8 L13,13 L7,18" fill="none" stroke="#bb9af7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="18" x2="24" y2="18" stroke="#7dcfff" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Main title -->
+  <text x="450" y="140" text-anchor="middle" font-family="'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', monospace" font-size="62" font-weight="800" letter-spacing="12" fill="url(#accent)" filter="url(#textglow)">DOTFILES</text>
+
+  <!-- Subtitle line -->
+  <rect x="200" y="165" width="500" height="1" rx="0.5" fill="url(#accent)" opacity="0.3"/>
+
+  <!-- Subtitle -->
+  <text x="450" y="195" text-anchor="middle" font-family="'JetBrains Mono', 'Fira Code', 'SF Mono', monospace" font-size="14" fill="#565f89" letter-spacing="4">ARCH LINUX + BLACKARCH</text>
+  <text x="295" y="195" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" fill="#414868" letter-spacing="4"></text>
+
+  <!-- Component tags -->
+  <g font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="11" filter="url(#subtleglow)">
+    <text x="220" y="230" text-anchor="middle" fill="#7aa2f7" opacity="0.8">NIRI</text>
+    <text x="280" y="230" text-anchor="middle" fill="#414868">|</text>
+    <text x="340" y="230" text-anchor="middle" fill="#bb9af7" opacity="0.8">NOCTALIA</text>
+    <text x="410" y="230" text-anchor="middle" fill="#414868">|</text>
+    <text x="470" y="230" text-anchor="middle" fill="#7dcfff" opacity="0.8">NEOVIM</text>
+    <text x="530" y="230" text-anchor="middle" fill="#414868">|</text>
+    <text x="600" y="230" text-anchor="middle" fill="#e0af68" opacity="0.8">TOKYO NIGHT</text>
+    <text x="680" y="230" text-anchor="middle" fill="#414868">|</text>
+    <text x="740" y="230" text-anchor="middle" fill="#f7768e" opacity="0.8">CYBERSEC</text>
+  </g>
+
+  <!-- Bottom decorative line -->
+  <rect x="100" y="258" width="700" height="1.5" rx="1" fill="url(#accent)" opacity="0.6"/>
+
+  <!-- Bottom dots -->
+  <circle cx="750" cy="258" r="3" fill="#7aa2f7" opacity="0.8"/>
+  <circle cx="765" cy="258" r="3" fill="#bb9af7" opacity="0.8"/>
+  <circle cx="780" cy="258" r="3" fill="#7dcfff" opacity="0.8"/>
+</svg>

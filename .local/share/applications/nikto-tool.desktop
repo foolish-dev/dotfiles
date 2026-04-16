@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Nikto
+GenericName=Web Vulnerability Scanner
+Comment=Web server scanner testing for dangerous files, outdated software, and misconfigurations
+Exec=kitty --title "Nikto" -e zsh -c "echo '  Nikto -- Web Vulnerability Scanner'; echo '  Usage: nikto -h <target>'; echo; exec zsh"
+Icon=nikto
+Terminal=false
+Categories=X-BlackArch-Webapp;X-BlackArch-Scanner;Security;
+Keywords=nikto;web;vulnerability;scanner;

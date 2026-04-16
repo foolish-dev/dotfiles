@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Nmap
+GenericName=Network Scanner
+Comment=Network exploration and security auditing tool
+Exec=kitty --title "Nmap" -e zsh -c "echo '  Nmap Scanner'; echo '  Usage: nmap [options] <target>'; echo; exec zsh"
+Icon=nmap
+Terminal=false
+Categories=X-BlackArch-Recon;X-BlackArch-Scanner;Security;
+Keywords=nmap;scan;port;network;recon;

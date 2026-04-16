@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Responder
+GenericName=LLMNR/NBT-NS Poisoner
+Comment=LLMNR, NBT-NS, and MDNS poisoner for credential harvesting
+Exec=kitty --title "Responder" -e zsh -c "echo '  Responder -- Credential Harvester'; echo '  Usage: sudo responder -I <interface>'; echo; exec zsh"
+Icon=responder
+Terminal=false
+Categories=X-BlackArch-Networking;X-BlackArch-Exploitation;Security;
+Keywords=responder;llmnr;nbt;poison;credential;

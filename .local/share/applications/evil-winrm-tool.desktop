@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Evil-WinRM
+GenericName=WinRM Shell
+Comment=Evil-WinRM shell for Windows remote management
+Exec=kitty --title "Evil-WinRM" -e zsh -c "echo '  Evil-WinRM -- Windows Remote Shell'; echo '  Usage: evil-winrm -i <IP> -u <user> -p <pass>'; echo; exec zsh"
+Icon=evil-winrm
+Terminal=false
+Categories=X-BlackArch-Exploitation;X-BlackArch-Windows;Security;
+Keywords=evil;winrm;windows;remote;shell;

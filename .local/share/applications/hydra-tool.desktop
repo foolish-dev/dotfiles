@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Hydra
+GenericName=Password Cracker
+Comment=Fast online password brute-forcing tool for network services
+Exec=kitty --title "Hydra" -e zsh -c "echo '  Hydra -- Password Cracker'; echo '  Usage: hydra -l <user> -P <wordlist> <target> <service>'; echo; exec zsh"
+Icon=hydra
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=hydra;brute;force;password;crack;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Gobuster
+GenericName=Directory Scanner
+Comment=URI, DNS, and virtual host brute-force scanner
+Exec=kitty --title "Gobuster" -e zsh -c "echo '  Gobuster -- Directory Brute-Force'; echo '  Usage: gobuster dir -u <url> -w <wordlist>'; echo; exec zsh"
+Icon=gobuster
+Terminal=false
+Categories=X-BlackArch-Webapp;X-BlackArch-Scanner;Security;
+Keywords=gobuster;directory;brute;force;web;

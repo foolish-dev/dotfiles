@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Metasploit Framework
+GenericName=Exploitation Framework
+Comment=Penetration testing framework with exploit modules, payloads, and post-exploitation tools
+Exec=kitty --title "Metasploit" -e msfconsole
+Icon=metasploit
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=metasploit;msf;exploit;payload;meterpreter;pentest;

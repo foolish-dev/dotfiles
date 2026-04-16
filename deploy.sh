@@ -93,6 +93,15 @@ if [[ -d "$DOTFILES/.local/bin" ]]; then
   done
 fi
 
+# ── Desktop entries (BlackArch tools) ─────────────────────────────────────
+mkdir -p "$HOME/.local/share/applications"
+if [[ -d "$DOTFILES/.local/share/applications" ]]; then
+  info "Deploying BlackArch .desktop entries ..."
+  for desktop in "$DOTFILES/.local/share/applications"/*.desktop; do
+    [[ -f "$desktop" ]] && link_item "$desktop" "$HOME/.local/share/applications/$(basename "$desktop")"
+  done
+fi
+
 # ── Enable user services ──────────────────────────────────────────────────
 info "Enabling user systemd services ..."
 systemctl --user daemon-reload 2>/dev/null || true
@@ -102,6 +111,18 @@ systemctl --user daemon-reload 2>/dev/null || true
 # systemctl --user enable --now cliphist.service 2>/dev/null || true
 systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
   warn "  hexstrike-server.service failed to start (run install.sh first)"
+
+# ── keyd config (Super tap -> F13 for Noctalia launcher) ──────────────────
+if [[ -d "$DOTFILES/etc/keyd" ]]; then
+  info "Deploying keyd config to /etc/keyd/ ..."
+  sudo mkdir -p /etc/keyd
+  for conf in "$DOTFILES/etc/keyd"/*; do
+    [[ -f "$conf" ]] && sudo cp "$conf" "/etc/keyd/$(basename "$conf")"
+    ok "  Copied $(basename "$conf")"
+  done
+  sudo systemctl enable --now keyd.service 2>/dev/null ||
+    warn "  keyd.service failed to start (install keyd first)"
+fi
 
 # ── SDDM config (system-wide, requires sudo) ─────────────────────────────
 if [[ -d "$DOTFILES/etc/sddm.conf.d" ]]; then
@@ -123,6 +144,8 @@ info "  Git:     ~/.gitconfig, ~/.gitignore_global"
 info "  Editor:  ~/.editorconfig"
 info "  Prompt:  ~/.config/starship.toml"
 info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat,wallpaper,hexstrike-mcp}"
+info "  Apps:    ~/.local/share/applications/{metasploit,nmap,sqlmap,hydra,...}.desktop"
+info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
 info "  SDDM:   /etc/sddm.conf.d/niri.conf"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then

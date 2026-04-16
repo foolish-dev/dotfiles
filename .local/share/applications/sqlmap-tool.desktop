@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SQLMap
+GenericName=SQL Injection Tool
+Comment=Automatic SQL injection and database takeover tool
+Exec=kitty --title "SQLMap" -e zsh -c "echo '  SQLMap -- SQL Injection'; echo '  Usage: sqlmap -u <url> [options]'; echo; exec zsh"
+Icon=sqlmap
+Terminal=false
+Categories=X-BlackArch-Webapp;X-BlackArch-Exploitation;Security;
+Keywords=sqlmap;sql;injection;database;webapp;

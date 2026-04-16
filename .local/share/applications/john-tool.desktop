@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=John the Ripper
+GenericName=Password Cracker
+Comment=Password cracking tool supporting many hash types
+Exec=kitty --title "John the Ripper" -e zsh -c "echo '  John the Ripper'; echo '  Usage: john --wordlist=<list> <hashfile>'; echo; exec zsh"
+Icon=john
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=john;ripper;password;crack;hash;

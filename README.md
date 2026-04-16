@@ -1,16 +1,30 @@
-```
-        ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
-        ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
-        ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
-        ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║
-        ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
-        ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
-              Arch Linux + BlackArch  //  Niri + Noctalia  //  Tokyo Night
-```
+<p align="center">
+  <img src="assets/header.svg" alt="Dotfiles" width="900"/>
+</p>
 
-Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and offensive security.
+<p align="center">
+  <img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white" alt="Arch Linux"/>
+  <img src="https://img.shields.io/badge/Wayland-FFBc00?style=flat-square&logo=wayland&logoColor=black" alt="Wayland"/>
+  <img src="https://img.shields.io/badge/Neovim-57A143?style=flat-square&logo=neovim&logoColor=white" alt="Neovim"/>
+  <img src="https://img.shields.io/badge/Zsh-F15A24?style=flat-square&logo=zsh&logoColor=white" alt="Zsh"/>
+  <img src="https://img.shields.io/badge/tmux-1BB91F?style=flat-square&logo=tmux&logoColor=white" alt="tmux"/>
+  <img src="https://img.shields.io/badge/Kitty-000000?style=flat-square&logo=gnometerminal&logoColor=white" alt="Kitty"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker"/>
+  <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white" alt="Rust"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go"/>
+  <img src="https://img.shields.io/badge/License-MIT-7aa2f7?style=flat-square" alt="MIT License"/>
+</p>
+
+<p align="center">
+  Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and offensive security.
+</p>
+
+<img src="assets/divider.svg" alt="" width="900"/>
 
 ## Stack
+
+<img src="assets/stack.svg" alt="Architecture" width="900"/>
 
 | Layer | Tool |
 |---|---|
@@ -28,6 +42,8 @@ Personal dotfiles for a scrollable-tiling Wayland desktop built for coding and o
 | Display Manager | [SDDM](https://github.com/sddm/sddm) (breeze theme, Niri session auto-detected) |
 | Theme | Tokyo Night (dark, transparent) + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven colors) |
 | Fetch | neofetch (Arch ASCII, system info on shell start) |
+
+<img src="assets/divider.svg" alt="" width="900"/>
 
 ## Quick Start
 
@@ -47,6 +63,8 @@ cd ~/dotfiles
 ```
 
 First `nvim` launch auto-installs all plugins and LSP servers.
+
+<img src="assets/divider.svg" alt="" width="900"/>
 
 ## Layout
 
@@ -87,6 +105,8 @@ install.sh                     Arch + BlackArch + Chaotic AUR package bootstrap
 deploy.sh                      symlink deployer with auto-backup
 ```
 
+<img src="assets/divider.svg" alt="" width="900"/>
+
 ## Keybinds
 
 ### Niri (compositor)
@@ -126,6 +146,8 @@ deploy.sh                      symlink deployer with auto-backup
 | `C-a Tab` | Last window |
 | `C-a S` | New session |
 
+<img src="assets/divider.svg" alt="" width="900"/>
+
 ## Neovim
 
 **LSP servers** (auto-installed via Mason):
@@ -148,6 +170,8 @@ pyright, ruff, clangd, rust_analyzer, gopls, zls, ts_ls, bashls, lua_ls, html, c
 | `<leader>xx` | Diagnostics |
 | `<C-\>` | Float terminal |
 
+<img src="assets/divider.svg" alt="" width="900"/>
+
 ## LM Studio
 
 Local LLM inference via [LM Studio](https://lmstudio.ai). The installer pulls `lmstudio-bin` from Chaotic AUR.
@@ -162,6 +186,8 @@ lms-status             # list loaded models
 lms-chat               # quick test curl
 ```
 
+<img src="assets/divider.svg" alt="" width="900"/>
+
 ## HexStrike AI MCP
 
 [HexStrike AI](https://github.com/0x4m4/hexstrike-ai) exposes 150+ offensive security tools to AI agents via MCP.
@@ -172,6 +198,8 @@ The installer clones the repo to `~/tools/hexstrike-ai`, sets up a Python venv, 
 sysu status hexstrike-server   # check service status
 sysu restart hexstrike-server  # restart the backend
 ```
+
+<img src="assets/divider.svg" alt="" width="900"/>
 
 ## Pywal
 
@@ -188,6 +216,8 @@ The `wallpaper` script:
 4. Copies the generated `colors-noctalia.json` into noctalia's config
 
 Tokyo Night is the static fallback before the first `wal` run.
+
+<img src="assets/divider.svg" alt="" width="900"/>
 
 ## BlackArch Tools
 
@@ -208,9 +238,13 @@ The installer adds the BlackArch repository and pulls tools across 12 categories
 | Stego | stegseek, zsteg, stegsolve |
 | Fuzzing | afl++, boofuzz, radamsa |
 
+<img src="assets/divider.svg" alt="" width="900"/>
+
 ## Chaotic AUR
 
 [Chaotic AUR](https://aur.chaotic.cx) provides pre-built AUR packages so you skip compilation. The installer adds the repo automatically (GPG key + mirrorlist + pacman.conf entry). Packages like `lmstudio-bin`, `opencode-bin`, and many others install instantly via pacman.
+
+<img src="assets/divider.svg" alt="" width="900"/>
 
 ## Zsh Security Toolkit
 
@@ -251,6 +285,12 @@ evilwinrm -i IP -u user -p pass   # WinRM shell
 lg                                 # lazygit
 ```
 
-## License
+## Color Palette
 
-MIT
+<img src="assets/palette.svg" alt="Tokyo Night Palette" width="900"/>
+
+<img src="assets/divider.svg" alt="" width="900"/>
+
+<p align="center">
+  <sub>MIT License &copy; <a href="https://github.com/foolish-dev">foolish-dev</a></sub>
+</p>
