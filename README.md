@@ -101,7 +101,7 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   wallpaper                    set wallpaper + regenerate pywal colors + reload kitty/noctalia
   hexstrike-mcp                MCP stdio bridge to HexStrike AI server
   sddm-theme                   fzf-powered SDDM theme switcher
-.local/share/applications/     BlackArch .desktop entries (metasploit, nmap, sqlmap, ...)
+.local/share/applications/     147 BlackArch .desktop entries (all 21 categories)
 wallpapers/                    23 curated Tokyo Night wallpapers (4K)
 assets/                        README SVG images (header, dividers, palette, architecture)
 etc/
@@ -282,21 +282,33 @@ The Noctalia dock and app launcher are pre-configured with pinned security tools
 
 **Dock** (bottom bar): Kitty, Firefox, Nautilus, Neovim, LM Studio, Wireshark, Burp Suite, Metasploit, Nmap, Iaito, Autopsy, btop
 
-**Launcher** (26 pinned apps, ordered by workflow):
+**Launcher** (155 pinned apps across 21 categories, ordered by workflow):
 
 | Group | Apps |
 |---|---|
 | Core | Kitty, Firefox, Neovim, LM Studio |
-| Web Testing | Wireshark, Burp Suite, ZAP |
-| Exploitation | Metasploit, Empire, BeEF |
-| Scanning | Nmap, SQLMap, Nikto, Gobuster |
-| Passwords | Hydra, Hashcat, John the Ripper |
-| AD / Windows | NetExec, Kerbrute, BloodHound, Evil-WinRM |
-| Network | Responder, Bettercap |
-| Mobile | MobSF |
-| Reversing / Forensics | Iaito, Autopsy |
+| Web Testing | Wireshark, Burp Suite, ZAP, Mitmproxy |
+| Recon / OSINT | theHarvester, Sherlock, Recon-ng, SpiderFoot, Katana, GAU, Waybackurls, Hakrawler, GoSpider, DMitry, Legion, Maltego |
+| DNS / Subdomain | DNSenum, MassDNS, ShuffleDNS, PureDNS, DNSx, AlterX, Naabu, ASNmap, MapCIDR, CDNcheck, Fierce, DNSmap |
+| Web Exploitation | Nikto, WPScan, Commix, Dalfox, Arjun, JWT Tool, NoSQLMap, GraphQLmap, Skipfish, Cadaver, Dirsearch, Wfuzz, Ffuf, FeroxBuster, Dirb, Gobuster |
+| Scanning | Nmap, SQLMap |
+| Exploitation | Metasploit, Empire, BeEF, Sliver, RouterSploit, SearchSploit, Veil, MSFvenom |
+| AD / Windows | NetExec, Kerbrute, BloodHound, Evil-WinRM, Certipy, Enum4linux-ng, BloodyAD, Ldeep, Windapsearch, Coercer, Manspider, SCCMHunter, Nishang |
+| Passwords | Hydra, Hashcat, John, CeWL, Crunch, Medusa, Patator, CUPP, Changeme, Name-That-Hash |
+| Wireless | Responder, Bettercap, Wifite, Reaver, Fluxion, Airgeddon, Yersinia, Aircrack-ng |
+| Privesc / Post | LinPEAS, WinPEAS, Pspy, Mimikatz, Chisel, Ligolo-ng, Pwncat, Rubeus, SharpHound |
+| Reversing | Iaito, Ghidra, Cutter, Rizin, Radare2, Angr, Ropper, RetDec |
+| Mobile | MobSF, JADX, APKTool, Objection, Drozer, APKLeaks |
+| Forensics | Autopsy, Volatility3, YARA, Binwalk, Foremost, Bulk Extractor, OLEtools, RegRipper, PDF Parser |
+| Networking / MITM | Ettercap, dSniff, SSLstrip, Hping3, SNMPcheck, Tcpdump, dns2tcp, Iodine, Ptunnel, Proxify |
+| Social Engineering | SET, GoPhish, Evilginx2, King Phisher |
+| Crypto | HashPump, RsaCtfTool, Xortool, FeatherDuster |
+| Steganography | StegSeek, Steghide, Zsteg, StegSolve, OpenStego, Snow |
+| Fuzzing | AFL++, Boofuzz, Radamsa, zzuf |
+| Secret Scanning | TruffleHog, Gitleaks, Interactsh |
+| Cloud Security | Pacu, ScoutSuite, Prowler |
 
-18 custom `.desktop` entries in `.local/share/applications/` provide launcher integration for terminal-based BlackArch tools. Each opens in Kitty with a usage hint.
+147 custom `.desktop` entries in `.local/share/applications/` provide launcher integration for terminal-based BlackArch tools. Each opens in Kitty with a usage hint.
 
 The Super key tap is handled by [keyd](https://github.com/rvaiya/keyd) (`etc/keyd/default.conf`), which maps Super tap to F13 while preserving all `Super+key` combos.
 
