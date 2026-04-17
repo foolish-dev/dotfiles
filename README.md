@@ -97,10 +97,13 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   mkproj                       scaffold projects (python/rust/go/c/node/shell)
   dev                          3-pane tmux IDE session
   gclone                       smart git clone (gh:user/repo shorthand)
-  cheat                        quick reference sheets
+  cheat                        quick reference sheets (nmap, ffuf, revshells, blackarch, privesc, ad, git, docker, tmux, nvim)
   wallpaper                    set wallpaper + regenerate pywal colors + reload kitty/noctalia
   hexstrike-mcp                MCP stdio bridge to HexStrike AI server
   sddm-theme                   fzf-powered SDDM theme switcher
+  colorbars                    display full 256-color terminal palette
+  colorblocks                  display basic 16-color palette
+  pipes                        animated pipes screensaver
 .local/share/applications/     147 BlackArch .desktop entries (all 21 categories)
 wallpapers/                    23 curated Tokyo Night wallpapers (4K)
 assets/                        README SVG images (header, dividers, palette, architecture)
@@ -370,9 +373,18 @@ proj                               # Fuzzy open a project in tmux
 mkproj myapp python                # Scaffold a Python project
 dev                                # Launch 3-pane tmux IDE
 gclone user/repo                   # Clone from GitHub + cd
+gclone gh:user/repo                # GitHub shorthand
+gclone gl:user/repo                # GitLab shorthand
 
 # Pywal / theming
 wallpaper ~/Pictures/bg.jpg        # Set wallpaper + regenerate colors
+sddm-theme                         # fzf picker for all installed themes
+sddm-theme tokyo-night             # switch SDDM theme directly
+
+# Terminal utilities
+colorbars                          # Show full 256-color palette
+colorblocks                        # Show basic 16-color palette
+pipes                              # Animated pipes screensaver
 
 # LM Studio
 lms                                # Open LM Studio
