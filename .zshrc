@@ -429,3 +429,8 @@ else
 BANNER
   printf '\e[0m\n'
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/fool/.lmstudio/bin"
+# End of LM Studio CLI section
+
