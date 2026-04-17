@@ -62,7 +62,7 @@ fi
 [[ -z "$SELECTED" ]] && exit 0
 [[ -v "THEMES[$SELECTED]" ]] || fail "Theme '$SELECTED' not found. Available: ${!THEMES[*]}"
 
-IFS=':' read -r TYPE PATH <<< "${THEMES[$SELECTED]}"
+IFS=':' read -r TYPE THEME_PATH <<< "${THEMES[$SELECTED]}"
 
 if [[ "$TYPE" == "astronaut" ]]; then
   # Copy wallpaper to astronaut Backgrounds dir
@@ -70,8 +70,8 @@ if [[ "$TYPE" == "astronaut" ]]; then
 
   # Copy custom config to astronaut Themes dir
   DEST="$ASTRONAUT_DIR/Themes/$SELECTED.conf"
-  if [[ "$PATH" != "$DEST" && -f "$PATH" ]]; then
-    sudo cp "$PATH" "$DEST"
+  if [[ "$THEME_PATH" != "$DEST" && -f "$THEME_PATH" ]]; then
+    sudo cp "$THEME_PATH" "$DEST"
     ok "Copied config to $DEST"
   fi
 
@@ -104,7 +104,7 @@ EOF
 
 else
   # Standalone theme
-  THEME_NAME="$(basename "$PATH")"
+  THEME_NAME="$(basename "$THEME_PATH")"
   info "Setting standalone theme: $THEME_NAME"
 
   sudo tee /etc/sddm.conf.d/theme.conf > /dev/null <<EOF

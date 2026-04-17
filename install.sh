@@ -443,7 +443,6 @@ PKG_BLACKARCH=(
   volatility3
   pdf-parser
   oletools
-  exiftool
   regripper
 
   # ── Networking / MITM ──────────────────────────────────────────────────
@@ -542,7 +541,7 @@ install_pkgs "BlackArch" "${PKG_BLACKARCH[@]}"
 # ── Set default shell ──────────────────────────────────────────────────────
 if [[ "$SHELL" != */zsh ]]; then
   info "Setting zsh as default shell ..."
-  chsh -s "$(which zsh)"
+  chsh -s "$(command -v zsh)"
   ok "Default shell set to zsh (re-login to activate)."
 fi
 

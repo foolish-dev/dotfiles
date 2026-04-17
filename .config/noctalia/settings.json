@@ -550,7 +550,7 @@
         "pinnedApps": [
             "kitty.desktop",
             "firefox.desktop",
-            "org.gnome.Nautilus.desktop",
+            "thunar.desktop",
             "nvim.desktop",
             "lmstudio.desktop",
             "org.wireshark.Wireshark.desktop",

@@ -1,5 +1,5 @@
 -- =============================================================================
--- Colorscheme -- Tokyo Night (Storm variant for dark-room hacking)
+-- Colorscheme -- Tokyo Night (night variant, transparent)
 -- =============================================================================
 return {
   {
