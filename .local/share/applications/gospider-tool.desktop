@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=GoSpider
+GenericName=Web Spider
+Comment=Fast web spider written in Go
+Exec=kitty --title "GoSpider" -e zsh -c "echo '  GoSpider'; echo '  Usage: gospider -s <url> -c 10'; echo; exec zsh"
+Icon=gospider
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=gospider;spider;web;recon;

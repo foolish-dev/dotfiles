@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=GraphQLmap
+GenericName=GraphQL Exploitation
+Comment=GraphQL endpoint interaction and exploitation scripting engine
+Exec=kitty --title "GraphQLmap" -e zsh -c "echo '  GraphQLmap'; echo '  Usage: graphqlmap --url <endpoint>'; echo; exec zsh"
+Icon=graphqlmap
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=graphqlmap;graphql;api;injection;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Changeme
+GenericName=Default Creds Scanner
+Comment=Scan for default credentials across network devices
+Exec=kitty --title "Changeme" -e zsh -c "echo '  Changeme'; echo '  Usage: changeme <target>'; echo; exec zsh"
+Icon=changeme
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=changeme;default;credentials;scan;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=RetDec
+GenericName=Decompiler
+Comment=Retargetable machine-code decompiler
+Exec=kitty --title "RetDec" -e zsh -c "echo '  RetDec'; echo '  Usage: retdec-decompiler <binary>'; echo; exec zsh"
+Icon=retdec
+Terminal=false
+Categories=X-BlackArch-Reversing;Security;
+Keywords=retdec;decompile;binary;c;reverse;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WPScan
+GenericName=WordPress Scanner
+Comment=WordPress vulnerability scanner
+Exec=kitty --title "WPScan" -e zsh -c "echo '  WPScan'; echo '  Usage: wpscan --url <target> --enumerate ap,at,u'; echo; exec zsh"
+Icon=wpscan
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=wpscan;wordpress;cms;scan;

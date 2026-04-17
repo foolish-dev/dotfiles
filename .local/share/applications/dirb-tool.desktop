@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Dirb
+GenericName=Dir Scanner
+Comment=Web content scanner using wordlists
+Exec=kitty --title "Dirb" -e zsh -c "echo '  Dirb'; echo '  Usage: dirb <url> /usr/share/wordlists/dirb/common.txt'; echo; exec zsh"
+Icon=dirb
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=dirb;directory;scan;web;

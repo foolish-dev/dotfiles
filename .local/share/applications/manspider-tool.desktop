@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Manspider
+GenericName=SMB Spider
+Comment=Spider SMB shares for sensitive files
+Exec=kitty --title "Manspider" -e zsh -c "echo '  Manspider'; echo '  Usage: manspider <target> -c password -e txt -e xlsx'; echo; exec zsh"
+Icon=manspider
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=manspider;smb;spider;file;sensitive;

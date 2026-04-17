@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Zsteg
+GenericName=PNG/BMP Stego
+Comment=Detect steganography in PNG and BMP files
+Exec=kitty --title "Zsteg" -e zsh -c "echo '  Zsteg'; echo '  Usage: zsteg <image.png>'; echo; exec zsh"
+Icon=zsteg
+Terminal=false
+Categories=X-BlackArch-Stego;Security;
+Keywords=zsteg;png;bmp;stego;lsb;

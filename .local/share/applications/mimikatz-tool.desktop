@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Mimikatz
+GenericName=Credential Dumper
+Comment=Extract passwords and hashes from Windows memory
+Exec=kitty --title "Mimikatz" -e zsh -c "echo '  Mimikatz'; echo '  Usage: mimikatz # privilege::debug  sekurlsa::logonpasswords'; echo; exec zsh"
+Icon=mimikatz
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=mimikatz;credential;dump;windows;lsass;

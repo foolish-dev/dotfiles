@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Rubeus
+GenericName=Kerberos Toolkit
+Comment=Toolset for raw Kerberos interaction and abuse
+Exec=kitty --title "Rubeus" -e zsh -c "echo '  Rubeus'; echo '  Usage: rubeus.exe asktgt /user:<user> /password:<pass>  # run on Windows'; echo; exec zsh"
+Icon=rubeus
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=rubeus;kerberos;ticket;ad;windows;

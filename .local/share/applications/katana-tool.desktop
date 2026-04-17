@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Katana
+GenericName=Web Crawler
+Comment=Fast web crawling and spidering framework
+Exec=kitty --title "Katana" -e zsh -c "echo '  Katana'; echo '  Usage: katana -u <url>'; echo; exec zsh"
+Icon=katana
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=katana;crawler;spider;web;

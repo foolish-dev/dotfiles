@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=RouterSploit
+GenericName=Router Exploitation
+Comment=Exploitation framework for embedded devices and routers
+Exec=kitty --title "RouterSploit" -e zsh -c "echo '  RouterSploit'; echo '  Usage: rsf'; echo; exec zsh"
+Icon=routersploit
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=routersploit;router;iot;exploit;

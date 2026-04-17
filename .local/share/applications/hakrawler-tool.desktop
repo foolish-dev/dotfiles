@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Hakrawler
+GenericName=Web Crawler
+Comment=Fast golang web crawler for gathering URLs and JavaScript file locations
+Exec=kitty --title "Hakrawler" -e zsh -c "echo '  Hakrawler'; echo '  Usage: echo <url> | hakrawler'; echo; exec zsh"
+Icon=hakrawler
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=hakrawler;crawler;web;recon;

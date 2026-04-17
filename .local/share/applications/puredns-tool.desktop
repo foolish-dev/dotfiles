@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PureDNS
+GenericName=DNS Resolver
+Comment=Fast subdomain brute forcing and DNS wildcard filtering
+Exec=kitty --title "PureDNS" -e zsh -c "echo '  PureDNS'; echo '  Usage: puredns bruteforce subdomains.txt <domain>'; echo; exec zsh"
+Icon=puredns
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=puredns;dns;subdomain;brute;

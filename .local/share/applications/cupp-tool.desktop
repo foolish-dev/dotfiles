@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=CUPP
+GenericName=Password Profiler
+Comment=Common User Passwords Profiler for custom wordlists
+Exec=kitty --title "CUPP" -e zsh -c "echo '  CUPP'; echo '  Usage: cupp -i'; echo; exec zsh"
+Icon=cupp
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=cupp;password;profile;wordlist;osint;

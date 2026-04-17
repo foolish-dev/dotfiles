@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=JWT Tool
+GenericName=JWT Auditor
+Comment=Toolkit for testing and exploiting JWTs
+Exec=kitty --title "JWT Tool" -e zsh -c "echo '  JWT Tool'; echo '  Usage: jwt_tool <token>'; echo; exec zsh"
+Icon=jwt-tool
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=jwt;token;auth;crack;

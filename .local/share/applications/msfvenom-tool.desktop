@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=MSFvenom
+GenericName=Payload Generator
+Comment=Metasploit standalone payload generator and encoder
+Exec=kitty --title "MSFvenom" -e zsh -c "echo '  MSFvenom'; echo '  Usage: msfvenom -p <payload> LHOST=<ip> LPORT=<port> -f <format> -o payload'; echo; exec zsh"
+Icon=msfvenom
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=msfvenom;payload;shellcode;metasploit;

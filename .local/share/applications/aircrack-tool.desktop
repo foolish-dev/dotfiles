@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Aircrack-ng
+GenericName=WPA Cracker
+Comment=IEEE 802.11 WEP and WPA/WPA2-PSK key cracking program
+Exec=kitty --title "Aircrack-ng" -e zsh -c "echo '  Aircrack-ng'; echo '  Usage: aircrack-ng -w /usr/share/wordlists/rockyou.txt <capture.cap>'; echo; exec zsh"
+Icon=aircrack-ng
+Terminal=false
+Categories=X-BlackArch-Wireless;Security;
+Keywords=aircrack;wpa;wep;crack;wireless;

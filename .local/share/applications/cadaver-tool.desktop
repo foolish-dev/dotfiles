@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Cadaver
+GenericName=WebDAV Client
+Comment=Command-line WebDAV client for upload, download, and management
+Exec=kitty --title "Cadaver" -e zsh -c "echo '  Cadaver'; echo '  Usage: cadaver <url>'; echo; exec zsh"
+Icon=cadaver
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=cadaver;webdav;upload;exploit;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=zzuf
+GenericName=Application Fuzzer
+Comment=Transparent application input fuzzer
+Exec=kitty --title "zzuf" -e zsh -c "echo '  zzuf'; echo '  Usage: zzuf cat <file>'; echo; exec zsh"
+Icon=zzuf
+Terminal=false
+Categories=X-BlackArch-Fuzzer;Security;
+Keywords=zzuf;fuzzer;application;input;transparent;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=CDNcheck
+GenericName=CDN Detector
+Comment=Detect CDN, WAF, and cloud provider for hosts
+Exec=kitty --title "CDNcheck" -e zsh -c "echo '  CDNcheck'; echo '  Usage: echo <ip> | cdncheck'; echo; exec zsh"
+Icon=cdncheck
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=cdncheck;cdn;waf;cloud;

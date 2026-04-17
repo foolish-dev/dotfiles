@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=RsaCtfTool
+GenericName=RSA Attack Tool
+Comment=RSA multi-attacks and private key recovery tool
+Exec=kitty --title "RsaCtfTool" -e zsh -c "echo '  RsaCtfTool'; echo '  Usage: RsaCtfTool.py --publickey key.pub --uncipherfile cipher.bin'; echo; exec zsh"
+Icon=rsactftool
+Terminal=false
+Categories=X-BlackArch-Crypto;Security;
+Keywords=rsa;ctf;crypto;attack;prime;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Waybackurls
+GenericName=Wayback URL Fetcher
+Comment=Fetch all known URLs for a domain from the Wayback Machine
+Exec=kitty --title "Waybackurls" -e zsh -c "echo '  Waybackurls'; echo '  Usage: echo <domain> | waybackurls'; echo; exec zsh"
+Icon=waybackurls
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=waybackurls;wayback;url;recon;

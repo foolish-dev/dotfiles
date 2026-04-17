@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=HashPump
+GenericName=Hash Length Extension
+Comment=Exploit hash length extension vulnerabilities
+Exec=kitty --title "HashPump" -e zsh -c "echo '  HashPump'; echo '  Usage: hashpump -s <sig> -d <data> -a <add> -k <keylen>'; echo; exec zsh"
+Icon=hashpump
+Terminal=false
+Categories=X-BlackArch-Crypto;Security;
+Keywords=hashpump;hash;extension;length;crypto;

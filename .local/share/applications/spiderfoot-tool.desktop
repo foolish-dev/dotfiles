@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SpiderFoot
+GenericName=OSINT Automation
+Comment=Automates OSINT collection across 200+ sources
+Exec=kitty --title "SpiderFoot" -e zsh -c "echo '  SpiderFoot'; echo '  Usage: spiderfoot -l 127.0.0.1:5001'; echo; exec zsh"
+Icon=spiderfoot
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=spiderfoot;osint;automation;

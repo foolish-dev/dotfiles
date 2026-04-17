@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=MapCIDR
+GenericName=CIDR Utility
+Comment=Utility program for working with CIDRs
+Exec=kitty --title "MapCIDR" -e zsh -c "echo '  MapCIDR'; echo '  Usage: mapcidr -cidr 192.168.1.0/24'; echo; exec zsh"
+Icon=mapcidr
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=mapcidr;cidr;ip;subnet;

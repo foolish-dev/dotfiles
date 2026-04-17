@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ScoutSuite
+GenericName=Cloud Auditor
+Comment=Multi-cloud security auditing tool for AWS, Azure, GCP
+Exec=kitty --title "ScoutSuite" -e zsh -c "echo '  ScoutSuite'; echo '  Usage: scout aws'; echo; exec zsh"
+Icon=scoutsuite
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=scoutsuite;cloud;aws;azure;gcp;audit;

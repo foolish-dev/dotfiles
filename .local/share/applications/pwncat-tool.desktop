@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Pwncat
+GenericName=Reverse Shell Handler
+Comment=Weaponized netcat with automatic privesc and persistence
+Exec=kitty --title "Pwncat" -e zsh -c "echo '  Pwncat'; echo '  Usage: pwncat-cs -lp 4444'; echo; exec zsh"
+Icon=pwncat
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=pwncat;shell;handler;privesc;reverse;

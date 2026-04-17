@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Bulk Extractor
+GenericName=Data Carver
+Comment=Scan disk/memory images for strings, email, URLs, credit cards
+Exec=kitty --title "Bulk Extractor" -e zsh -c "echo '  Bulk Extractor'; echo '  Usage: bulk_extractor -o output/ <image>'; echo; exec zsh"
+Icon=bulk-extractor
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=bulk;extractor;carver;forensic;email;

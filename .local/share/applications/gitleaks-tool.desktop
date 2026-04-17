@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Gitleaks
+GenericName=Secret Scanner
+Comment=Detect hardcoded secrets in git repositories
+Exec=kitty --title "Gitleaks" -e zsh -c "echo '  Gitleaks'; echo '  Usage: gitleaks detect --source . -v'; echo; exec zsh"
+Icon=gitleaks
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=gitleaks;secrets;git;scan;credentials;

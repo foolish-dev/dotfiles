@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DNSmap
+GenericName=DNS Mapper
+Comment=Passive DNS mapping and information gathering tool
+Exec=kitty --title "DNSmap" -e zsh -c "echo '  DNSmap'; echo '  Usage: dnsmap <domain>'; echo; exec zsh"
+Icon=dnsmap
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=dnsmap;dns;subdomain;map;

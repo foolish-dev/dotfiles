@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Sherlock
+GenericName=Username OSINT
+Comment=Hunt down social media accounts by username across platforms
+Exec=kitty --title "Sherlock" -e zsh -c "echo '  Sherlock'; echo '  Usage: sherlock <username>'; echo; exec zsh"
+Icon=sherlock
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=sherlock;osint;social;username;

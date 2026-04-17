@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Veil
+GenericName=Payload Generator
+Comment=Generates metasploit payloads that bypass AV solutions
+Exec=kitty --title "Veil" -e zsh -c "echo '  Veil'; echo '  Usage: veil'; echo; exec zsh"
+Icon=veil
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=veil;payload;av;bypass;evasion;

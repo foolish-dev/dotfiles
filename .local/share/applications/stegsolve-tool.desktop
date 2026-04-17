@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=StegSolve
+GenericName=Image Steganalysis
+Comment=Image steganography solver with multiple analysis planes
+Exec=kitty --title "StegSolve" -e zsh -c "echo '  StegSolve'; echo '  Usage: stegsolve'; echo; exec zsh"
+Icon=stegsolve
+Terminal=false
+Categories=X-BlackArch-Stego;Security;
+Keywords=stegsolve;image;stego;lsb;planes;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Steghide
+GenericName=Steganography
+Comment=Hide data in image and audio files
+Exec=kitty --title "Steghide" -e zsh -c "echo '  Steghide'; echo '  Usage: steghide extract -sf <image.jpg>'; echo; exec zsh"
+Icon=steghide
+Terminal=false
+Categories=X-BlackArch-Stego;Security;
+Keywords=steghide;stego;embed;extract;image;

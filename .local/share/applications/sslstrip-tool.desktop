@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SSLstrip
+GenericName=SSL Stripper
+Comment=HTTPS downgrade and stripping attack tool
+Exec=kitty --title "SSLstrip" -e zsh -c "echo '  SSLstrip'; echo '  Usage: sslstrip -l 8080'; echo; exec zsh"
+Icon=sslstrip
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=sslstrip;ssl;https;downgrade;mitm;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ghidra
+GenericName=Reverse Engineering Suite
+Comment=NSA software reverse engineering suite
+Exec=ghidra
+Icon=ghidra
+Terminal=false
+Categories=X-BlackArch-Reversing;Security;
+Keywords=ghidra;nsa;reverse;decompile;binary;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Airgeddon
+GenericName=Wireless Swiss Army
+Comment=Multi-use wireless auditing script
+Exec=kitty --title "Airgeddon" -e zsh -c "echo '  Airgeddon'; echo '  Usage: sudo airgeddon'; echo; exec zsh"
+Icon=airgeddon
+Terminal=false
+Categories=X-BlackArch-Wireless;Security;
+Keywords=airgeddon;wifi;wireless;audit;deauth;

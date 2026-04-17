@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Patator
+GenericName=Brute Force Multi-Tool
+Comment=Multi-purpose brute-forcer
+Exec=kitty --title "Patator" -e zsh -c "echo '  Patator'; echo '  Usage: patator ssh_login host=<ip> user=<user> password=FILE0 0=wordlist.txt'; echo; exec zsh"
+Icon=patator
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=patator;brute;force;multi;login;

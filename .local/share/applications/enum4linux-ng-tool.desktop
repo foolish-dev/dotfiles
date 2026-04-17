@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Enum4linux-ng
+GenericName=SMB Enumeration
+Comment=Next generation SMB enumeration tool
+Exec=kitty --title "Enum4linux-ng" -e zsh -c "echo '  Enum4linux-ng'; echo '  Usage: enum4linux-ng -A <target>'; echo; exec zsh"
+Icon=enum4linux-ng
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=enum4linux;smb;windows;ad;enum;

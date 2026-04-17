@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Snow
+GenericName=Whitespace Stego
+Comment=Conceal messages in ASCII text using whitespace
+Exec=kitty --title "Snow" -e zsh -c "echo '  Snow'; echo '  Usage: snow -C -p password -m \"secret\" input.txt output.txt'; echo; exec zsh"
+Icon=snow
+Terminal=false
+Categories=X-BlackArch-Stego;Security;
+Keywords=snow;whitespace;stego;ascii;text;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Social-Engineer Toolkit
+GenericName=Social Engineering
+Comment=Open-source framework for social engineering attacks
+Exec=kitty --title "SET" -e zsh -c "echo '  SET'; echo '  Usage: sudo setoolkit'; echo; exec zsh"
+Icon=set
+Terminal=false
+Categories=X-BlackArch-Social;Security;
+Keywords=set;social;engineering;phishing;payload;

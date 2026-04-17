@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Hping3
+GenericName=Packet Crafter
+Comment=Command-line packet assembler and analyzer
+Exec=kitty --title "Hping3" -e zsh -c "echo '  Hping3'; echo '  Usage: sudo hping3 --syn -p 80 -S <target>'; echo; exec zsh"
+Icon=hping
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=hping;packet;craft;flood;syn;

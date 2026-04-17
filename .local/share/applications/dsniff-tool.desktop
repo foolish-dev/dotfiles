@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=dSniff
+GenericName=Credential Sniffer
+Comment=Suite of network auditing and sniffing tools
+Exec=kitty --title "dSniff" -e zsh -c "echo '  dSniff'; echo '  Usage: sudo dsniff -i <iface>'; echo; exec zsh"
+Icon=dsniff
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=dsniff;sniff;credential;network;capture;

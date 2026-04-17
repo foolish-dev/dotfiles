@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=theHarvester
+GenericName=OSINT Recon
+Comment=Email, domain and IP recon from public sources
+Exec=kitty --title "theHarvester" -e zsh -c "echo '  theHarvester'; echo '  Usage: theHarvester -d <domain> -b all'; echo; exec zsh"
+Icon=apps.kali-theharvester
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=theharvester;osint;recon;email;domain;

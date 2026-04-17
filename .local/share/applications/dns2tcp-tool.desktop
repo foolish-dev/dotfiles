@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=dns2tcp
+GenericName=DNS Tunneler
+Comment=Tunnel TCP connections over DNS queries
+Exec=kitty --title "dns2tcp" -e zsh -c "echo '  dns2tcp'; echo '  Usage: dns2tcpc -r ssh -z <domain> -l 2222 <dns-server>'; echo; exec zsh"
+Icon=dns2tcp
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=dns2tcp;dns;tunnel;bypass;firewall;

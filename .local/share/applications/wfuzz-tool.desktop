@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Wfuzz
+GenericName=Web Fuzzer
+Comment=Web application fuzzer for discovering hidden resources
+Exec=kitty --title "Wfuzz" -e zsh -c "echo '  Wfuzz'; echo '  Usage: wfuzz -c -w /usr/share/wordlists/dirb/common.txt <url>/FUZZ'; echo; exec zsh"
+Icon=wfuzz
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=wfuzz;fuzz;web;brute;

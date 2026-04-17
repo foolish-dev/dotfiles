@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=GAU
+GenericName=URL Fetcher
+Comment=Fetch known URLs from AlienVault, Wayback Machine, Common Crawl
+Exec=kitty --title "GAU" -e zsh -c "echo '  GAU'; echo '  Usage: echo <domain> | gau'; echo; exec zsh"
+Icon=gau
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=gau;url;wayback;recon;

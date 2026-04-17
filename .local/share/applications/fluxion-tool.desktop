@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Fluxion
+GenericName=Wireless MITM
+Comment=MITM WPA attack with evil twin and captive portal
+Exec=kitty --title "Fluxion" -e zsh -c "echo '  Fluxion'; echo '  Usage: sudo fluxion'; echo; exec zsh"
+Icon=fluxion
+Terminal=false
+Categories=X-BlackArch-Wireless;Security;
+Keywords=fluxion;evil;twin;mitm;wifi;wpa;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Proxify
+GenericName=Proxy Toolkit
+Comment=Swiss Army knife proxy tool for HTTP/HTTPS traffic capture
+Exec=kitty --title "Proxify" -e zsh -c "echo '  Proxify'; echo '  Usage: proxify -output logs/'; echo; exec zsh"
+Icon=proxify
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=proxify;proxy;http;capture;intercept;

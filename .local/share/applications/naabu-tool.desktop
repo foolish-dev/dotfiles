@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Naabu
+GenericName=Port Scanner
+Comment=Fast port scanner with SYN/CONNECT/UDP probes
+Exec=kitty --title "Naabu" -e zsh -c "echo '  Naabu'; echo '  Usage: naabu -host <target> -p - -silent'; echo; exec zsh"
+Icon=naabu
+Terminal=false
+Categories=X-BlackArch-Scanner;Security;
+Keywords=naabu;port;scanner;fast;

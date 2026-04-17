@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=YARA
+GenericName=Malware Classifier
+Comment=Malware identification and classification tool
+Exec=kitty --title "YARA" -e zsh -c "echo '  YARA'; echo '  Usage: yara rules.yar <target>'; echo; exec zsh"
+Icon=yara
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=yara;malware;rule;classify;forensic;

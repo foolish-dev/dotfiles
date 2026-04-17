@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=JADX
+GenericName=APK Decompiler
+Comment=Dex to Java decompiler for Android APK analysis
+Exec=jadx-gui
+Icon=jadx
+Terminal=false
+Categories=X-BlackArch-Mobile;Security;
+Keywords=jadx;java;decompile;android;apk;

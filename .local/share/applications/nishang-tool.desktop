@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Nishang
+GenericName=PowerShell Framework
+Comment=PowerShell scripts and payloads for offensive security
+Exec=kitty --title "Nishang" -e zsh -c "echo '  Nishang'; echo '  Usage: ls /usr/share/nishang/'; echo; exec zsh"
+Icon=nishang
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=nishang;powershell;post;exploitation;

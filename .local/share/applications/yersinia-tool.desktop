@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Yersinia
+GenericName=Network Attacks
+Comment=Framework for layer 2 protocol attacks
+Exec=kitty --title "Yersinia" -e zsh -c "echo '  Yersinia'; echo '  Usage: sudo yersinia -G'; echo; exec zsh"
+Icon=yersinia
+Terminal=false
+Categories=X-BlackArch-Wireless;Security;
+Keywords=yersinia;layer2;stp;cdp;dhcp;attack;

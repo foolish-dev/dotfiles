@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SCCMHunter
+GenericName=SCCM Attack
+Comment=Tool for interacting with and attacking SCCM/MECM
+Exec=kitty --title "SCCMHunter" -e zsh -c "echo '  SCCMHunter'; echo '  Usage: sccmhunter find -u <user> -p <pass> -d <domain>'; echo; exec zsh"
+Icon=sccmhunter
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=sccmhunter;sccm;mecm;windows;ad;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Tcpdump
+GenericName=Packet Capture
+Comment=Command-line packet capture and analyzer
+Exec=kitty --title "Tcpdump" -e zsh -c "echo '  Tcpdump'; echo '  Usage: sudo tcpdump -i any -w capture.pcap'; echo; exec zsh"
+Icon=tcpdump
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=tcpdump;capture;packet;network;analyze;

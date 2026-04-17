@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ettercap
+GenericName=Network Sniffer
+Comment=Comprehensive suite for MITM attacks on LANs
+Exec=kitty --title "Ettercap" -e zsh -c "echo '  Ettercap'; echo '  Usage: sudo ettercap -G  # GUI mode'; echo; exec zsh"
+Icon=ettercap
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=ettercap;mitm;arp;sniff;network;

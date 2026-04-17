@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Recon-ng
+GenericName=Web Recon Framework
+Comment=Full-featured web reconnaissance framework
+Exec=kitty --title "Recon-ng" -e zsh -c "echo '  Recon-ng'; echo '  Usage: recon-ng'; echo; exec zsh"
+Icon=recon-ng
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=recon-ng;osint;recon;framework;

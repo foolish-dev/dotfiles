@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Crunch
+GenericName=Wordlist Generator
+Comment=Generate wordlists based on criteria you specify
+Exec=kitty --title "Crunch" -e zsh -c "echo '  Crunch'; echo '  Usage: crunch 8 12 abcdefghijklmnopqrstuvwxyz0123456789 -o wordlist.txt'; echo; exec zsh"
+Icon=crunch
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=crunch;wordlist;generate;password;

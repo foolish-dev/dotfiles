@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=MassDNS
+GenericName=DNS Resolver
+Comment=High-performance DNS stub resolver for bulk lookups
+Exec=kitty --title "MassDNS" -e zsh -c "echo '  MassDNS'; echo '  Usage: massdns -r resolvers.txt -t A -o S -w out.txt targets.txt'; echo; exec zsh"
+Icon=massdns
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=massdns;dns;bulk;resolver;

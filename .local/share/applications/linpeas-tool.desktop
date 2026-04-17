@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=LinPEAS
+GenericName=Linux Privesc
+Comment=Linux Privilege Escalation Awesome Script
+Exec=kitty --title "LinPEAS" -e zsh -c "echo '  LinPEAS'; echo '  Usage: curl -sL https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh'; echo; exec zsh"
+Icon=linpeas
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=linpeas;privesc;linux;escalation;

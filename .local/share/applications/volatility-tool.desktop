@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Volatility3
+GenericName=Memory Forensics
+Comment=Advanced memory forensics framework
+Exec=kitty --title "Volatility3" -e zsh -c "echo '  Volatility3'; echo '  Usage: vol -f <memory.dump> windows.pslist'; echo; exec zsh"
+Icon=volatility3
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=volatility;memory;forensic;dump;analysis;

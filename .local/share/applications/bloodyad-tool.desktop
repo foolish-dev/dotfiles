@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=BloodyAD
+GenericName=AD Privilege Escalation
+Comment=Active Directory privilege escalation framework
+Exec=kitty --title "BloodyAD" -e zsh -c "echo '  BloodyAD'; echo '  Usage: bloodyAD -u <user> -p <pass> -d <domain> --host <dc-ip> getObjectAttributes <obj> member'; echo; exec zsh"
+Icon=bloodyad
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=bloodyad;ad;privilege;escalation;

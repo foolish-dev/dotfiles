@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SearchSploit
+GenericName=Exploit Search
+Comment=Search ExploitDB for offline exploit lookup
+Exec=kitty --title "SearchSploit" -e zsh -c "echo '  SearchSploit'; echo '  Usage: searchsploit <term>'; echo; exec zsh"
+Icon=searchsploit
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=searchsploit;exploitdb;cve;exploit;

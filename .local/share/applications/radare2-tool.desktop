@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Radare2
+GenericName=Binary Debugger
+Comment=Open-source reverse engineering framework
+Exec=kitty --title "Radare2" -e zsh -c "echo '  Radare2'; echo '  Usage: r2 <binary>'; echo; exec zsh"
+Icon=radare2
+Terminal=false
+Categories=X-BlackArch-Reversing;Security;
+Keywords=radare2;r2;reverse;debug;binary;

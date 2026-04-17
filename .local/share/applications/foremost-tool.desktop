@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Foremost
+GenericName=File Carver
+Comment=Recover files based on headers, footers, and internal data structures
+Exec=kitty --title "Foremost" -e zsh -c "echo '  Foremost'; echo '  Usage: foremost -t all -i <image.dd> -o output/'; echo; exec zsh"
+Icon=foremost
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=foremost;carve;recover;forensic;disk;

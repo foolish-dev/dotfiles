@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Iodine
+GenericName=DNS Tunneler
+Comment=Tunnel IPv4 data through DNS for firewall bypass
+Exec=kitty --title "Iodine" -e zsh -c "echo '  Iodine'; echo '  Usage: iodine -f <dns-server> <tunnel-domain>'; echo; exec zsh"
+Icon=iodine
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=iodine;dns;tunnel;ipv4;bypass;

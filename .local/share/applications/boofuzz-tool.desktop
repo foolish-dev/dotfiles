@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Boofuzz
+GenericName=Network Protocol Fuzzer
+Comment=Network protocol fuzzing framework (Sulley successor)
+Exec=kitty --title "Boofuzz" -e zsh -c "echo '  Boofuzz'; echo '  Usage: python3 boofuzz_script.py'; echo; exec zsh"
+Icon=boofuzz
+Terminal=false
+Categories=X-BlackArch-Fuzzer;Security;
+Keywords=boofuzz;fuzzer;protocol;network;sulley;

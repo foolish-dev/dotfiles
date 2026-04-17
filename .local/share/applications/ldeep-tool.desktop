@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ldeep
+GenericName=LDAP Enumeration
+Comment=In-depth LDAP enumeration utility
+Exec=kitty --title "Ldeep" -e zsh -c "echo '  Ldeep'; echo '  Usage: ldeep ldap -u <user> -p <pass> -d <domain> -s ldap://<dc> all'; echo; exec zsh"
+Icon=ldeep
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=ldeep;ldap;ad;enum;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DMitry
+GenericName=Deep Magic Info Gatherer
+Comment=Deepmagic Information Gathering Tool -- whois, subdomains, email, TCP ports
+Exec=kitty --title "DMitry" -e zsh -c "echo '  DMitry'; echo '  Usage: dmitry -winse <target>'; echo; exec zsh"
+Icon=dmitry
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=dmitry;osint;recon;info;

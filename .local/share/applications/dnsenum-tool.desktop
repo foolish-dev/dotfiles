@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DNSenum
+GenericName=DNS Enumeration
+Comment=Enumerate DNS information and discover non-contiguous IP blocks
+Exec=kitty --title "DNSenum" -e zsh -c "echo '  DNSenum'; echo '  Usage: dnsenum <domain>'; echo; exec zsh"
+Icon=dnsenum
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=dnsenum;dns;subdomain;enum;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=APKLeaks
+GenericName=APK Secret Scanner
+Comment=Scan APK files for URIs, endpoints, and secrets
+Exec=kitty --title "APKLeaks" -e zsh -c "echo '  APKLeaks'; echo '  Usage: apkleaks -f <app.apk>'; echo; exec zsh"
+Icon=apkleaks
+Terminal=false
+Categories=X-BlackArch-Mobile;Security;
+Keywords=apkleaks;apk;secrets;android;scan;

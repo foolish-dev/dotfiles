@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Certipy
+GenericName=AD CS Exploitation
+Comment=Active Directory Certificate Services attack tool
+Exec=kitty --title "Certipy" -e zsh -c "echo '  Certipy'; echo '  Usage: certipy find -u <user>@<domain> -p <pass> -dc-ip <ip>'; echo; exec zsh"
+Icon=certipy
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=certipy;adcs;certificate;ad;

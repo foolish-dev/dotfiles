@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Pspy
+GenericName=Process Monitor
+Comment=Monitor Linux processes without root permissions
+Exec=kitty --title "Pspy" -e zsh -c "echo '  Pspy'; echo '  Usage: pspy64'; echo; exec zsh"
+Icon=pspy
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=pspy;process;monitor;cron;linux;

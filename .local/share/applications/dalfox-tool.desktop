@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Dalfox
+GenericName=XSS Scanner
+Comment=Fast parameter analysis and XSS scanning tool
+Exec=kitty --title "Dalfox" -e zsh -c "echo '  Dalfox'; echo '  Usage: dalfox url <target>'; echo; exec zsh"
+Icon=dalfox
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=dalfox;xss;scanner;parameter;

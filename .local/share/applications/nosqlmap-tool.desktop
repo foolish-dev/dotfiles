@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=NoSQLMap
+GenericName=NoSQL Injection
+Comment=Automated NoSQL database attack and audit tool
+Exec=kitty --title "NoSQLMap" -e zsh -c "echo '  NoSQLMap'; echo '  Usage: nosqlmap'; echo; exec zsh"
+Icon=nosqlmap
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=nosqlmap;nosql;mongodb;injection;

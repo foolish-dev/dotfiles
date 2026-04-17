@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SharpHound
+GenericName=AD Data Collector
+Comment=C# BloodHound data collector for Active Directory
+Exec=kitty --title "SharpHound" -e zsh -c "echo '  SharpHound'; echo '  Usage: SharpHound.exe -c All  # run on Windows target'; echo; exec zsh"
+Icon=sharphound
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=sharphound;bloodhound;ad;graph;collection;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Chisel
+GenericName=TCP Tunneler
+Comment=Fast TCP/UDP tunnel over HTTP secured via SSH
+Exec=kitty --title "Chisel" -e zsh -c "echo '  Chisel'; echo '  Usage: chisel server --reverse --port 8080  # attacker\nchisel client <attacker>:8080 R:1080:socks'; echo; exec zsh"
+Icon=chisel
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=chisel;tunnel;socks;pivot;http;

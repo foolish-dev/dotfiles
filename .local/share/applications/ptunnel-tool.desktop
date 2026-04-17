@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ptunnel
+GenericName=ICMP Tunneler
+Comment=Tunnel TCP connections over ICMP echo requests
+Exec=kitty --title "Ptunnel" -e zsh -c "echo '  Ptunnel'; echo '  Usage: ptunnel -p <proxy> -lp 8000 -da <dest> -dp 22'; echo; exec zsh"
+Icon=ptunnel
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=ptunnel;icmp;tunnel;ping;bypass;

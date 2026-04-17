@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Windapsearch
+GenericName=LDAP Search
+Comment=Python script for enumerating users, groups, computers via LDAP
+Exec=kitty --title "Windapsearch" -e zsh -c "echo '  Windapsearch'; echo '  Usage: windapsearch -d <domain> -u <user> -p <pass> --dc-ip <ip>'; echo; exec zsh"
+Icon=windapsearch
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=windapsearch;ldap;ad;windows;enum;

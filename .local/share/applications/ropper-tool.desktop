@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ropper
+GenericName=ROP Chain Builder
+Comment=Find gadgets and create ROP/JOP chains
+Exec=kitty --title "Ropper" -e zsh -c "echo '  Ropper'; echo '  Usage: ropper --file <binary>'; echo; exec zsh"
+Icon=ropper
+Terminal=false
+Categories=X-BlackArch-Reversing;Security;
+Keywords=ropper;rop;gadget;chain;pwn;

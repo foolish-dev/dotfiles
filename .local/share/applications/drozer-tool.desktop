@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Drozer
+GenericName=Android Security Auditor
+Comment=Comprehensive Android security auditing and attack framework
+Exec=kitty --title "Drozer" -e zsh -c "echo '  Drozer'; echo '  Usage: drozer console connect'; echo; exec zsh"
+Icon=drozer
+Terminal=false
+Categories=X-BlackArch-Mobile;Security;
+Keywords=drozer;android;security;audit;attack;

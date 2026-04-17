@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AFL++
+GenericName=Coverage-guided Fuzzer
+Comment=Coverage-guided fuzzing framework for binary and source code
+Exec=kitty --title "AFL++" -e zsh -c "echo '  AFL++'; echo '  Usage: afl-fuzz -i input/ -o output/ -- ./target @@'; echo; exec zsh"
+Icon=afl++
+Terminal=false
+Categories=X-BlackArch-Fuzzer;Security;
+Keywords=afl;fuzzer;coverage;binary;bug;

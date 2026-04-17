@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=RegRipper
+GenericName=Registry Parser
+Comment=Windows registry data extraction and correlation tool
+Exec=kitty --title "RegRipper" -e zsh -c "echo '  RegRipper'; echo '  Usage: rip.pl -r <NTUSER.DAT> -f ntuser'; echo; exec zsh"
+Icon=regripper
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=regripper;registry;windows;forensic;parse;

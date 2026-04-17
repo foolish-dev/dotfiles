@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Cutter
+GenericName=Reverse Engineering GUI
+Comment=GUI for Rizin reverse engineering framework
+Exec=cutter
+Icon=cutter
+Terminal=false
+Categories=X-BlackArch-Reversing;Security;
+Keywords=cutter;rizin;gui;reverse;binary;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Binwalk
+GenericName=Firmware Scanner
+Comment=Analyze and extract firmware images and binary files
+Exec=kitty --title "Binwalk" -e zsh -c "echo '  Binwalk'; echo '  Usage: binwalk -e <firmware.bin>'; echo; exec zsh"
+Icon=binwalk
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=binwalk;firmware;extract;analyze;binary;

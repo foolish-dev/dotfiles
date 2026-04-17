@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Wifite
+GenericName=Wireless Auditor
+Comment=Automated wireless auditing tool
+Exec=kitty --title "Wifite" -e zsh -c "echo '  Wifite'; echo '  Usage: sudo wifite --kill'; echo; exec zsh"
+Icon=wifite
+Terminal=false
+Categories=X-BlackArch-Wireless;Security;
+Keywords=wifite;wifi;wireless;wpa;audit;

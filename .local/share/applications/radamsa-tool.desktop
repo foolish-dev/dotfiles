@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Radamsa
+GenericName=General Fuzzer
+Comment=A general-purpose data fuzzer for random test case generation
+Exec=kitty --title "Radamsa" -e zsh -c "echo '  Radamsa'; echo '  Usage: echo \"test\" | radamsa'; echo; exec zsh"
+Icon=radamsa
+Terminal=false
+Categories=X-BlackArch-Fuzzer;Security;
+Keywords=radamsa;fuzzer;random;mutation;test;

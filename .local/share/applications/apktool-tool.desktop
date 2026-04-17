@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=APKTool
+GenericName=APK Decompiler
+Comment=Reverse engineering tool for Android APK files
+Exec=kitty --title "APKTool" -e zsh -c "echo '  APKTool'; echo '  Usage: apktool d <app.apk>'; echo; exec zsh"
+Icon=apktool
+Terminal=false
+Categories=X-BlackArch-Mobile;Security;
+Keywords=apktool;apk;android;decompile;reverse;

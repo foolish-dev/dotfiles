@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PDF Parser
+GenericName=PDF Analyzer
+Comment=Parse and analyze PDF files for malicious content
+Exec=kitty --title "PDF Parser" -e zsh -c "echo '  PDF Parser'; echo '  Usage: pdf-parser.py --stats <file.pdf>'; echo; exec zsh"
+Icon=pdf-parser
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=pdf;parser;analyze;malware;forensic;

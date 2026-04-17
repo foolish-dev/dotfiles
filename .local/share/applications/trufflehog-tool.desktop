@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=TruffleHog
+GenericName=Secret Scanner
+Comment=Find leaked credentials and secrets in git repos and filesystems
+Exec=kitty --title "TruffleHog" -e zsh -c "echo '  TruffleHog'; echo '  Usage: trufflehog git <repo_url>'; echo; exec zsh"
+Icon=trufflehog
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=trufflehog;secrets;credentials;git;leak;

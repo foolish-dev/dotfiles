@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FeroxBuster
+GenericName=Dir Brute Force
+Comment=Fast, recursive content discovery tool
+Exec=kitty --title "FeroxBuster" -e zsh -c "echo '  FeroxBuster'; echo '  Usage: feroxbuster -u <url> -w /usr/share/seclists/Discovery/Web-Content/common.txt'; echo; exec zsh"
+Icon=feroxbuster
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=feroxbuster;directory;brute;recursive;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=StegSeek
+GenericName=Steghide Cracker
+Comment=Crack steghide-protected files using wordlists
+Exec=kitty --title "StegSeek" -e zsh -c "echo '  StegSeek'; echo '  Usage: stegseek <image.jpg> /usr/share/wordlists/rockyou.txt'; echo; exec zsh"
+Icon=stegseek
+Terminal=false
+Categories=X-BlackArch-Stego;Security;
+Keywords=stegseek;steghide;crack;stego;image;

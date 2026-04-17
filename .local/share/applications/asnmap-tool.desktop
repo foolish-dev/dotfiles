@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ASNmap
+GenericName=ASN Mapper
+Comment=Map organization network range using ASN
+Exec=kitty --title "ASNmap" -e zsh -c "echo '  ASNmap'; echo '  Usage: asnmap -a <ASN>'; echo; exec zsh"
+Icon=asnmap
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=asnmap;asn;cidr;network;

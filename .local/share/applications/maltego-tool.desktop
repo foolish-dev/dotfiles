@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Maltego
+GenericName=OSINT Visualization
+Comment=Visual link analysis tool for open source intelligence
+Exec=maltego
+Icon=maltego
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=maltego;osint;visualization;link;

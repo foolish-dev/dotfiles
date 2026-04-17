@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Dirsearch
+GenericName=Dir Brute Force
+Comment=Web path scanner and directory brute forcer
+Exec=kitty --title "Dirsearch" -e zsh -c "echo '  Dirsearch'; echo '  Usage: dirsearch -u <url> -e php,html,js'; echo; exec zsh"
+Icon=dirsearch
+Terminal=false
+Categories=X-BlackArch-WebApp;Security;
+Keywords=dirsearch;directory;brute;web;

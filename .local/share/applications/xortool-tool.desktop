@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Xortool
+GenericName=XOR Analyzer
+Comment=Analyze XOR-encoded data and find key length and key
+Exec=kitty --title "Xortool" -e zsh -c "echo '  Xortool'; echo '  Usage: xortool -c 20 <file>'; echo; exec zsh"
+Icon=xortool
+Terminal=false
+Categories=X-BlackArch-Crypto;Security;
+Keywords=xortool;xor;key;crypto;analysis;

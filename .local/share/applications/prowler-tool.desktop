@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Prowler
+GenericName=Cloud Security Scanner
+Comment=AWS, Azure, GCP security best practices assessment tool
+Exec=kitty --title "Prowler" -e zsh -c "echo '  Prowler'; echo '  Usage: prowler aws'; echo; exec zsh"
+Icon=prowler
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=prowler;aws;cloud;security;cis;audit;

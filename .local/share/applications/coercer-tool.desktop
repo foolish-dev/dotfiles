@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Coercer
+GenericName=Auth Coercion
+Comment=Force a Windows server to authenticate to an attacker-controlled machine
+Exec=kitty --title "Coercer" -e zsh -c "echo '  Coercer'; echo '  Usage: coercer scan -u <user> -p <pass> -d <domain> -t <target>'; echo; exec zsh"
+Icon=coercer
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=coercer;ntlm;relay;auth;ad;

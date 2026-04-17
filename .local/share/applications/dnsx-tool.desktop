@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DNSx
+GenericName=DNS Toolkit
+Comment=Multi-purpose DNS toolkit for running DNS queries
+Exec=kitty --title "DNSx" -e zsh -c "echo '  DNSx'; echo '  Usage: cat domains.txt | dnsx -resp'; echo; exec zsh"
+Icon=dnsx
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=dnsx;dns;probe;toolkit;

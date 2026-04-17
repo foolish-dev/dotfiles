@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Reaver
+GenericName=WPS Cracker
+Comment=Brute force attack against WPS registrar PINs
+Exec=kitty --title "Reaver" -e zsh -c "echo '  Reaver'; echo '  Usage: sudo reaver -i <iface> -b <bssid> -vv'; echo; exec zsh"
+Icon=reaver
+Terminal=false
+Categories=X-BlackArch-Wireless;Security;
+Keywords=reaver;wps;wifi;brute;wireless;

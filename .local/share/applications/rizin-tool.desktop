@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Rizin
+GenericName=Reverse Engineering
+Comment=Free and open-source reverse engineering framework
+Exec=kitty --title "Rizin" -e zsh -c "echo '  Rizin'; echo '  Usage: rizin <binary>'; echo; exec zsh"
+Icon=rizin
+Terminal=false
+Categories=X-BlackArch-Reversing;Security;
+Keywords=rizin;reverse;disassemble;binary;elf;

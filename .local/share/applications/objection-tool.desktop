@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Objection
+GenericName=Mobile Runtime Explorer
+Comment=Runtime mobile exploration toolkit powered by Frida
+Exec=kitty --title "Objection" -e zsh -c "echo '  Objection'; echo '  Usage: objection -g <appid> explore'; echo; exec zsh"
+Icon=objection
+Terminal=false
+Categories=X-BlackArch-Mobile;Security;
+Keywords=objection;frida;ios;android;runtime;

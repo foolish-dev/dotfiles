@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ShuffleDNS
+GenericName=Subdomain Brute Force
+Comment=Mass DNS resolution and subdomain brute forcing
+Exec=kitty --title "ShuffleDNS" -e zsh -c "echo '  ShuffleDNS'; echo '  Usage: shuffledns -d <domain> -list subdomains.txt -r resolvers.txt'; echo; exec zsh"
+Icon=shuffledns
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=shuffledns;dns;subdomain;brute;

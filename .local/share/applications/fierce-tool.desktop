@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Fierce
+GenericName=DNS Scanner
+Comment=DNS reconnaissance tool for locating non-contiguous IP space
+Exec=kitty --title "Fierce" -e zsh -c "echo '  Fierce'; echo '  Usage: fierce --domain <domain>'; echo; exec zsh"
+Icon=fierce
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=fierce;dns;recon;subdomain;

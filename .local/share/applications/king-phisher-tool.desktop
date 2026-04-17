@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=King Phisher
+GenericName=Phishing Campaigns
+Comment=Tool for testing and promoting user awareness through simulated phishing attacks
+Exec=kitty --title "King Phisher" -e zsh -c "echo '  King Phisher'; echo '  Usage: KingPhisher'; echo; exec zsh"
+Icon=king-phisher
+Terminal=false
+Categories=X-BlackArch-Social;Security;
+Keywords=king;phisher;campaign;email;awareness;

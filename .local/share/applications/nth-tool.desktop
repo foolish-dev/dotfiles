@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Name-That-Hash
+GenericName=Hash Identifier
+Comment=Modern hash identification tool
+Exec=kitty --title "Name-That-Hash" -e zsh -c "echo '  Name-That-Hash'; echo '  Usage: nth --text <hash>'; echo; exec zsh"
+Icon=nth
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=nth;hash;identify;crack;

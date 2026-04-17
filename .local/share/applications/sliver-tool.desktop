@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Sliver
+GenericName=C2 Framework
+Comment=Open source adversary simulation and red team platform
+Exec=kitty --title "Sliver" -e zsh -c "echo '  Sliver'; echo '  Usage: sudo sliver-server'; echo; exec zsh"
+Icon=sliver
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=sliver;c2;red;team;adversary;

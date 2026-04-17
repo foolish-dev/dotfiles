@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AlterX
+GenericName=Subdomain Permutation
+Comment=Fast and customizable subdomain wordlist generator
+Exec=kitty --title "AlterX" -e zsh -c "echo '  AlterX'; echo '  Usage: echo <subdomain> | alterx | dnsx'; echo; exec zsh"
+Icon=alterx
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=alterx;subdomain;permutation;wordlist;

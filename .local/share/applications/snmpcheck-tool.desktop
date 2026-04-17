@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Snmpcheck
+GenericName=SNMP Auditor
+Comment=Enumerate and exploit SNMP-enabled devices
+Exec=kitty --title "Snmpcheck" -e zsh -c "echo '  Snmpcheck'; echo '  Usage: snmpcheck -t <target>'; echo; exec zsh"
+Icon=snmpcheck
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=snmpcheck;snmp;network;enum;audit;

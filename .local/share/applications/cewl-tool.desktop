@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=CeWL
+GenericName=Wordlist Generator
+Comment=Custom word list generator from target websites
+Exec=kitty --title "CeWL" -e zsh -c "echo '  CeWL'; echo '  Usage: cewl -d 3 -m 6 -w wordlist.txt <url>'; echo; exec zsh"
+Icon=cewl
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=cewl;wordlist;password;generate;

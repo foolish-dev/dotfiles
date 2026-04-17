@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Mitmproxy
+GenericName=HTTPS Proxy
+Comment=Interactive TLS-capable intercepting HTTP proxy
+Exec=mitmproxy
+Icon=mitmproxy
+Terminal=false
+Categories=X-BlackArch-Networking;Security;
+Keywords=mitmproxy;proxy;mitm;http;intercept;

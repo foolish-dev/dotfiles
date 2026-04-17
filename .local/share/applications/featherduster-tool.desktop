@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FeatherDuster
+GenericName=Cryptanalysis
+Comment=Automated cryptanalysis tool for weak ciphers
+Exec=kitty --title "FeatherDuster" -e zsh -c "echo '  FeatherDuster'; echo '  Usage: featherduster <ciphertext_file>'; echo; exec zsh"
+Icon=featherduster
+Terminal=false
+Categories=X-BlackArch-Crypto;Security;
+Keywords=featherduster;crypto;analysis;weak;cipher;

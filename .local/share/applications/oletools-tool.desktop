@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OLEtools
+GenericName=Office Document Analysis
+Comment=Analyze MS Office files for macros and malicious content
+Exec=kitty --title "OLEtools" -e zsh -c "echo '  OLEtools'; echo '  Usage: olevba <document.docm>  # mraptor, rtfobj also available'; echo; exec zsh"
+Icon=oletools
+Terminal=false
+Categories=X-BlackArch-Forensic;Security;
+Keywords=oletools;office;macro;malware;vba;

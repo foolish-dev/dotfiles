@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Interactsh
+GenericName=OOB Interaction
+Comment=Open-source out-of-band interaction gathering server
+Exec=kitty --title "Interactsh" -e zsh -c "echo '  Interactsh'; echo '  Usage: interactsh-client'; echo; exec zsh"
+Icon=interactsh
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=interactsh;oob;ssrf;xxe;blind;

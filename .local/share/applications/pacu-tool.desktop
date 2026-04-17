@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Pacu
+GenericName=AWS Exploitation
+Comment=Open-source AWS exploitation framework
+Exec=kitty --title "Pacu" -e zsh -c "echo '  Pacu'; echo '  Usage: pacu'; echo; exec zsh"
+Icon=pacu
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=pacu;aws;cloud;exploit;iam;

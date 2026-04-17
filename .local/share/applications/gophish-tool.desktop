@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=GoPhish
+GenericName=Phishing Platform
+Comment=Open-source phishing toolkit for red teams
+Exec=kitty --title "GoPhish" -e zsh -c "echo '  GoPhish'; echo '  Usage: gophish'; echo; exec zsh"
+Icon=gophish
+Terminal=false
+Categories=X-BlackArch-Social;Security;
+Keywords=gophish;phishing;email;campaign;red;

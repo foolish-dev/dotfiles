@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OpenStego
+GenericName=Steganography Tool
+Comment=Free steganography solution with watermarking support
+Exec=openstego
+Icon=openstego
+Terminal=false
+Categories=X-BlackArch-Stego;Security;
+Keywords=openstego;stego;watermark;hide;image;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Angr
+GenericName=Binary Analysis
+Comment=Platform-agnostic binary analysis framework
+Exec=kitty --title "Angr" -e zsh -c "echo '  Angr'; echo '  Usage: python3 -c \"import angr; proj = angr.Project(\\\"<binary>\\\")\"'; echo; exec zsh"
+Icon=angr
+Terminal=false
+Categories=X-BlackArch-Reversing;Security;
+Keywords=angr;binary;analysis;symbolic;execution;

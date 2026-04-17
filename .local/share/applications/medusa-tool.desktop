@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Medusa
+GenericName=Brute Force Login
+Comment=Fast, parallel network login auditor
+Exec=kitty --title "Medusa" -e zsh -c "echo '  Medusa'; echo '  Usage: medusa -h <target> -u <user> -P wordlist.txt -M ssh'; echo; exec zsh"
+Icon=medusa
+Terminal=false
+Categories=X-BlackArch-Cracker;Security;
+Keywords=medusa;brute;force;login;parallel;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ligolo-ng
+GenericName=Network Pivot
+Comment=Advanced tunneling/pivoting using a TUN interface
+Exec=kitty --title "Ligolo-ng" -e zsh -c "echo '  Ligolo-ng'; echo '  Usage: sudo ligolo-ng proxy -selfcert'; echo; exec zsh"
+Icon=ligolo-ng
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=ligolo;pivot;tunnel;vpn;network;

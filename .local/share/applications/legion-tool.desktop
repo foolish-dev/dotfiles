@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Legion
+GenericName=Network Recon
+Comment=Automatic network penetration testing tool
+Exec=kitty --title "Legion" -e zsh -c "echo '  Legion'; echo '  Usage: legion'; echo; exec zsh"
+Icon=legion
+Terminal=false
+Categories=X-BlackArch-Recon;Security;
+Keywords=legion;network;recon;pentest;

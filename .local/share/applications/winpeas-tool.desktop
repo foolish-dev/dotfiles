@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WinPEAS
+GenericName=Windows Privesc
+Comment=Windows Privilege Escalation Awesome Script
+Exec=kitty --title "WinPEAS" -e zsh -c "echo '  WinPEAS'; echo '  Usage: winpeas.exe   # run on target Windows machine'; echo; exec zsh"
+Icon=winpeas
+Terminal=false
+Categories=X-BlackArch-Exploitation;Security;
+Keywords=winpeas;privesc;windows;escalation;
