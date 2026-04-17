@@ -5,7 +5,7 @@ return {
   -- ── Lualine (statusline) ────────────────────────────────────────────────
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
@@ -30,7 +30,7 @@ return {
   -- ── Bufferline ──────────────────────────────────────────────────────────
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
@@ -51,7 +51,7 @@ return {
   -- ── Dashboard (alpha) ──────────────────────────────────────────────────
   {
     "goolord/alpha-nvim",
-    event = "VimEnter",
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       local alpha     = require("alpha")
@@ -99,7 +99,7 @@ return {
   -- ── Noice (better cmdline / messages / popups) ──────────────────────────
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    lazy = false,
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     opts = {
       lsp = {
@@ -122,18 +122,13 @@ return {
   -- ── Dressing (better vim.ui.select / vim.ui.input) ─────────────────────
   {
     "stevearc/dressing.nvim",
-    lazy  = true,
-    init  = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...) require("lazy").load({ plugins = { "dressing.nvim" } }); return vim.ui.select(...) end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input  = function(...) require("lazy").load({ plugins = { "dressing.nvim" } }); return vim.ui.input(...)  end
-    end,
+    lazy = false,
   },
 
   -- ── Notify ──────────────────────────────────────────────────────────────
   {
     "rcarriga/nvim-notify",
+    lazy = false,
     opts = {
       timeout    = 3000,
       max_height = function() return math.floor(vim.o.lines * 0.75) end,

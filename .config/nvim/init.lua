@@ -16,7 +16,9 @@ require("config.autocmds")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
-    "git", "clone", "--filter=blob:none",
+    "git",
+    "clone",
+    "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
@@ -27,15 +29,20 @@ vim.opt.rtp:prepend(lazypath)
 -- ── Load plugins ──────────────────────────────────────────────────────────
 require("lazy").setup("plugins", {
   defaults = { lazy = true },
-  install  = { colorscheme = { "tokyonight" } },
-  checker  = { enabled = true, notify = false },
+  install = { colorscheme = { "tokyonight" } },
+  checker = { enabled = true, notify = false },
   change_detection = { notify = false },
   performance = {
     rtp = {
       disabled_plugins = {
-        "gzip", "matchit", "matchparen",
-        "netrwPlugin", "tarPlugin", "tohtml",
-        "tutor", "zipPlugin",
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
       },
     },
   },
