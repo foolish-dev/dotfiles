@@ -127,6 +127,15 @@ PKG_CORE=(
   qt5-quickcontrols2
   qt6-declarative
   layer-shell-qt
+  pipewire
+  pipewire-audio
+  pipewire-pulse
+  pipewire-alsa
+  pipewire-jack
+  wireplumber
+  alsa-utils
+  pavucontrol
+  pwvucontrol
 )
 
 # Terminal / Shell / Prompt
@@ -544,6 +553,7 @@ sudo systemctl enable --now bluetooth 2>/dev/null || true
 sudo systemctl enable --now docker 2>/dev/null || true
 sudo systemctl enable --now keyd 2>/dev/null || true
 sudo systemctl enable sddm 2>/dev/null || true
+systemctl --user enable --now pipewire pipewire-pulse wireplumber 2>/dev/null || true
 sudo usermod -aG docker "$USER" 2>/dev/null || true
 sudo usermod -aG wireshark "$USER" 2>/dev/null || true
 
