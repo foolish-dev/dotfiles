@@ -227,7 +227,6 @@ alias airodump="sudo airodump-ng"
 alias aireplay="sudo aireplay-ng"
 
 # Forensics / reversing
-alias vol="volatility"
 alias strings="strings -a"
 alias hexdump="xxd"
 alias objdump-x="objdump -d -M intel"
@@ -248,7 +247,6 @@ alias whatweb-scan="whatweb -a 3"
 # Crypto / encoding
 alias b64e="base64"
 alias b64d="base64 -d"
-alias md5sum="md5sum"
 alias sha256="sha256sum"
 
 # Container security
@@ -259,7 +257,6 @@ alias docker-bench="docker run --rm -it docker/docker-bench-security"
 # ── Aliases: BlackArch Tools ───────────────────────────────────────────────
 # OSINT / recon
 alias harvest="theHarvester -d"
-alias recon-ng="recon-ng"
 alias spiderfoot-web="spiderfoot -l 127.0.0.1:5001"
 alias sublist3r-enum="sublist3r -d"
 
@@ -270,7 +267,6 @@ alias dalfox-scan="dalfox url"
 alias jwt-crack="jwt_tool"
 
 # Exploitation
-alias searchsploit="searchsploit"
 alias evilwinrm="evil-winrm -i"
 alias routersploit="rsf"
 

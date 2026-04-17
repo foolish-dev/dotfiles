@@ -74,13 +74,6 @@ link_item "$DOTFILES/.gitignore_global" "$HOME/.gitignore_global"
 link_item "$DOTFILES/.editorconfig" "$HOME/.editorconfig"
 
 # ── Starship config (lives at ~/.config/starship.toml) ─────────────────────
-# Already handled via the starship directory, but starship expects the
-# file directly at ~/.config/starship.toml
-if [[ -d "$HOME/.config/starship" ]]; then
-  # Our structure puts it in .config/starship.toml directly
-  true
-fi
-# Also link the toml directly if starship expects it at the top level
 if [[ -f "$DOTFILES/.config/starship.toml" ]]; then
   link_item "$DOTFILES/.config/starship.toml" "$HOME/.config/starship.toml"
 fi
