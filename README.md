@@ -37,6 +37,8 @@
 | Editor | Neovim (lazy.nvim, 16 LSP servers, DAP, Treesitter) |
 | AI / LLM | [LM Studio](https://lmstudio.ai) (local models) + [OpenCode](https://opencode.ai) (AI coding agent) |
 | AI Security | [HexStrike AI](https://github.com/0x4m4/hexstrike-ai) MCP (150+ security tools via MCP) |
+| Audio | PipeWire + WirePlumber (pipewire-pulse, pipewire-alsa, pipewire-jack) |
+| Network | NetworkManager + iwd backend |
 | Git | delta side-by-side diffs, 30+ aliases, lazygit TUI |
 | Launcher | Noctalia app launcher (Super key tap via [keyd](https://github.com/rvaiya/keyd)) + Fuzzel |
 | Display Manager | [SDDM](https://github.com/sddm/sddm) (5 themes, Tokyo Night default, `sddm-theme` switcher) |
@@ -359,6 +361,12 @@ cheat blackarch                    # BlackArch tools overview
 cheat privesc                      # Privilege escalation
 cheat ad                           # Active Directory attacks
 cheat revshells                    # Reverse shell one-liners
+cheat nmap                         # Nmap scanning
+cheat ffuf                         # Web fuzzing
+cheat git                          # Git workflows
+cheat docker                       # Docker commands
+cheat tmux                         # tmux keybinds
+cheat nvim                         # Neovim keybinds
 
 # Functions
 revshell 10.10.14.1 4444           # Generate bash/python/nc/ps reverse shells

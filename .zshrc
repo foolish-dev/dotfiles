@@ -3,11 +3,6 @@
 # ~/.zshrc
 # =============================================================================
 
-# ── Instant prompt (starship is fast, but guard anyway) ────────────────────
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # ── Pywal -- restore terminal colors ─────────────────────────────────────
 (cat ~/.cache/wal/sequences 2>/dev/null &)
 source ~/.cache/wal/colors.sh 2>/dev/null || true
