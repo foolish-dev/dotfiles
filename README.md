@@ -127,6 +127,8 @@ deploy.sh                      symlink deployer with auto-backup
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
+<p align="center"><img src="assets/keybinds.svg" alt="Keybinds" width="900"/></p>
+
 ## Keybinds
 
 ### Niri (compositor)
@@ -192,6 +194,8 @@ deploy.sh                      symlink deployer with auto-backup
 | `C-a M-g` | Grid layout (tiled) |
 
 <img src="assets/divider.svg" alt="" width="900"/>
+
+<p align="center"><img src="assets/neovim.svg" alt="Neovim" width="900"/></p>
 
 ## Neovim
 
@@ -328,6 +332,8 @@ Sourced from [tokyo-night/wallpapers](https://github.com/tokyo-night/wallpapers)
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
+<p align="center"><img src="assets/launcher.svg" alt="Noctalia Launcher" width="900"/></p>
+
 ## Noctalia Dock & Launcher
 
 The Noctalia dock and app launcher are pre-configured with pinned security tools. Press `Super` (tap) or `Super+D` to open the launcher.
@@ -366,6 +372,8 @@ The Super key tap is handled by [keyd](https://github.com/rvaiya/keyd) (`etc/key
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
+<p align="center"><img src="assets/blackarch.svg" alt="BlackArch Tools" width="900"/></p>
+
 ## BlackArch Tools
 
 The installer adds the BlackArch repository and pulls 300+ tools across 19 categories:
@@ -399,6 +407,8 @@ The installer adds the BlackArch repository and pulls 300+ tools across 19 categ
 [Chaotic AUR](https://aur.chaotic.cx) provides pre-built AUR packages so you skip compilation. The installer adds the repo automatically (GPG key + mirrorlist + pacman.conf entry). Packages like `lmstudio-bin`, `opencode-bin`, and many others install instantly via pacman.
 
 <img src="assets/divider.svg" alt="" width="900"/>
+
+<p align="center"><img src="assets/terminal.svg" alt="Terminal" width="900"/></p>
 
 ## Zsh Security Toolkit
 
