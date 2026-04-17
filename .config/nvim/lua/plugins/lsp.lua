@@ -46,19 +46,20 @@ return {
 
       -- Shared on_attach: keymaps set per-buffer when LSP attaches.
       local on_attach = function(_, bufnr)
-        local map = function(keys, func, desc)
-          vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+        local map = function(mode, keys, func, desc)
+          vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
         end
-        map("gd",         vim.lsp.buf.definition,      "Go to definition")
-        map("gD",         vim.lsp.buf.declaration,      "Go to declaration")
-        map("gr",         vim.lsp.buf.references,       "References")
-        map("gi",         vim.lsp.buf.implementation,   "Implementation")
-        map("K",          vim.lsp.buf.hover,            "Hover docs")
-        map("<C-k>",      vim.lsp.buf.signature_help,   "Signature help")
-        map("<leader>rn", vim.lsp.buf.rename,           "Rename")
-        map("<leader>ca", vim.lsp.buf.code_action,      "Code action")
-        map("<leader>D",  vim.lsp.buf.type_definition,  "Type definition")
-        map("<leader>fs", vim.lsp.buf.document_symbol,  "Document symbols")
+        map("n", "gd",         vim.lsp.buf.definition,      "Go to definition")
+        map("n", "gD",         vim.lsp.buf.declaration,      "Go to declaration")
+        map("n", "gr",         vim.lsp.buf.references,       "References")
+        map("n", "gi",         vim.lsp.buf.implementation,   "Implementation")
+        map("n", "K",          vim.lsp.buf.hover,            "Hover docs")
+        -- Signature help in insert mode (normal <C-k> is window-nav-up)
+        map("i", "<C-k>",      vim.lsp.buf.signature_help,   "Signature help")
+        map("n", "<leader>rn", vim.lsp.buf.rename,           "Rename")
+        map("n", "<leader>ca", vim.lsp.buf.code_action,      "Code action")
+        map("n", "<leader>D",  vim.lsp.buf.type_definition,  "Type definition")
+        map("n", "<leader>fs", vim.lsp.buf.document_symbol,  "Document symbols")
       end
 
       -- Servers with default config

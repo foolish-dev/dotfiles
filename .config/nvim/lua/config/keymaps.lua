@@ -47,8 +47,8 @@ map("n", "<leader>Q",  "<cmd>qa!<cr>", { desc = "Force quit all" })
 map("n", "<C-s>",      "<cmd>w<cr>",  { desc = "Save" })
 
 -- ── Diagnostic navigation ─────────────────────────────────────────────────
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Prev diagnostic" })
+map("n", "]d", function() vim.diagnostic.jump({ count =  1, float = true }) end, { desc = "Next diagnostic" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 
 -- ── Terminal ──────────────────────────────────────────────────────────────

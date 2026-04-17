@@ -8,7 +8,7 @@ local augroup = vim.api.nvim_create_augroup
 autocmd("TextYankPost", {
   group = augroup("YankHighlight", { clear = true }),
   callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+    (vim.hl or vim.highlight).on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
 
@@ -41,10 +41,17 @@ autocmd("FileType", {
 })
 
 -- ── Remove trailing whitespace on save ────────────────────────────────────
+-- Skip filetypes where trailing whitespace is meaningful (markdown <br>, diffs, patches, mail).
 autocmd("BufWritePre", {
   group = augroup("TrimWhitespace", { clear = true }),
   pattern = "*",
-  command = [[%s/\s\+$//e]],
+  callback = function(ev)
+    local skip = { markdown = true, diff = true, patch = true, mail = true, gitcommit = true }
+    if skip[vim.bo[ev.buf].filetype] then return end
+    local view = vim.fn.winsaveview()
+    vim.cmd([[keepjumps keeppatterns silent! %s/\s\+$//e]])
+    vim.fn.winrestview(view)
+  end,
 })
 
 -- ── Filetype overrides ───────────────────────────────────────────────────

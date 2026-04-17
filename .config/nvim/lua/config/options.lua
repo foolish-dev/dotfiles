@@ -20,7 +20,7 @@ opt.cmdheight      = 1
 opt.winminwidth    = 5
 opt.wrap           = false
 opt.linebreak      = true
-opt.fillchars      = { eob = " ", fold = " ", foldopen = "", foldclose = "" }
+opt.fillchars      = { eob = " ", fold = " ", foldopen = "▾", foldclose = "▸" }
 
 -- ── Editing ───────────────────────────────────────────────────────────────
 opt.expandtab   = true
