@@ -31,6 +31,7 @@
 | Distro | Arch Linux + [BlackArch](https://blackarch.org) + [Chaotic AUR](https://aur.chaotic.cx) repos |
 | Compositor | [Niri](https://github.com/YaLTeR/niri) (scrollable tiling, Wayland) |
 | Desktop Shell | [Noctalia](https://github.com/noctalia-dev/noctalia-shell) (bar, dock, panels, notifications, lock screen) |
+| File Manager | Thunar (`Super+E`) |
 | Terminal | Kitty |
 | Multiplexer | tmux (Ctrl-a prefix, lazygit/btop/fzf popups) |
 | Shell | Zsh + Zinit + Starship |
@@ -66,6 +67,12 @@ cd ~/dotfiles
 ```
 
 First `nvim` launch auto-installs all plugins and LSP servers.
+
+> **After install:** update your identity in `.gitconfig` — the defaults are placeholders:
+> ```bash
+> git config --global user.name  "Your Name"
+> git config --global user.email "you@example.com"
+> ```
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
