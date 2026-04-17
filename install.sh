@@ -127,6 +127,7 @@ PKG_CORE=(
   qt5-quickcontrols2
   qt6-declarative
   layer-shell-qt
+  thunar
   pipewire
   pipewire-audio
   pipewire-pulse
@@ -344,7 +345,6 @@ PKG_BLACKARCH=(
   exploitdb
   searchsploit
   routersploit
-  crackmapexec
   netexec
   evil-winrm
   covenant

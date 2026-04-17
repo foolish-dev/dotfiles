@@ -128,24 +128,38 @@ deploy.sh                      symlink deployer with auto-backup
 |---|---|
 | `Super` (tap) | Noctalia app launcher (via keyd) |
 | `Super+D` | Noctalia app launcher |
-| `Super+Space` | Noctalia control center |
+| `Super+Space` | Noctalia app launcher (toggle) |
+| `Super+S` | Noctalia control center |
+| `Super+Comma` | Noctalia settings |
 | `Super+Return` | Terminal |
+| `Super+Shift+Return` | Floating terminal |
 | `Super+B` | Firefox |
 | `Super+N` | Neovim |
+| `Super+E` | File manager (Thunar) |
 | `Super+H/J/K/L` | Focus window |
 | `Super+Shift+H/J/K/L` | Move window |
 | `Super+1-9` | Workspace |
-| `Super+F` | Maximize |
+| `Super+Tab` | Previous workspace |
+| `Super+F` | Maximize column |
 | `Super+Shift+F` | Fullscreen |
+| `Super+R` | Cycle column width |
+| `Super+Minus/Equal` | Shrink/grow column |
+| `Super+[` / `Super+]` | Consume / expel window from column |
 | `Super+Q` | Close window |
 | `Super+V` | Clipboard history |
 | `Super+Escape` | Lock screen |
+| `Super+Shift+P` | Power off monitors |
+| `Super+Shift+E` | Quit niri |
+| `Super+Shift+C` | Reload niri config |
 | `Super+Ctrl+M` | msfconsole |
 | `Super+Ctrl+W` | Wireshark |
 | `Super+Ctrl+B` | Burp Suite |
+| `Super+Ctrl+N` | Nmap terminal |
 | `Super+Ctrl+T` | btop |
 | `Super+Ctrl+A` | LM Studio |
-| `Print` | Screenshot |
+| `Print` | Screenshot region |
+| `Super+Print` | Screenshot screen |
+| `Super+Shift+Print` | Screenshot window |
 
 ### Tmux (prefix = Ctrl-a)
 
@@ -154,12 +168,21 @@ deploy.sh                      symlink deployer with auto-backup
 | `C-a \|` | Split horizontal |
 | `C-a -` | Split vertical |
 | `C-a h/j/k/l` | Navigate panes |
+| `C-a H/J/K/L` | Resize pane |
+| `C-a >`/`<` | Swap pane down/up |
 | `C-a g` | Lazygit popup |
 | `C-a b` | btop popup |
 | `C-a f` | fzf file opener |
 | `C-a c` | New window |
+| `C-a C-h/C-l` | Prev/next window |
 | `C-a Tab` | Last window |
 | `C-a S` | New session |
+| `C-a X` | Kill session |
+| `C-a R` | Rename session |
+| `C-a r` | Reload config |
+| `C-a M-i` | IDE layout (main-vertical) |
+| `C-a M-w` | Wide layout (main-horizontal) |
+| `C-a M-g` | Grid layout (tiled) |
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
@@ -176,14 +199,31 @@ pyright, ruff, clangd, rust_analyzer, gopls, zls, ts_ls, bashls, lua_ls, html, c
 |---|---|
 | `<leader>ff` | Find files |
 | `<leader>fg` | Live grep |
+| `<leader>fb` | Buffers |
+| `<leader>fr` | Recent files |
+| `<leader>fw` | Grep word under cursor |
 | `<leader>t` | File tree |
-| `<leader>xH` | Hex editor |
+| `<leader>xx` | Diagnostics (Trouble) |
+| `<leader>cf` | Format buffer |
+| `<leader>ca` | Code action |
+| `<leader>rn` | Rename symbol |
+| `gd` / `gr` | Go to definition / references |
+| `K` | Hover docs |
 | `<leader>db` | Toggle breakpoint |
 | `<leader>dc` | Debug continue |
-| `<leader>gg` | Git status |
-| `<leader>cf` | Format buffer |
-| `<leader>xx` | Diagnostics |
-| `<C-\>` | Float terminal |
+| `<leader>do` / `<leader>di` | Step over / step into |
+| `<leader>du` | DAP UI toggle |
+| `<leader>gg` | Git status (fugitive) |
+| `<leader>gv` | Diffview |
+| `<leader>gh` | File history |
+| `]h` / `[h` | Next / prev git hunk |
+| `<leader>hs` / `<leader>hp` | Stage / preview hunk |
+| `<leader>xH` | Hex editor (hex.nvim) |
+| `<leader>xh` / `<leader>xr` | xxd hex view / revert |
+| `<leader>mp` | Markdown preview |
+| `<leader>rr` | Run HTTP request |
+| `<C-\>` / `<leader>tf` | Float terminal |
+| `<leader>th` / `<leader>tv` | Terminal horizontal / vertical |
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
