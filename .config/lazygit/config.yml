@@ -33,11 +33,10 @@ gui:
   mouseEvents: true
   skipDiscardChangeWarning: false
   sidePanelWidth: 0.3333
-
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
   commit:
     signOff: false
   merging:
@@ -46,13 +45,12 @@ git:
   autoFetch: true
   autoRefresh: true
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --decorate --date=relative --pretty=medium"
   overrideGpg: false
   disableForcePushing: false
-
+  allBranchesLogCmds:
+    - git log --graph --all --color=always --abbrev-commit --decorate --date=relative --pretty=medium
 os:
   editPreset: "nvim"
-
 keybinding:
   universal:
     quit: "q"
@@ -69,10 +67,8 @@ keybinding:
     copyToClipboard: "<c-o>"
     submitEditorText: "<enter>"
     extrasMenu: "@"
-
 confirmOnQuit: false
 quitOnTopLevelReturn: true
-
 customCommands:
   - key: "<c-p>"
     command: "git push --force-with-lease"
