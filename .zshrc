@@ -15,7 +15,7 @@ source ~/.cache/wal/colors.sh 2>/dev/null || true
 # ── Zinit plugin manager ──────────────────────────────────────────────────
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [[ ! -d "$ZINIT_HOME" ]]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
+  mkdir -p "$(dirname "$ZINIT_HOME")"
   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 source "${ZINIT_HOME}/zinit.zsh"
@@ -284,7 +284,7 @@ alias wifite-auto="sudo wifite --kill"
 alias bettercap-sniff="sudo bettercap -iface"
 
 # Privesc / post
-alias linpeas="curl -sL https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh"
+alias linpeas="curl -sL -o /tmp/linpeas.sh https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh && less /tmp/linpeas.sh && sh /tmp/linpeas.sh"
 alias winpeas-get="curl -sLO https://github.com/peass-ng/PEASS-ng/releases/latest/download/winPEASany.exe"
 alias pspy32="curl -sLO https://github.com/DominicBreuker/pspy/releases/latest/download/pspy32"
 alias pspy64="curl -sLO https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64"
