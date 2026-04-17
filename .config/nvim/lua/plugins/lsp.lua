@@ -32,13 +32,23 @@ return {
     },
   },
 
+  -- ── Lazydev (Lua LS for Neovim config / plugin dev) ─────────────────────
+  {
+    "folke/lazydev.nvim",
+    ft   = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
   -- ── nvim-lspconfig ──────────────────────────────────────────────────────
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      { "folke/neodev.nvim", opts = {} },
     },
     config = function()
       local lspconfig    = require("lspconfig")
