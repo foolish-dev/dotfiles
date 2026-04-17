@@ -548,7 +548,17 @@ fi
 
 # ── Enable services ────────────────────────────────────────────────────────
 info "Enabling system services ..."
+
+# Prevent iwd/wpa_supplicant conflict -- NM uses iwd as backend
+if [[ ! -f /etc/NetworkManager/conf.d/wifi-backend.conf ]]; then
+  info "Configuring NetworkManager to use iwd backend ..."
+  sudo mkdir -p /etc/NetworkManager/conf.d
+  printf '[device]\nwifi.backend=iwd\n' | sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf >/dev/null
+fi
+sudo systemctl disable --now wpa_supplicant 2>/dev/null || true
+
 sudo systemctl enable --now NetworkManager 2>/dev/null || true
+sudo systemctl enable --now iwd 2>/dev/null || true
 sudo systemctl enable --now bluetooth 2>/dev/null || true
 sudo systemctl enable --now docker 2>/dev/null || true
 sudo systemctl enable --now keyd 2>/dev/null || true
