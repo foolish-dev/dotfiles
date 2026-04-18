@@ -252,8 +252,7 @@ binds {
     Mod+Shift+Slash     { show-hotkey-overlay; }
 
     // ── Noctalia Launcher (Super tap via keyd -> F13) ─────────────────
-    F13                 { spawn "qs" "ipc" "call" "launcher" "toggle"; }
-
+    Mod+Space           { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     // ── Reload ────────────────────────────────────────────────────────
     Mod+Shift+C         { spawn "niri" "msg" "action" "reload-config"; }
 
