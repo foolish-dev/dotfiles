@@ -182,6 +182,7 @@ PKG_DEV=(
   neovim
   git
   git-delta
+  libsecret
   lazygit
   github-cli
   base-devel

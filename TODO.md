@@ -55,9 +55,9 @@ commits that landed alongside this file.
 
 ## Git (`.gitconfig`)
 
-- [ ] Line 8-9: `name = foolish-dev` / `email = fool@localhost` — placeholder email. Swap with `git config --global user.email cardoffools@gmail.com` or whatever identity you want on public commits.
-- [ ] Line 190: `credential.helper = store` writes `~/.git-credentials` in plaintext. Prefer `libsecret` (via `git-credential-libsecret` from the `libsecret` pkg) or rely on SSH keys.
-- [ ] Consider re-enabling SSH commit signing (lines 175-181 are commented out) now that `~/.ssh/id_ed25519` exists.
+- [x] Set email to `cardoffools@gmail.com`.
+- [x] Swapped `credential.helper = store` for `git-credential-libsecret`; added `libsecret` to `install.sh` `PKG_DEV`.
+- [x] Re-enabled SSH commit signing (`gpgsign`, `gpg.format = ssh`, `allowedSignersFile`); `~/.ssh/allowed_signers` seeded locally (outside the repo since `.ssh/` keys are globally ignored).
 
 ---
 

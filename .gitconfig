@@ -4,10 +4,9 @@
 # =============================================================================
 
 [user]
-    # CHANGE THESE
     name = foolish-dev
-    email = fool@localhost
-    # signingkey = ~/.ssh/id_ed25519.pub
+    email = cardoffools@gmail.com
+    signingkey = ~/.ssh/id_ed25519.pub
 
 [init]
     defaultBranch = main
@@ -172,13 +171,13 @@
 
 [commit]
     verbose = true
-    # gpgsign = true
+    gpgsign = true
 
-# [gpg]
-#     format = ssh
+[gpg]
+    format = ssh
 
-# [gpg "ssh"]
-#     allowedSignersFile = ~/.ssh/allowed_signers
+[gpg "ssh"]
+    allowedSignersFile = ~/.ssh/allowed_signers
 
 [url "git@github.com:"]
     insteadOf = gh:
@@ -187,4 +186,4 @@
     insteadOf = gl:
 
 [credential]
-    helper = store
+    helper = /usr/lib/git-core/git-credential-libsecret
