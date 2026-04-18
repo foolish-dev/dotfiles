@@ -158,7 +158,6 @@ PKG_SHELL=(
   tree
   btop
   fastfetch
-  neofetch
   python-pywal
   less
   man-db
@@ -206,6 +205,7 @@ PKG_DEV=(
   stylua
   shfmt
   prettierd
+  tree-sitter-cli
   opencode-bin
   lmstudio-bin
 )
@@ -577,10 +577,7 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
 fi
 
 # ── Wordlists ──────────────────────────────────────────────────────────────
-if [[ ! -d /usr/share/seclists ]]; then
-  info "SecLists not found at /usr/share/seclists, checking for package ..."
-  $AUR -S --needed --noconfirm seclists 2>/dev/null || warn "  seclists not available as package"
-fi
+# seclists is pulled in by PKG_BLACKARCH; just decompress rockyou.
 if [[ ! -f /usr/share/wordlists/rockyou.txt ]]; then
   if [[ -f /usr/share/wordlists/rockyou.txt.gz ]]; then
     info "Decompressing rockyou.txt ..."

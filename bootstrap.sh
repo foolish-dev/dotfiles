@@ -35,7 +35,7 @@ banner
 
 if [[ ! -f /etc/arch-release ]]; then
   warn "This installer is designed for Arch Linux."
-  warn "Detected: $(cat /etc/os-release 2>/dev/null | grep ^NAME= | cut -d= -f2)"
+  warn "Detected: $(grep ^NAME= /etc/os-release 2>/dev/null | cut -d= -f2)"
   read -rp "Continue anyway? [y/N] " confirm
   [[ "$confirm" =~ ^[Yy]$ ]] || exit 1
 fi
