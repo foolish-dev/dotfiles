@@ -34,7 +34,7 @@ commits that landed alongside this file.
 
 ### deploy.sh
 - [x] Summary counts now computed dynamically at the end of the script.
-- [ ] `sed -i` on `$ASTRONAUT_DIR/metadata.desktop` + `sudo cp` into package dirs is clobbered by pacman on `sddm-astronaut-theme` upgrades. Either document this or use a user-local theme override path.
+- [x] `deploy.sh` now copies `sddm-astronaut-theme` once to a sibling dir `sddm-astronaut-local` (owned by neither pacman nor the package) and customizes the copy. `etc/sddm.conf.d/niri.conf` points at `sddm-astronaut-local`. pacman upgrades can no longer clobber our metadata.desktop / Backgrounds / Themes customizations.
 
 ### bootstrap.sh
 - [x] `cat /etc/os-release | grep …` → `grep ^NAME= /etc/os-release`.
@@ -73,7 +73,7 @@ commits that landed alongside this file.
 
 - [x] `proj:40`, `gclone:29`: `exec "$SHELL"` now quoted.
 - [x] `wallpaper:44`: dropped the `pkill -USR1 noctalia-shell` signal (Noctalia reloads via file-watch on `colors.json`).
-- [ ] `sddm-theme:94`: `sudo sed -i` of a packaged `metadata.desktop` is overwritten on `sddm-astronaut-theme` upgrades. Switch to a user-local approach if possible.
+- [x] `sddm-theme` now targets `sddm-astronaut-local` (or warns and falls back to the packaged dir if `deploy.sh` hasn't run). The sed on `metadata.desktop` hits the local copy only, so upgrades don't wipe it.
 
 ---
 

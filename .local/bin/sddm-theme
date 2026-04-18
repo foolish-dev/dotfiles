@@ -7,7 +7,17 @@ set -euo pipefail
 
 DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 SDDM_THEMES="/usr/share/sddm/themes"
-ASTRONAUT_DIR="$SDDM_THEMES/sddm-astronaut-theme"
+# deploy.sh creates an upgrade-proof local copy of the packaged theme; fall
+# back to the upstream dir so `sddm-theme` still works pre-deploy.
+ASTRONAUT_LOCAL="$SDDM_THEMES/sddm-astronaut-local"
+ASTRONAUT_UPSTREAM="$SDDM_THEMES/sddm-astronaut-theme"
+if [[ -d "$ASTRONAUT_LOCAL" ]]; then
+  ASTRONAUT_DIR="$ASTRONAUT_LOCAL"
+  ASTRONAUT_NAME="sddm-astronaut-local"
+else
+  ASTRONAUT_DIR="$ASTRONAUT_UPSTREAM"
+  ASTRONAUT_NAME="sddm-astronaut-theme"
+fi
 CUSTOM_THEMES="$DOTFILES/etc/sddm-themes"
 
 RED='\033[0;31m'
@@ -94,10 +104,16 @@ if [[ "$TYPE" == "astronaut" ]]; then
   sudo sed -i "s|^ConfigFile=.*|ConfigFile=Themes/$SELECTED.conf|" "$ASTRONAUT_DIR/metadata.desktop"
   ok "Updated metadata.desktop -> Themes/$SELECTED.conf"
 
-  # Set SDDM to use astronaut theme
+  # Set SDDM to use the astronaut theme (local copy if deploy.sh has run;
+  # otherwise the packaged dir, with the caveat that pacman upgrades will
+  # clobber this until ./deploy.sh is run).
+  if [[ "$ASTRONAUT_NAME" == "sddm-astronaut-theme" ]]; then
+    warn "Using the packaged theme dir -- pacman -Syu will wipe your edits."
+    warn "Run ./deploy.sh to create an upgrade-proof local copy."
+  fi
   sudo tee /etc/sddm.conf.d/theme.conf > /dev/null <<EOF
 [Theme]
-Current=sddm-astronaut-theme
+Current=$ASTRONAUT_NAME
 CursorTheme=Bibata-Modern-Classic
 CursorSize=24
 EOF

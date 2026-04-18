@@ -311,7 +311,7 @@ sddm-theme tokyo-night         # switch directly
 sddm-theme cyberpunk            # any astronaut variant or standalone theme
 ```
 
-The switcher handles config deployment, wallpaper copying, and SDDM metadata patching.
+The switcher handles config deployment, wallpaper copying, and SDDM metadata patching. Customizations are applied to an upgrade-proof local copy at `/usr/share/sddm/themes/sddm-astronaut-local/`, created by `deploy.sh` — so `pacman -Syu` on `sddm-astronaut-theme` can't clobber your variant selection or backgrounds. To refresh against upstream changes, `sudo rm -rf /usr/share/sddm/themes/sddm-astronaut-local && ./deploy.sh`.
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
