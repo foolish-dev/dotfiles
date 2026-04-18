@@ -28,7 +28,6 @@ return {
         -- Config / ops
         "bashls", "yamlls", "dockerls", "terraformls",
       },
-      automatic_installation = true,
     },
   },
 
@@ -63,9 +62,9 @@ return {
         map("n", "gD",         vim.lsp.buf.declaration,      "Go to declaration")
         map("n", "gr",         vim.lsp.buf.references,       "References")
         map("n", "gi",         vim.lsp.buf.implementation,   "Implementation")
-        map("n", "K",          vim.lsp.buf.hover,            "Hover docs")
+        map("n", "K",          function() vim.lsp.buf.hover({ border = "rounded" }) end,          "Hover docs")
         -- Signature help in insert mode (normal <C-k> is window-nav-up)
-        map("i", "<C-k>",      vim.lsp.buf.signature_help,   "Signature help")
+        map("i", "<C-k>",      function() vim.lsp.buf.signature_help({ border = "rounded" }) end, "Signature help")
         map("n", "<leader>rn", vim.lsp.buf.rename,           "Rename")
         map("n", "<leader>ca", vim.lsp.buf.code_action,      "Code action")
         map("n", "<leader>D",  vim.lsp.buf.type_definition,  "Type definition")
@@ -99,7 +98,9 @@ return {
         },
       })
 
-      -- Diagnostic appearance
+      -- Diagnostic appearance (rounded border for hover/sigHelp is passed
+      -- per-call in the `on_attach` keymaps above; `vim.lsp.with` was removed
+      -- in Neovim 0.11).
       vim.diagnostic.config({
         virtual_text     = { prefix = "" },
         signs            = true,
@@ -111,12 +112,6 @@ return {
           source = true,
         },
       })
-
-      -- Rounded borders on hover / signature help
-      vim.lsp.handlers["textDocument/hover"] =
-        vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-      vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
     end,
   },
 

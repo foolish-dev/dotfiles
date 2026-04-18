@@ -104,9 +104,9 @@ return {
     opts = {
       lsp = {
         override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"]                = true,
-          ["cmp.entry.get_documentation"]                  = true,
+          -- vim.lsp.util.convert_input_to_markdown_lines and stylize_markdown
+          -- were removed in Neovim 0.11 -- only override cmp's entry docs.
+          ["cmp.entry.get_documentation"] = true,
         },
       },
       presets = {
