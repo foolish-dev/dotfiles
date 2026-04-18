@@ -166,9 +166,11 @@ alias sysu="systemctl --user"
 alias jctl="journalctl -xeu"
 
 # ── Aliases: LM Studio ────────────────────────────────────────────────────
-alias lms="lm-studio"
-alias lms-server="lm-studio --headless server start --port 1234"
-alias lms-stop="lm-studio --headless server stop"
+# `lms` comes from ~/.lmstudio/bin (added to PATH at the bottom of this file)
+# and is the real CLI -- do not alias it.  `lm-studio` is the GUI binary.
+alias lmsgui="lm-studio"
+alias lms-server="lms server start --port 1234"
+alias lms-stop="lms server stop"
 alias lms-status="curl -s http://localhost:1234/v1/models | jq '.data[].id' 2>/dev/null || echo 'LM Studio server not running'"
 alias lms-chat="curl -s http://localhost:1234/v1/chat/completions \
   -H 'Content-Type: application/json' \
@@ -275,7 +277,7 @@ alias wifite-auto="sudo wifite --kill"
 alias bettercap-sniff="sudo bettercap -iface"
 
 # Privesc / post
-alias linpeas="curl -sL -o /tmp/linpeas.sh https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh && less /tmp/linpeas.sh && sh /tmp/linpeas.sh"
+# linpeas/winpeas/pspy are installed via PKG_BLACKARCH; call them directly.
 alias winpeas-get="curl -sLO https://github.com/peass-ng/PEASS-ng/releases/latest/download/winPEASany.exe"
 alias pspy32="curl -sLO https://github.com/DominicBreuker/pspy/releases/latest/download/pspy32"
 alias pspy64="curl -sLO https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64"
@@ -401,7 +403,9 @@ if command -v direnv &>/dev/null; then
 fi
 
 # ── Greeting ───────────────────────────────────────────────────────────────
-if command -v neofetch &>/dev/null; then
+if command -v fastfetch &>/dev/null; then
+  fastfetch
+elif command -v neofetch &>/dev/null; then
   neofetch
 else
   printf '\e[34m'
