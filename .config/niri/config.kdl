@@ -357,8 +357,7 @@ binds {
     Mod+Ctrl+A           { spawn "lm-studio"; }
 
     // ── Noctalia shell toggle (overview / control center) ────────────
-    // Core Noctalia binds
-    Mod+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+S { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    // Launcher already bound above (Mod+D, F13 via keyd).
+    Mod+S     { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
     Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
 }
