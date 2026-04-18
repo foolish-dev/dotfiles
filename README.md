@@ -45,7 +45,7 @@
 | Display Manager | [SDDM](https://github.com/sddm/sddm) (5 themes, Tokyo Night default, `sddm-theme` switcher) |
 | Theme | Tokyo Night (dark, transparent) + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven colors) |
 | Wallpapers | 23 curated Tokyo Night wallpapers (Arch, cyberpunk, Japanese art, minimal) |
-| Fetch | neofetch (Arch ASCII, system info on shell start) |
+| Fetch | fastfetch (system info on shell start) |
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
@@ -95,7 +95,7 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   starship.toml                prompt
   opencode/opencode.json       AI agent config (LM Studio provider, HexStrike MCP)
   wal/templates/               pywal templates (kitty, noctalia)
-  neofetch/config.conf         system fetch display
+  fastfetch/                    system fetch display
   systemd/user/                cliphist, swww, hexstrike-server services
 .zshrc                         shell -- 80+ aliases, BlackArch tool shortcuts, pywal init
 .gitconfig                     delta diffs, 30+ aliases, nvim mergetool
@@ -340,7 +340,7 @@ The Noctalia dock and app launcher are pre-configured with pinned security tools
 
 **Dock** (bottom bar): Kitty, Firefox, Thunar, Neovim, LM Studio, Wireshark, Burp Suite, Metasploit, Nmap, Iaito, Autopsy, btop
 
-**Launcher** (155 pinned apps across 21 categories, ordered by workflow):
+**Launcher** (147 pinned apps across 21 categories, ordered by workflow):
 
 | Group | Apps |
 |---|---|
