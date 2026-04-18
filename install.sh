@@ -135,6 +135,7 @@ PKG_CORE=(
   pipewire-jack
   wireplumber
   alsa-utils
+  sof-firmware
   pavucontrol
   pwvucontrol
 )
