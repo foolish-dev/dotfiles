@@ -97,8 +97,6 @@ PKG_CORE=(
   xwayland-satellite
   swww
   fuzzel
-  swaylock
-  swayidle
   wl-clipboard
   cliphist
   brightnessctl

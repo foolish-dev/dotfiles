@@ -64,6 +64,7 @@ commits that landed alongside this file.
 ## Niri (`config.kdl`)
 
 - [x] Removed duplicate `Mod+Space` launcher toggle — `Mod+D` + `F13` (keyd Super-tap) already cover it.
+- [x] Lockscreen consolidated onto noctalia — `Mod+Escape` now calls `lockScreen.lock` IPC; `swayidle` spawn-at-startup dropped; `swaylock`/`swayidle` dropped from `install.sh`. **Action needed on-box:** flip `idle.enabled` to `true` in noctalia's Control Center → Idle (replaces the swayidle timers we just removed).
 - [ ] Line 349: comment says "Workspace 5: Security | Workspace 6: Network analysis" but no `window-rule` / `spawn-at-startup` pins apps to those workspaces. Either wire it up or drop the comment.
 
 ---

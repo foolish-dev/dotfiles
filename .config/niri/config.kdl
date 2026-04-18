@@ -176,9 +176,8 @@ spawn-at-startup "xwayland-satellite"
 // Clipboard manager
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
-// Idle / lock  (each timeout command is a single argv string; sway/swayidle
-// passes it through sh -c, so embedded spaces stay intact.)
-spawn-at-startup "swayidle" "-w" "timeout" "600" "swaylock -f" "timeout" "900" "niri msg action power-off-monitors" "before-sleep" "swaylock -f"
+// Idle / lock is handled by noctalia-shell's built-in idle daemon
+// (Control Center → Idle).
 
 // Polkit agent
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
@@ -334,7 +333,7 @@ binds {
     XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
 
     // ── Lock / Power ──────────────────────────────────────────────────
-    Mod+Escape           { spawn "swaylock" "-f"; }
+    Mod+Escape           { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Mod+Shift+P          { power-off-monitors; }
 
     // ── Clipboard ─────────────────────────────────────────────────────
