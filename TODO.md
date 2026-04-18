@@ -29,8 +29,8 @@ commits that landed alongside this file.
 - [x] Add `tree-sitter-cli` to `PKG_DEV` — `rest.nvim` fails to build without it.
 - [x] Drop duplicate `seclists` install (it's already in `PKG_BLACKARCH`).
 - [x] Drop `neofetch` from `PKG_SHELL` (archived upstream, `fastfetch` covers it).
-- [ ] `install_pkgs()` silences pacman with `2>/dev/null` on both the batch and per-package retry, hiding real errors. Log to `/tmp/install-$label.log` instead.
-- [ ] Hexstrike service enable on line 617-618 runs **before** `deploy.sh` drops the unit file. The warning always fires on first run. Either move this into `deploy.sh` or add a guard on the unit file existing.
+- [x] `install_pkgs()` redirects both batch and per-package retry output to `/tmp/install-<slug>.log`; failures now surface a log pointer instead of being silenced.
+- [x] Dropped the redundant hexstrike-server enable from `install.sh` — `deploy.sh` already enables it after the unit ships, and the install.sh copy always warned on first run.
 
 ### deploy.sh
 - [x] Summary counts now computed dynamically at the end of the script.
@@ -65,7 +65,7 @@ commits that landed alongside this file.
 
 - [x] Removed duplicate `Mod+Space` launcher toggle — `Mod+D` + `F13` (keyd Super-tap) already cover it.
 - [x] Lockscreen consolidated onto noctalia — `Mod+Escape` now calls `lockScreen.lock` IPC; `swayidle` spawn-at-startup dropped; `swaylock`/`swayidle` dropped from `install.sh`. **Action needed on-box:** flip `idle.enabled` to `true` in noctalia's Control Center → Idle (replaces the swayidle timers we just removed).
-- [ ] Line 349: comment says "Workspace 5: Security | Workspace 6: Network analysis" but no `window-rule` / `spawn-at-startup` pins apps to those workspaces. Either wire it up or drop the comment.
+- [x] Dropped the stale "Workspace 5: Security | Workspace 6: Network analysis" comment — nothing was pinning apps to those workspaces.
 
 ---
 
@@ -81,7 +81,7 @@ commits that landed alongside this file.
 
 - [x] Line 48 + layout tree — neofetch replaced with fastfetch.
 - [x] Line 343 "155 pinned apps" → 147 (matches `deploy.sh` and the `.desktop` count).
-- [ ] LM Studio section (lines 247-253) — update examples to show the new CLI-based commands and the `lmsgui` rename.
+- [x] LM Studio section rewritten around the real `lms` CLI + `lmsgui` GUI alias; curl wrappers (`lms-server`, `lms-stop`, `lms-status`, `lms-chat`) kept for convenience.
 
 ---
 

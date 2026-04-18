@@ -520,13 +520,18 @@ install_pkgs() {
   local label="$1"
   shift
   local pkgs=("$@")
-  info "Installing ${BLD}$label${RST} (${#pkgs[@]} packages) ..."
-  $AUR -S --needed --noconfirm "${pkgs[@]}" 2>/dev/null || {
-    warn "Batch install had failures; retrying individually ..."
+  # slugify: lowercase, non-alnum -> "-", squeeze, strip leading/trailing "-"
+  local slug
+  slug=$(printf '%s' "$label" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//')
+  local log="/tmp/install-${slug}.log"
+  info "Installing ${BLD}$label${RST} (${#pkgs[@]} packages) -- log: $log"
+  : > "$log"
+  if ! $AUR -S --needed --noconfirm "${pkgs[@]}" >>"$log" 2>&1; then
+    warn "Batch install had failures (see $log); retrying individually ..."
     for pkg in "${pkgs[@]}"; do
-      $AUR -S --needed --noconfirm "$pkg" 2>/dev/null || warn "  skip: $pkg"
+      $AUR -S --needed --noconfirm "$pkg" >>"$log" 2>&1 || warn "  skip: $pkg (see $log)"
     done
-  }
+  fi
   ok "$label done."
   echo ""
 }
@@ -607,11 +612,7 @@ info "Installing HexStrike Python dependencies ..."
 "$HEXSTRIKE_DIR/hexstrike-env/bin/pip" install --quiet --upgrade pip
 "$HEXSTRIKE_DIR/hexstrike-env/bin/pip" install --quiet -r "$HEXSTRIKE_DIR/requirements.txt"
 ok "HexStrike dependencies installed."
-
-# Enable and start the Flask backend as a user service
-systemctl --user daemon-reload 2>/dev/null || true
-systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
-  warn "  hexstrike-server.service not yet deployed -- run deploy.sh first."
+info "  hexstrike-server.service is enabled by deploy.sh (unit ships with it)."
 
 # ── Screenshots dir ────────────────────────────────────────────────────────
 mkdir -p ~/Pictures/Screenshots

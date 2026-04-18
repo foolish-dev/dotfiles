@@ -245,11 +245,15 @@ Local LLM inference via [LM Studio](https://lmstudio.ai). The installer pulls `l
 OpenCode is pre-configured as a provider (`http://127.0.0.1:1234/v1`) with starter models in `.config/opencode/opencode.json`. Load a model in LM Studio, start the server, then use `/models` in OpenCode.
 
 ```bash
-lms                    # open LM Studio GUI
-lms-server             # start headless API server on :1234
+lms --help             # real LM Studio CLI (on $PATH via ~/.lmstudio/bin)
+lms ls                 # list installed models
+lms load <model>       # load a model
+
+lmsgui                 # open the LM Studio GUI
+lms-server             # start headless API server on :1234 (wrapper)
 lms-stop               # stop the server
-lms-status             # list loaded models
-lms-chat               # quick test curl
+lms-status             # curl /v1/models and list loaded IDs
+lms-chat               # quick /v1/chat/completions smoke test
 ```
 
 <img src="assets/divider.svg" alt="" width="900"/>

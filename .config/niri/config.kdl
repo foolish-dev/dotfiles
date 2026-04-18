@@ -345,7 +345,6 @@ binds {
     Mod+N                { spawn "kitty" "-e" "nvim"; }
 
     // ── Cybersecurity Quick-Launch ────────────────────────────────────
-    // Workspace 5: Security  |  Workspace 6: Network analysis
     Mod+Ctrl+W           { spawn "kitty" "--class" "wireshark-term" "-e" "sudo" "wireshark"; }
     Mod+Ctrl+B           { spawn "burpsuite"; }
     Mod+Ctrl+M           { spawn "kitty" "--class" "metasploit" "-e" "msfconsole"; }
