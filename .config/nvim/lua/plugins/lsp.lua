@@ -47,6 +47,10 @@ return {
   },
 
   -- ── nvim-lspconfig ──────────────────────────────────────────────────────
+  -- Uses the Neovim 0.11+ API: nvim-lspconfig ships per-server configs on the
+  -- runtimepath as `lsp/<name>.lua`; we layer overrides via `vim.lsp.config`
+  -- and activate with `vim.lsp.enable`. The old `lspconfig[server].setup({})`
+  -- framework is deprecated (`:h lspconfig-nvim-0.11`).
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -54,55 +58,46 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      local lspconfig    = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      -- Shared on_attach: keymaps set per-buffer when LSP attaches.
-      local on_attach = function(_, bufnr)
-        local map = function(mode, keys, func, desc)
-          vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
-        end
-        map("n", "gd",         vim.lsp.buf.definition,      "Go to definition")
-        map("n", "gD",         vim.lsp.buf.declaration,      "Go to declaration")
-        map("n", "gr",         vim.lsp.buf.references,       "References")
-        map("n", "gi",         vim.lsp.buf.implementation,   "Implementation")
-        -- K → hover is built-in on LSP-attached buffers since Neovim 0.10.
-        -- Signature help in insert mode (normal <C-k> is window-nav-up)
-        map("i", "<C-k>",      function() vim.lsp.buf.signature_help({ border = "rounded" }) end, "Signature help")
-        map("n", "<leader>rn", vim.lsp.buf.rename,           "Rename")
-        map("n", "<leader>ca", vim.lsp.buf.code_action,      "Code action")
-        map("n", "<leader>D",  vim.lsp.buf.type_definition,  "Type definition")
-        map("n", "<leader>fs", vim.lsp.buf.document_symbol,  "Document symbols")
-      end
+      -- Per-buffer keymaps, installed on every LspAttach (replaces the old
+      -- `on_attach` parameter that each setup() call used to carry).
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(ev)
+          local map = function(mode, keys, func, desc)
+            vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = "LSP: " .. desc })
+          end
+          map("n", "gd",         vim.lsp.buf.definition,      "Go to definition")
+          map("n", "gD",         vim.lsp.buf.declaration,      "Go to declaration")
+          map("n", "gr",         vim.lsp.buf.references,       "References")
+          map("n", "gi",         vim.lsp.buf.implementation,   "Implementation")
+          -- K → hover is built-in on LSP-attached buffers since Neovim 0.10.
+          -- Signature help in insert mode (normal <C-k> is window-nav-up)
+          map("i", "<C-k>",      function() vim.lsp.buf.signature_help({ border = "rounded" }) end, "Signature help")
+          map("n", "<leader>rn", vim.lsp.buf.rename,           "Rename")
+          map("n", "<leader>ca", vim.lsp.buf.code_action,      "Code action")
+          map("n", "<leader>D",  vim.lsp.buf.type_definition,  "Type definition")
+          map("n", "<leader>fs", vim.lsp.buf.document_symbol,  "Document symbols")
+        end,
+      })
 
-      -- Every server from the shared `servers` list gets the default setup,
-      -- except lua_ls which takes bespoke settings below.
-      for _, server in ipairs(servers) do
-        if server ~= "lua_ls" then
-          lspconfig[server].setup({
-            on_attach    = on_attach,
-            capabilities = capabilities,
-          })
-        end
-      end
+      -- Shared cmp capabilities on every server via wildcard.
+      vim.lsp.config("*", { capabilities = capabilities })
 
-      -- Lua gets special treatment
-      lspconfig.lua_ls.setup({
-        on_attach    = on_attach,
-        capabilities = capabilities,
+      -- Lua-specific settings (merged on top of the wildcard config).
+      vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
-            workspace  = { checkThirdParty = false },
-            telemetry  = { enable = false },
-            completion = { callSnippet = "Replace" },
+            workspace   = { checkThirdParty = false },
+            telemetry   = { enable = false },
+            completion  = { callSnippet = "Replace" },
             diagnostics = { globals = { "vim" } },
           },
         },
       })
 
-      -- Diagnostic appearance (rounded border for hover/sigHelp is passed
-      -- per-call in the `on_attach` keymaps above; `vim.lsp.with` was removed
-      -- in Neovim 0.11).
+      vim.lsp.enable(servers)
+
       vim.diagnostic.config({
         virtual_text     = { prefix = "" },
         signs            = true,

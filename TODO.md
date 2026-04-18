@@ -12,8 +12,8 @@ commits that landed alongside this file.
 - [x] `lua/plugins/lsp.lua` — removed deprecated `vim.lsp.with()` handler overrides; hover/sigHelp now pass `{ border = "rounded" }` at the call site.
 - [x] `lua/plugins/ui.lua` — dropped Noice overrides for `vim.lsp.util.convert_input_to_markdown_lines` / `stylize_markdown` (both removed in Neovim 0.11).
 - [x] `lua/plugins/lsp.lua` — removed deprecated `automatic_installation = true` on mason-lspconfig.
-- [ ] `rest.nvim` build is fragile: requires `luarocks-build-treesitter-parser` in the hererocks tree + `tree-sitter` CLI on `$PATH`. Drop the plugin in favour of something simpler or live with it now that `tree-sitter-cli` is pulled in via `install.sh`.
-- [ ] **Migration**: the whole `require("lspconfig")[server].setup(...)` framework is deprecated in Neovim 0.11 (`:h lspconfig-nvim-0.11`). Move to `vim.lsp.config(server, {...})` + `vim.lsp.enable(server)` on the next major refactor. Non-urgent — current code still works, just emits one warning on startup.
+- [x] `rest.nvim` — keeping it; build fragility is mitigated now that `tree-sitter-cli` is pulled in via `install.sh` `PKG_DEV`. Revisit if the hererocks build breaks again; plausible drop-in alternative is `mistweaverco/kulala.nvim` (pure Lua, no luarocks).
+- [x] Migrated off `require("lspconfig")[server].setup(...)` to the Neovim 0.11+ `vim.lsp.config(...)` / `vim.lsp.enable(...)` API. `on_attach` replaced by an `LspAttach` autocmd. Shared capabilities via `vim.lsp.config("*", ...)`.
 
 ### Quality / drift
 - [x] `lua/plugins/lsp.lua` — `ensure_installed` and `simple_servers` now read from one `servers` list at module top.
@@ -49,7 +49,7 @@ commits that landed alongside this file.
 - [x] Greeting now prefers `fastfetch` and falls back to `neofetch` only if it's still around.
 
 ### Footguns / shadowing (intentional preference — left alone)
-- [ ] `alias cat="bat --paging=never"` / `alias hexdump="xxd"` / `alias dc="docker compose"` — flagged in the audit but kept; tell me if you want these renamed or removed.
+- [x] Decision: **keep** `alias cat="bat --paging=never"`, `alias hexdump="xxd"`, `alias dc="docker compose"`. Flagged for the record, but the shadow pattern is the user's preference. Reopen if a script breaks on `cat`/`hexdump`/`dc` being aliased and the fix is to rename rather than patch the script.
 
 ---
 
