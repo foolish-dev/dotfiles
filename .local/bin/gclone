@@ -26,4 +26,4 @@ echo "[*] Cloning $REPO -> $DIR"
 git clone --recurse-submodules "$REPO"
 cd "$DIR"
 echo "[+] Done. Now in $(pwd)"
-exec $SHELL
+exec "$SHELL"

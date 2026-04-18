@@ -40,8 +40,6 @@ WAL_COLORS="$HOME/.cache/wal/colors-noctalia.json"
 if [[ -f "$WAL_COLORS" ]]; then
   cp "$WAL_COLORS" "$NOCTALIA_COLORS"
   echo "[+] Noctalia colors updated"
-  # Signal noctalia-shell to reload colors if running
-  pkill -USR1 noctalia-shell 2>/dev/null || true
 fi
 
 echo "[+] Done. New colors active."

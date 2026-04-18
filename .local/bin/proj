@@ -37,6 +37,6 @@ if [[ -n "$selected" ]]; then
       tmux switch-client -t "$session_name"
     fi
   else
-    cd "$selected" && exec $SHELL
+    cd "$selected" && exec "$SHELL"
   fi
 fi

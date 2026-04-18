@@ -40,20 +40,6 @@ autocmd("FileType", {
   end,
 })
 
--- ── Remove trailing whitespace on save ────────────────────────────────────
--- Skip filetypes where trailing whitespace is meaningful (markdown <br>, diffs, patches, mail).
-autocmd("BufWritePre", {
-  group = augroup("TrimWhitespace", { clear = true }),
-  pattern = "*",
-  callback = function(ev)
-    local skip = { markdown = true, diff = true, patch = true, mail = true, gitcommit = true }
-    if skip[vim.bo[ev.buf].filetype] then return end
-    local view = vim.fn.winsaveview()
-    vim.cmd([[keepjumps keeppatterns silent! %s/\s\+$//e]])
-    vim.fn.winrestview(view)
-  end,
-})
-
 -- ── Filetype overrides ───────────────────────────────────────────────────
 autocmd("FileType", {
   group = augroup("IndentOverrides", { clear = true }),

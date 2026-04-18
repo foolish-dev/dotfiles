@@ -16,10 +16,10 @@ commits that landed alongside this file.
 - [ ] **Migration**: the whole `require("lspconfig")[server].setup(...)` framework is deprecated in Neovim 0.11 (`:h lspconfig-nvim-0.11`). Move to `vim.lsp.config(server, {...})` + `vim.lsp.enable(server)` on the next major refactor. Non-urgent — current code still works, just emits one warning on startup.
 
 ### Quality / drift
-- [ ] `lua/plugins/lsp.lua` — `simple_servers` (line 70-ish) duplicates the `ensure_installed` list in `mason-lspconfig` opts. Source from one place to avoid drift.
-- [ ] `lua/plugins/lsp.lua` — `map("n", "K", ...)` is redundant in Neovim 0.10+ (default keymap maps `K` to hover when an LSP is attached). Harmless but noisy.
-- [ ] `lua/config/autocmds.lua:45-55` trims trailing whitespace on save. `.editorconfig` already sets `trim_trailing_whitespace = true`, and Conform runs on `BufWritePre`. Pick one source of truth.
-- [ ] `.gitignore:10` ignores `.config/nvim/lazy-lock.json`. That makes plugin versions non-reproducible between machines. Either track the lockfile or document the choice.
+- [x] `lua/plugins/lsp.lua` — `ensure_installed` and `simple_servers` now read from one `servers` list at module top.
+- [x] Dropped the redundant `K` → hover mapping (built-in since Neovim 0.10).
+- [x] Dropped the `TrimWhitespace` autocmd; `.editorconfig` + built-in editorconfig support handle it.
+- [x] `.gitignore` no longer ignores `.config/nvim/lazy-lock.json` — tracked for reproducible plugin versions.
 
 ---
 
@@ -70,8 +70,8 @@ commits that landed alongside this file.
 
 ## `.local/bin`
 
-- [ ] `proj:40`, `gclone:29`: quote `"$SHELL"` in `exec $SHELL`.
-- [ ] `wallpaper:44`: `pkill -USR1 noctalia-shell` — Noctalia reloads via file-watching on `colors.json`, not SIGUSR1. Verify and remove if unused.
+- [x] `proj:40`, `gclone:29`: `exec "$SHELL"` now quoted.
+- [x] `wallpaper:44`: dropped the `pkill -USR1 noctalia-shell` signal (Noctalia reloads via file-watch on `colors.json`).
 - [ ] `sddm-theme:94`: `sudo sed -i` of a packaged `metadata.desktop` is overwritten on `sddm-astronaut-theme` upgrades. Switch to a user-local approach if possible.
 
 ---

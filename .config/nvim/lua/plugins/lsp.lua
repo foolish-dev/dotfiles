@@ -1,6 +1,20 @@
 -- =============================================================================
 -- LSP -- Language servers, completions, snippets
 -- =============================================================================
+
+-- Single source of truth for LSP servers: `ensure_installed` for mason-lspconfig
+-- and (minus lua_ls, which has bespoke settings below) the list the nvim-lspconfig
+-- `config` block iterates over.
+local servers = {
+  -- Systems / security
+  "lua_ls", "pyright", "ruff", "clangd", "rust_analyzer",
+  "gopls", "zls",
+  -- Web
+  "ts_ls", "html", "cssls", "jsonls", "tailwindcss",
+  -- Config / ops
+  "bashls", "yamlls", "dockerls", "terraformls",
+}
+
 return {
   -- ── Mason: portable LSP / DAP / linter / formatter installer ────────────
   {
@@ -18,17 +32,7 @@ return {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
     },
-    opts = {
-      ensure_installed = {
-        -- Systems / security
-        "lua_ls", "pyright", "ruff", "clangd", "rust_analyzer",
-        "gopls", "zls",
-        -- Web
-        "ts_ls", "html", "cssls", "jsonls", "tailwindcss",
-        -- Config / ops
-        "bashls", "yamlls", "dockerls", "terraformls",
-      },
-    },
+    opts = { ensure_installed = servers },
   },
 
   -- ── Lazydev (Lua LS for Neovim config / plugin dev) ─────────────────────
@@ -62,7 +66,7 @@ return {
         map("n", "gD",         vim.lsp.buf.declaration,      "Go to declaration")
         map("n", "gr",         vim.lsp.buf.references,       "References")
         map("n", "gi",         vim.lsp.buf.implementation,   "Implementation")
-        map("n", "K",          function() vim.lsp.buf.hover({ border = "rounded" }) end,          "Hover docs")
+        -- K → hover is built-in on LSP-attached buffers since Neovim 0.10.
         -- Signature help in insert mode (normal <C-k> is window-nav-up)
         map("i", "<C-k>",      function() vim.lsp.buf.signature_help({ border = "rounded" }) end, "Signature help")
         map("n", "<leader>rn", vim.lsp.buf.rename,           "Rename")
@@ -71,17 +75,15 @@ return {
         map("n", "<leader>fs", vim.lsp.buf.document_symbol,  "Document symbols")
       end
 
-      -- Servers with default config
-      local simple_servers = {
-        "pyright", "ruff", "clangd", "rust_analyzer", "gopls", "zls",
-        "ts_ls", "html", "cssls", "jsonls", "tailwindcss",
-        "bashls", "yamlls", "dockerls", "terraformls",
-      }
-      for _, server in ipairs(simple_servers) do
-        lspconfig[server].setup({
-          on_attach    = on_attach,
-          capabilities = capabilities,
-        })
+      -- Every server from the shared `servers` list gets the default setup,
+      -- except lua_ls which takes bespoke settings below.
+      for _, server in ipairs(servers) do
+        if server ~= "lua_ls" then
+          lspconfig[server].setup({
+            on_attach    = on_attach,
+            capabilities = capabilities,
+          })
+        end
       end
 
       -- Lua gets special treatment
