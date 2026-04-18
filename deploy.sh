@@ -160,15 +160,22 @@ fi
 echo ""
 ok "=== Deployment complete ==="
 echo ""
+
+# Dynamic counts so this summary can't drift from reality.
+script_count=$(find "$DOTFILES/.local/bin" -maxdepth 1 -type f 2>/dev/null | wc -l)
+desktop_count=$(find "$DOTFILES/.local/share/applications" -maxdepth 1 -name '*.desktop' 2>/dev/null | wc -l)
+wallpaper_count=$(find "$DOTFILES/wallpapers" -maxdepth 1 -type f 2>/dev/null | wc -l)
+config_list=$(printf '%s,' "${CONFIG_DIRS[@]}" | sed 's/,$//; s|systemd/user|systemd/user|')
+
 info "Summary:"
-info "  Configs: ~/.config/{niri,noctalia,kitty,fuzzel,nvim,tmux,lazygit,systemd/user,opencode,wal,neofetch,gtk-3.0,gtk-4.0,qt5ct,qt6ct}"
+info "  Configs: ~/.config/{${config_list}}"
 info "  Shell:   ~/.zshrc"
 info "  Git:     ~/.gitconfig, ~/.gitignore_global"
 info "  Editor:  ~/.editorconfig"
 info "  Prompt:  ~/.config/starship.toml"
-info "  Scripts: ~/.local/bin/{proj,mkproj,dev,gclone,cheat,wallpaper,hexstrike-mcp,sddm-theme,colorbars,colorblocks,pipes}"
-info "  Apps:    ~/.local/share/applications/ (147 desktop entries, 21 BlackArch categories)"
-info "  Walls:   ~/Pictures/Wallpapers/ (23 Tokyo Night wallpapers)"
+info "  Scripts: ~/.local/bin/ (${script_count} scripts)"
+info "  Apps:    ~/.local/share/applications/ (${desktop_count} desktop entries)"
+info "  Walls:   ~/Pictures/Wallpapers/ (${wallpaper_count} wallpapers)"
 info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
 info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut tokyo-night theme"
 info ""
