@@ -163,9 +163,9 @@ if [[ -d "$ASTRONAUT_SRC" && -d "$DOTFILES/etc/sddm-themes" ]]; then
     ok "  Set default SDDM background: samurai.png"
   fi
 
-  # Point the local copy at the tokyo-night variant
-  sudo sed -i 's|^ConfigFile=.*|ConfigFile=Themes/tokyo-night.conf|' "$ASTRONAUT_DIR/metadata.desktop"
-  ok "  Activated: tokyo-night variant (in local copy)"
+  # Point the local copy at the cyberpunk variant
+  sudo sed -i 's|^ConfigFile=.*|ConfigFile=Themes/cyberpunk.conf|' "$ASTRONAUT_DIR/metadata.desktop"
+  ok "  Activated: cyberpunk variant (in local copy)"
 fi
 
 echo ""
