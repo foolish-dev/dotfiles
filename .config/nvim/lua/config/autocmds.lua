@@ -63,3 +63,17 @@ autocmd({ "BufRead", "BufNewFile" }, {
     end
   end,
 })
+
+-- ── Auto-open Neo-tree + opencode on startup ──────────────────────────────
+-- Skip when launched bare so the alpha dashboard still shows.
+autocmd("VimEnter", {
+  group = augroup("AutoOpenLayout", { clear = true }),
+  callback = function()
+    if vim.fn.argc() == 0 then return end
+    vim.schedule(function()
+      vim.cmd("Neotree show")
+      pcall(function() require("opencode").toggle() end)
+      vim.cmd("wincmd p") -- return focus to the file window
+    end)
+  end,
+})
