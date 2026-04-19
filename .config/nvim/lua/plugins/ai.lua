@@ -3,7 +3,7 @@
 -- =============================================================================
 return {
   {
-    "nickjvandyke/opencode.nvim",
+    "NickvanDyke/opencode.nvim",
     version = "*",
     init = function()
       ---@type opencode.Opts
