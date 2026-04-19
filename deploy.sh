@@ -126,6 +126,23 @@ if [[ -d "$DOTFILES/etc/keyd" ]]; then
     warn "  keyd.service failed to start (install keyd first)"
 fi
 
+# ── mkinitcpio (produces the initramfs boot image) ────────────────────────
+# Deploying the config alone does not rebuild the image. Run
+# `sudo mkinitcpio -P` after changes, or let a kernel/package upgrade
+# trigger the pacman hook.
+if [[ -d "$DOTFILES/etc/mkinitcpio" ]]; then
+  info "Deploying mkinitcpio config ..."
+  if [[ -f "$DOTFILES/etc/mkinitcpio/mkinitcpio.conf" ]]; then
+    sudo cp "$DOTFILES/etc/mkinitcpio/mkinitcpio.conf" /etc/mkinitcpio.conf
+    ok "  Copied mkinitcpio.conf"
+  fi
+  if [[ -f "$DOTFILES/etc/mkinitcpio/linux.preset" ]]; then
+    sudo mkdir -p /etc/mkinitcpio.d
+    sudo cp "$DOTFILES/etc/mkinitcpio/linux.preset" /etc/mkinitcpio.d/linux.preset
+    ok "  Copied linux.preset"
+  fi
+fi
+
 # ── systemd-boot (GUARDED: set DEPLOY_LOADER=1 to apply) ──────────────────
 # The tracked entry pins this machine's PARTUUID + kernel cmdline. Applying
 # it on a different install would leave the system unbootable on next
@@ -205,6 +222,7 @@ info "  Apps:    ~/.local/share/applications/ (${desktop_count} desktop entries)
 info "  Walls:   ~/Pictures/Wallpapers/ (${wallpaper_count} wallpapers)"
 info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
 info "  Boot:    /boot/loader/ (tracked; deploy with DEPLOY_LOADER=1)"
+info "  Image:   /etc/mkinitcpio.conf + linux.preset (run mkinitcpio -P to rebuild)"
 info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut tokyo-night theme"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
