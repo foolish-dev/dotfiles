@@ -8,13 +8,13 @@
         "baseURL": "http://127.0.0.1:1234/v1"
       },
       "models": {
-        "qwen2.5-coder-7b-instruct": {
+        "crow-9b-heretic-4.6": {
           "name": "Qwen2.5 Coder 7B (local)"
         },
-        "deepseek-r1-distill-qwen-7b": {
-          "name": "DeepSeek R1 7B (local)"
+        "qwen3.5-9b-claude-4.6-os-auto-variable-heretic-uncensored-thinking-max-neocode-imatrix": {
+          "name": "Claude 9B (local)"
         },
-        "llama-3.2-3b-instruct": {
+        "gemma-3-12b-it-heretic": {
           "name": "Llama 3.2 3B (local)"
         }
       }
