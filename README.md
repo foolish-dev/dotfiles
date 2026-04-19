@@ -54,18 +54,16 @@
 <!-- Capture via niri: Print (region), Mod+Print (screen), Mod+Shift+Print (window).
      Drop PNGs in ./screenshots/ and reference them below. -->
 
-<!--
 <p align="center">
-  <img src="screenshots/desktop.png" alt="Desktop" width="900"/>
+  <img src="screenshots/desktop.png" alt="Niri + Noctalia desktop (cafe-at-night wallpaper)" width="900"/>
 </p>
 
+<!-- Additional panels — uncomment as screenshots land in ./screenshots/:
 | | |
 |---|---|
 | <img src="screenshots/noctalia-launcher.png" alt="Launcher" width="440"/> | <img src="screenshots/nvim.png" alt="Neovim" width="440"/> |
 | <img src="screenshots/noctalia-control.png" alt="Control Center" width="440"/> | <img src="screenshots/terminal.png" alt="Terminal" width="440"/> |
 -->
-
-_Screenshots forthcoming — capture clean shots per `screenshots/.gitkeep` and uncomment the block above._
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
