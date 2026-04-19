@@ -114,18 +114,6 @@ systemctl --user daemon-reload 2>/dev/null || true
 systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
   warn "  hexstrike-server.service failed to start (run install.sh first)"
 
-# ── keyd config (Super tap -> F13 for Noctalia launcher) ──────────────────
-if [[ -d "$DOTFILES/etc/keyd" ]]; then
-  info "Deploying keyd config to /etc/keyd/ ..."
-  sudo mkdir -p /etc/keyd
-  for conf in "$DOTFILES/etc/keyd"/*; do
-    [[ -f "$conf" ]] && sudo cp "$conf" "/etc/keyd/$(basename "$conf")"
-    ok "  Copied $(basename "$conf")"
-  done
-  sudo systemctl enable --now keyd.service 2>/dev/null ||
-    warn "  keyd.service failed to start (install keyd first)"
-fi
-
 # ── mkinitcpio (produces the initramfs boot image) ────────────────────────
 # Deploying the config alone does not rebuild the image. Run
 # `sudo mkinitcpio -P` after changes, or let a kernel/package upgrade
@@ -220,7 +208,6 @@ info "  Prompt:  ~/.config/starship.toml"
 info "  Scripts: ~/.local/bin/ (${script_count} scripts)"
 info "  Apps:    ~/.local/share/applications/ (${desktop_count} desktop entries)"
 info "  Walls:   ~/Pictures/Wallpapers/ (${wallpaper_count} wallpapers)"
-info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
 info "  Boot:    /boot/loader/ (tracked; deploy with DEPLOY_LOADER=1)"
 info "  Image:   /etc/mkinitcpio.conf + linux.preset (run mkinitcpio -P to rebuild)"
 info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut cyberpunk theme"

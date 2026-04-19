@@ -41,7 +41,7 @@
 | Audio | PipeWire + WirePlumber (pipewire-pulse, pipewire-alsa, pipewire-jack) |
 | Network | NetworkManager + iwd backend |
 | Git | delta side-by-side diffs, 30+ aliases, lazygit TUI |
-| Launcher | Noctalia app launcher (Super key tap via [keyd](https://github.com/rvaiya/keyd)) + Fuzzel |
+| Launcher | Noctalia app launcher (`Mod+Space` / `Mod+D`) + Fuzzel |
 | Display Manager | [SDDM](https://github.com/sddm/sddm) (5 themes, cyberpunk default, `sddm-theme` switcher) |
 | Theme | Tokyo Night (dark, transparent) + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven colors) |
 | Wallpapers | 23 curated Tokyo Night wallpapers (Arch, cyberpunk, Japanese art, minimal) |
@@ -119,7 +119,6 @@ assets/                        README SVG images (header, dividers, palette, arc
 etc/
   sddm.conf.d/niri.conf       SDDM display manager config (deployed to /etc)
   sddm-themes/                 custom astronaut theme configs (tokyo-night, cyberpunk)
-  keyd/default.conf            Super key tap -> Noctalia launcher (via keyd)
 bootstrap.sh                   one-liner installer (curl | bash)
 install.sh                     Arch + BlackArch + Chaotic AUR package bootstrap
 deploy.sh                      symlink deployer with auto-backup
@@ -135,9 +134,8 @@ deploy.sh                      symlink deployer with auto-backup
 
 | Key | Action |
 |---|---|
-| `Super` (tap) | Noctalia app launcher (via keyd) |
-| `Super+D` | Noctalia app launcher |
 | `Super+Space` | Noctalia app launcher (toggle) |
+| `Super+D` | Noctalia app launcher |
 | `Super+S` | Noctalia control center |
 | `Super+Comma` | Noctalia settings |
 | `Super+Return` | Terminal |
@@ -371,8 +369,6 @@ The Noctalia dock and app launcher are pre-configured with pinned security tools
 | Cloud Security | Pacu, ScoutSuite, Prowler |
 
 147 custom `.desktop` entries in `.local/share/applications/` provide launcher integration for terminal-based BlackArch tools. Each opens in Kitty with a usage hint.
-
-The Super key tap is handled by [keyd](https://github.com/rvaiya/keyd) (`etc/keyd/default.conf`), which maps Super tap to F13 while preserving all `Super+key` combos.
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
