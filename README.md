@@ -230,7 +230,7 @@ pyright, ruff, clangd, rust_analyzer, gopls, zls, ts_ls, bashls, lua_ls, html, c
 | `<leader>xH` | Hex editor (hex.nvim) |
 | `<leader>xh` / `<leader>xr` | xxd hex view / revert |
 | `<leader>mp` | Markdown preview |
-| `<leader>rr` | Run HTTP request |
+| `<leader>rr` / `<leader>rl` | Run HTTP request / Re-run last (rest.nvim) |
 | `<C-\>` / `<leader>tf` | Float terminal |
 | `<leader>th` / `<leader>tv` | Terminal horizontal / vertical |
 

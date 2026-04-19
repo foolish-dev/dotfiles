@@ -133,10 +133,33 @@ return {
   {
     "rest-nvim/rest.nvim",
     ft   = "http",
+    dependencies = { "nvim-neotest/nvim-nio" },
     keys = {
       { "<leader>rr", "<cmd>Rest run<cr>",     desc = "Run HTTP request" },
       { "<leader>rl", "<cmd>Rest run last<cr>", desc = "Re-run last request" },
     },
-    opts = {},
+    opts = {
+      env = {
+        enable  = true,
+        pattern = ".*%.env.*",
+      },
+      response = {
+        hooks = {
+          decode_url = true,
+          format     = true,
+        },
+      },
+      ui = {
+        winbar = true,
+        keybinds = {
+          prev = "H",
+          next = "L",
+        },
+      },
+      highlight = {
+        enable  = true,
+        timeout = 500,
+      },
+    },
   },
 }
