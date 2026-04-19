@@ -1,0 +1,19 @@
+# screenshots/
+
+PNG captures for README showcases. Anything dropped here becomes available to
+reference from README.md via `screenshots/<name>.png`.
+
+Capture from niri (see .config/niri/config.kdl):
+  Print             region (slurp selector)
+  Mod+Print         whole screen
+  Mod+Shift+Print   focused window
+
+All captures land in `~/Pictures/Screenshots/` — rename and move into this
+directory, then reference in README.md.
+
+Suggested shots:
+  desktop.png                 full workspace (Mod+Print)
+  noctalia-launcher.png       Mod+Space opened, then Mod+Print
+  noctalia-control.png        Mod+S opened, then Mod+Print
+  nvim.png                    nvim + telescope/neo-tree (Mod+Shift+Print)
+  terminal.png                kitty with fastfetch banner
