@@ -1,4 +1,4 @@
-{
+{{
     "mPrimary": "{color4}",
     "mOnPrimary": "{background}",
     "mPrimaryContainer": "{color12}",
@@ -35,4 +35,4 @@
     "mSurfaceContainer": "{color8}",
     "mSurfaceContainerHigh": "{color8}",
     "mSurfaceContainerHighest": "{color8}"
-}
+}}
