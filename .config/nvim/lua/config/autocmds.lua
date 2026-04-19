@@ -65,15 +65,34 @@ autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- ── Auto-open Neo-tree + opencode on startup ──────────────────────────────
--- Skip when launched bare so the alpha dashboard still shows.
+-- Skip when launched bare (alpha dashboard shows), in diff mode, or as the
+-- editor for short-lived edits like git commits / rebases / crontab / visudo
+-- where forcing a 3-pane layout into a 60-second buffer is just noise.
 autocmd("VimEnter", {
   group = augroup("AutoOpenLayout", { clear = true }),
   callback = function()
-    if vim.fn.argc() == 0 then return end
+    if vim.fn.argc() == 0 or vim.o.diff then return end
+    local first = vim.fn.argv(0) or ""
+    local skip_patterns = {
+      "EDITMSG$",          -- COMMIT_EDITMSG, MERGE_MSG, TAG_EDITMSG, SQUASH_MSG
+      "git%-rebase%-todo$",
+      "/crontab%.",
+      "sudoers%.tmp",
+    }
+    for _, pat in ipairs(skip_patterns) do
+      if first:match(pat) then return end
+    end
+
+    local file_win = vim.api.nvim_get_current_win()
     vim.schedule(function()
       vim.cmd("Neotree show")
-      pcall(function() require("opencode").toggle() end)
-      vim.cmd("wincmd p") -- return focus to the file window
+      local ok, err = pcall(function() require("opencode").toggle() end)
+      if not ok then
+        vim.notify("opencode autoload failed: " .. tostring(err), vim.log.levels.WARN)
+      end
+      if vim.api.nvim_win_is_valid(file_win) then
+        vim.api.nvim_set_current_win(file_win)
+      end
     end)
   end,
 })
