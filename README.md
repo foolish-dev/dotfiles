@@ -114,7 +114,7 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   opencode/opencode.json       AI agent config (LM Studio provider, HexStrike MCP)
   wal/templates/               pywal templates (kitty, noctalia)
   fastfetch/                    system fetch display
-  systemd/user/                cliphist, swww, hexstrike-server services
+  systemd/user/                cliphist, awww, hexstrike-server services
 .zshrc                         shell -- 80+ aliases, BlackArch tool shortcuts, pywal init
 .gitconfig                     delta diffs, 30+ aliases, nvim mergetool
 .gitignore_global              universal project ignores
@@ -297,7 +297,7 @@ wallpaper ~/Pictures/bg.jpg    # set wallpaper + regenerate all colors
 
 The `wallpaper` script:
 1. Runs `wal -i` to generate colors
-2. Sets the wallpaper via `swww img` with a grow transition
+2. Sets the wallpaper via `awww img` with a grow transition
 3. Live-reloads kitty colors
 4. Copies the generated `colors-noctalia.json` into noctalia's config
 

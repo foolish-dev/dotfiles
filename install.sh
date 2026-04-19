@@ -95,7 +95,7 @@ PKG_CORE=(
   noctalia-qs
   noctalia-shell
   xwayland-satellite
-  swww
+  awww
   fuzzel
   wl-clipboard
   cliphist

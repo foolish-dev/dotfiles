@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # wallpaper -- set wallpaper and regenerate pywal color scheme
-# Usage: wallpaper <image> [extra swww-img flags]
+# Usage: wallpaper <image> [extra awww-img flags]
 # Hooks: kitty (live reload), noctalia colors.json, niri reload
 set -euo pipefail
 
-IMAGE="${1:?Usage: wallpaper <image> [swww-img flags]}"
-shift || true  # remaining args passed to swww img
+IMAGE="${1:?Usage: wallpaper <image> [awww-img flags]}"
+shift || true  # remaining args passed to awww img
 
 [[ -f "$IMAGE" ]] || { echo "[-] File not found: $IMAGE"; exit 1; }
 IMAGE="$(realpath "$IMAGE")"
@@ -14,9 +14,9 @@ IMAGE="$(realpath "$IMAGE")"
 wal -i "$IMAGE" -n -q          # -n = skip setting wallpaper, -q = quiet
 echo "[+] pywal colors generated"
 
-# ── 2. Set wallpaper via swww ─────────────────────────────────────────────
-if swww query &>/dev/null 2>&1; then
-  swww img "$IMAGE" \
+# ── 2. Set wallpaper via awww ─────────────────────────────────────────────
+if awww query &>/dev/null 2>&1; then
+  awww img "$IMAGE" \
     --transition-type grow \
     --transition-pos 0.5,0.5 \
     --transition-duration 1.2 \
@@ -24,7 +24,7 @@ if swww query &>/dev/null 2>&1; then
     "$@"
   echo "[+] Wallpaper set: $IMAGE"
 else
-  echo "[!] swww daemon not running -- start with: systemctl --user start swww.service"
+  echo "[!] awww daemon not running -- start with: systemctl --user start awww.service"
 fi
 
 # ── 3. Reload kitty colors in all running instances ───────────────────────

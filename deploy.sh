@@ -109,7 +109,7 @@ info "Enabling user systemd services ..."
 systemctl --user daemon-reload 2>/dev/null || true
 # These are started by niri spawn-at-startup, so we don't enable them
 # as systemd services by default. Uncomment if you prefer systemd management:
-# systemctl --user enable --now swww.service 2>/dev/null || true
+# systemctl --user enable --now awww.service 2>/dev/null || true
 # systemctl --user enable --now cliphist.service 2>/dev/null || true
 systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
   warn "  hexstrike-server.service failed to start (run install.sh first)"
