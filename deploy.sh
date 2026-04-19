@@ -223,7 +223,7 @@ info "  Walls:   ~/Pictures/Wallpapers/ (${wallpaper_count} wallpapers)"
 info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
 info "  Boot:    /boot/loader/ (tracked; deploy with DEPLOY_LOADER=1)"
 info "  Image:   /etc/mkinitcpio.conf + linux.preset (run mkinitcpio -P to rebuild)"
-info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut tokyo-night theme"
+info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut cyberpunk theme"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
   info "  Backups: $BACKUP_DIR"

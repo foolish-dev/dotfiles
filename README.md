@@ -42,7 +42,7 @@
 | Network | NetworkManager + iwd backend |
 | Git | delta side-by-side diffs, 30+ aliases, lazygit TUI |
 | Launcher | Noctalia app launcher (Super key tap via [keyd](https://github.com/rvaiya/keyd)) + Fuzzel |
-| Display Manager | [SDDM](https://github.com/sddm/sddm) (5 themes, Tokyo Night default, `sddm-theme` switcher) |
+| Display Manager | [SDDM](https://github.com/sddm/sddm) (5 themes, cyberpunk default, `sddm-theme` switcher) |
 | Theme | Tokyo Night (dark, transparent) + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven colors) |
 | Wallpapers | 23 curated Tokyo Night wallpapers (Arch, cyberpunk, Japanese art, minimal) |
 | Fetch | fastfetch (system info on shell start) |
@@ -295,11 +295,11 @@ Five SDDM themes are installed, with two custom Tokyo Night configs for the [ast
 
 | Theme | Style |
 |---|---|
+| `cyberpunk` | Built-in astronaut variant **(default)** |
 | `tokyo-night` | Tokyo Night palette, blurred form, JetBrainsMono, samurai background |
 | `tokyo-night-cyberpunk` | Neon red/cyan accents, sharp edges, matrix background |
 | `astronaut` | Default astronaut (space theme) |
 | `japanese_aesthetic` | Built-in astronaut variant |
-| `cyberpunk` | Built-in astronaut variant |
 | `sddm-theme-noctalia` | Made for Noctalia Shell |
 | `tokyo-night-sddm` | Original Tokyo Night SDDM (Qt5) |
 | `sddm-sugar-dark` | Clean minimal dark |
