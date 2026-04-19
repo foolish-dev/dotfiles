@@ -246,12 +246,12 @@ binds {
     // ── Core ──────────────────────────────────────────────────────────
     Mod+Return          { spawn "kitty"; }
     Mod+Shift+Return    { spawn "kitty" "--class" "floating-term"; }
-    Mod+D               { spawn "qs" "ipc" "call" "launcher" "toggle"; }
+    Mod+D               { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+Q               { close-window; }
     Mod+Shift+E         { quit; }
     Mod+Shift+Slash     { show-hotkey-overlay; }
 
-    // ── Noctalia Launcher (Super tap via keyd -> F13) ─────────────────
+    // ── Noctalia Launcher ─────────────────────────────────────────────
     Mod+Space           { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     // ── Reload ────────────────────────────────────────────────────────
     Mod+Shift+C         { spawn "niri" "msg" "action" "reload-config"; }
@@ -354,7 +354,7 @@ binds {
     Mod+Ctrl+A           { spawn "lm-studio"; }
 
     // ── Noctalia shell toggle (overview / control center) ────────────
-    // Launcher already bound above (Mod+D, F13 via keyd).
+    // Launcher already bound above (Mod+D, Mod+Space).
     Mod+S     { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
     Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
 }
