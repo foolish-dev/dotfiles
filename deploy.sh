@@ -126,6 +126,22 @@ if [[ -d "$DOTFILES/etc/keyd" ]]; then
     warn "  keyd.service failed to start (install keyd first)"
 fi
 
+# ── systemd-boot (GUARDED: set DEPLOY_LOADER=1 to apply) ──────────────────
+# The tracked entry pins this machine's PARTUUID + kernel cmdline. Applying
+# it on a different install would leave the system unbootable on next
+# reboot. Opt in explicitly once you've confirmed the entry matches.
+if [[ -d "$DOTFILES/etc/loader" && "${DEPLOY_LOADER:-0}" == "1" ]]; then
+  info "Deploying systemd-boot config to /boot/loader/ ..."
+  sudo cp "$DOTFILES/etc/loader/loader.conf" /boot/loader/loader.conf
+  ok "  Copied loader.conf"
+  sudo mkdir -p /boot/loader/entries
+  for entry in "$DOTFILES/etc/loader/entries"/*.conf; do
+    [[ -f "$entry" ]] || continue
+    sudo cp "$entry" "/boot/loader/entries/$(basename "$entry")"
+    ok "  Copied $(basename "$entry")"
+  done
+fi
+
 # ── SDDM config (system-wide, requires sudo) ─────────────────────────────
 if [[ -d "$DOTFILES/etc/sddm.conf.d" ]]; then
   info "Deploying SDDM config to /etc/sddm.conf.d/ ..."
@@ -188,6 +204,7 @@ info "  Scripts: ~/.local/bin/ (${script_count} scripts)"
 info "  Apps:    ~/.local/share/applications/ (${desktop_count} desktop entries)"
 info "  Walls:   ~/Pictures/Wallpapers/ (${wallpaper_count} wallpapers)"
 info "  keyd:    /etc/keyd/default.conf (Super tap -> Noctalia launcher)"
+info "  Boot:    /boot/loader/ (tracked; deploy with DEPLOY_LOADER=1)"
 info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut tokyo-night theme"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
