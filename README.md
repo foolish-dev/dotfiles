@@ -86,7 +86,7 @@ cd ~/dotfiles
 
 First `nvim` launch auto-installs all plugins and LSP servers.
 
-> **After install:** update your identity in `.gitconfig` — the defaults are placeholders:
+> **After install:** override the git identity with your own — the tracked `.gitconfig` ships with the author's name/email:
 > ```bash
 > git config --global user.name  "Your Name"
 > git config --global user.email "you@example.com"
@@ -113,7 +113,7 @@ First `nvim` launch auto-installs all plugins and LSP servers.
   starship.toml                prompt
   opencode/opencode.json       AI agent config (LM Studio provider, HexStrike MCP)
   wal/templates/               pywal templates (kitty, noctalia)
-  fastfetch/                    system fetch display
+  neofetch/                    system fetch display (fallback for fastfetch)
   systemd/user/                cliphist, awww, hexstrike-server services
 .zshrc                         shell -- 80+ aliases, BlackArch tool shortcuts, pywal init
 .gitconfig                     delta diffs, 30+ aliases, nvim mergetool

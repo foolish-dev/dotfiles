@@ -9,13 +9,13 @@
       },
       "models": {
         "crow-9b-heretic-4.6": {
-          "name": "Qwen2.5 Coder 7B (local)"
+          "name": "Crow 9B Heretic (local)"
         },
         "qwen3.5-9b-claude-4.6-os-auto-variable-heretic-uncensored-thinking-max-neocode-imatrix": {
-          "name": "Claude 9B (local)"
+          "name": "Qwen 3.5 9B Heretic (local)"
         },
         "gemma-3-12b-it-heretic": {
-          "name": "Llama 3.2 3B (local)"
+          "name": "Gemma 3 12B IT Heretic (local)"
         }
       }
     }

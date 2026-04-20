@@ -536,7 +536,7 @@
         "animationDisabled": false,
         "animationSpeed": 1.2,
         "autoStartAuth": false,
-        "avatarImage": "/home/fool/Downloads/1057973.jpg",
+        "avatarImage": "",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
@@ -822,7 +822,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/fool/Pictures/Wallpapers",
+        "directory": "",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
