@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="100" viewBox="0 0 900 100">
+  <defs>
+    <linearGradient id="tbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e1e2e7"/>
+      <stop offset="100%" style="stop-color:#d5d6db"/>
+    </linearGradient>
+    <linearGradient id="tacc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2e7de9"/>
+      <stop offset="50%" style="stop-color:#587539"/>
+      <stop offset="100%" style="stop-color:#007197"/>
+    </linearGradient>
+    <filter id="tglow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="tgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#a8aecb" stroke-width="0.2" opacity="0.25"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="100" rx="10" fill="url(#tbg)"/>
+  <rect width="900" height="100" rx="10" fill="url(#tgrid)"/>
+  <rect x="60" y="14" width="780" height="1" rx="0.5" fill="url(#tacc)" opacity="0.5"/>
+
+  <!-- Terminal icon -->
+  <g transform="translate(68, 30)" filter="url(#tglow)">
+    <rect x="0" y="0" width="44" height="36" rx="5" fill="none" stroke="#587539" stroke-width="1.5"/>
+    <rect x="0" y="0" width="44" height="9" rx="5" fill="#587539" opacity="0.1"/>
+    <circle cx="7"  cy="4.5" r="2" fill="#f52a65" opacity="0.8"/>
+    <circle cx="14" cy="4.5" r="2" fill="#8c6c3e" opacity="0.8"/>
+    <circle cx="21" cy="4.5" r="2" fill="#587539" opacity="0.8"/>
+    <path d="M8,18 L16,24 L8,30" fill="none" stroke="#2e7de9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="19" y1="30" x2="34" y2="30" stroke="#587539" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <text x="130" y="52" font-family="'JetBrains Mono','Fira Code',monospace" font-size="22" font-weight="700" fill="#3760bf" filter="url(#tglow)">Terminal</text>
+  <text x="130" y="71" font-family="'JetBrains Mono','Fira Code',monospace" font-size="11" fill="#6172b0" letter-spacing="2">KITTY  ·  TMUX  ·  ZSH  ·  ZINIT  ·  STARSHIP</text>
+
+  <!-- Tool badges -->
+  <g font-family="'JetBrains Mono',monospace" font-size="10">
+    <rect x="558" y="35" width="46" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="581" y="51" text-anchor="middle" fill="#2e7de9">kitty</text>
+    <rect x="616" y="35" width="46" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="639" y="51" text-anchor="middle" fill="#587539">tmux</text>
+    <rect x="674" y="35" width="40" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="694" y="51" text-anchor="middle" fill="#007197">zsh</text>
+    <rect x="726" y="35" width="74" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="763" y="51" text-anchor="middle" fill="#8c6c3e">starship</text>
+  </g>
+
+  <rect x="60" y="85" width="780" height="1" rx="0.5" fill="url(#tacc)" opacity="0.5"/>
+  <circle cx="840" cy="85" r="2.5" fill="#587539" opacity="0.7"/>
+  <circle cx="851" cy="85" r="2.5" fill="#2e7de9" opacity="0.7"/>
+</svg>

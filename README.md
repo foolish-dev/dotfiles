@@ -28,7 +28,11 @@
 
 ## Stack
 
-<img src="assets/stack.svg" alt="Architecture" width="900"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg"/>
+  <img src="assets/stack.svg" alt="Architecture — Arch, Niri, Noctalia, Neovim, Docker, LM Studio stack diagram" width="900"/>
+</picture>
 
 | Layer | Tool |
 |---|---|
@@ -150,7 +154,13 @@ deploy.sh                      symlink deployer with auto-backup
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
-<p align="center"><img src="assets/keybinds.svg" alt="Keybinds" width="900"/></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/keybinds.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="assets/keybinds-light.svg"/>
+    <img src="assets/keybinds.svg" alt="Keybinds section header — Niri, tmux, Neovim modifier key reference" width="900"/>
+  </picture>
+</p>
 
 ## Keybinds
 
@@ -217,7 +227,13 @@ deploy.sh                      symlink deployer with auto-backup
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
-<p align="center"><img src="assets/neovim.svg" alt="Neovim" width="900"/></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/neovim.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="assets/neovim-light.svg"/>
+    <img src="assets/neovim.svg" alt="Neovim section header — LSP, DAP, Treesitter, lazy.nvim stack" width="900"/>
+  </picture>
+</p>
 
 ## Neovim
 
@@ -358,7 +374,13 @@ Sourced from [tokyo-night/wallpapers](https://github.com/tokyo-night/wallpapers)
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
-<p align="center"><img src="assets/launcher.svg" alt="Noctalia Launcher" width="900"/></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/launcher.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="assets/launcher-light.svg"/>
+    <img src="assets/launcher.svg" alt="Noctalia launcher section header — 155 pinned apps across 21 categories" width="900"/>
+  </picture>
+</p>
 
 ## Noctalia Dock & Launcher
 
@@ -396,7 +418,13 @@ The Noctalia dock and app launcher are pre-configured with pinned security tools
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
-<p align="center"><img src="assets/blackarch.svg" alt="BlackArch Tools" width="900"/></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/blackarch.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="assets/blackarch-light.svg"/>
+    <img src="assets/blackarch.svg" alt="BlackArch section header — 300+ offensive security tools across 21 categories" width="900"/>
+  </picture>
+</p>
 
 ## BlackArch Tools
 
@@ -432,7 +460,13 @@ The installer adds the BlackArch repository and pulls 300+ tools across 19 categ
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
-<p align="center"><img src="assets/terminal.svg" alt="Terminal" width="900"/></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/terminal.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="assets/terminal-light.svg"/>
+    <img src="assets/terminal.svg" alt="Terminal section header — Kitty, tmux, zsh, zinit, starship stack" width="900"/>
+  </picture>
+</p>
 
 ## Zsh Security Toolkit
 
@@ -490,7 +524,11 @@ lg                                 # lazygit
 
 ## Color Palette
 
-<img src="assets/palette.svg" alt="Tokyo Night Palette" width="900"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/palette.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="assets/palette-light.svg"/>
+  <img src="assets/palette.svg" alt="Tokyo Night palette — bg, comment, blue, cyan, purple, green, yellow, red swatches with hex codes" width="900"/>
+</picture>
 
 <img src="assets/divider.svg" alt="" width="900"/>
 

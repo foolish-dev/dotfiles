@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="100" viewBox="0 0 900 100">
+  <defs>
+    <linearGradient id="bbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e1e2e7"/>
+      <stop offset="100%" style="stop-color:#d5d6db"/>
+    </linearGradient>
+    <linearGradient id="bacc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f52a65"/>
+      <stop offset="50%" style="stop-color:#9854f1"/>
+      <stop offset="100%" style="stop-color:#8c6c3e"/>
+    </linearGradient>
+    <filter id="bglow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="bgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#a8aecb" stroke-width="0.2" opacity="0.25"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="100" rx="10" fill="url(#bbg)"/>
+  <rect width="900" height="100" rx="10" fill="url(#bgrid)"/>
+  <rect x="60" y="14" width="780" height="1" rx="0.5" fill="url(#bacc)" opacity="0.5"/>
+
+  <!-- Shield icon -->
+  <g transform="translate(70, 26)" filter="url(#bglow)">
+    <path d="M22,2 L40,10 L40,28 Q40,42 22,48 Q4,42 4,28 L4,10 Z" fill="none" stroke="#f52a65" stroke-width="1.5"/>
+    <path d="M14,26 L20,32 L32,18" fill="none" stroke="#587539" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="130" y="52" font-family="'JetBrains Mono','Fira Code',monospace" font-size="22" font-weight="700" fill="#3760bf" filter="url(#bglow)">BlackArch Tools</text>
+  <text x="130" y="71" font-family="'JetBrains Mono','Fira Code',monospace" font-size="11" fill="#6172b0" letter-spacing="2">300+ TOOLS  ·  21 CATEGORIES  ·  PENTEST READY</text>
+
+  <!-- Category badges -->
+  <g font-family="'JetBrains Mono',monospace" font-size="10">
+    <rect x="548" y="35" width="56" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="576" y="51" text-anchor="middle" fill="#f52a65">recon</text>
+    <rect x="616" y="35" width="56" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="644" y="51" text-anchor="middle" fill="#9854f1">exploit</text>
+    <rect x="684" y="35" width="56" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="712" y="51" text-anchor="middle" fill="#8c6c3e">wireless</text>
+    <rect x="752" y="35" width="48" height="22" rx="4" fill="#d5d6db" stroke="#a8aecb" stroke-width="1"/>
+    <text x="776" y="51" text-anchor="middle" fill="#587539">300+</text>
+  </g>
+
+  <rect x="60" y="85" width="780" height="1" rx="0.5" fill="url(#bacc)" opacity="0.5"/>
+  <circle cx="840" cy="85" r="2.5" fill="#f52a65" opacity="0.7"/>
+  <circle cx="851" cy="85" r="2.5" fill="#9854f1" opacity="0.7"/>
+</svg>

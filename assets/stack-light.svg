@@ -1,0 +1,282 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <defs>
+    <linearGradient id="sbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e1e2e7"/>
+      <stop offset="100%" style="stop-color:#d5d6db"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2e7de9"/>
+      <stop offset="100%" style="stop-color:#9854f1"/>
+    </linearGradient>
+    <filter id="cardshadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="iconglow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="540" rx="12" fill="url(#sbg)"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#6172b0" letter-spacing="6">ARCHITECTURE</text>
+
+  <!-- === Row 1: System Layer === -->
+
+  <!-- Arch Linux -->
+  <g filter="url(#cardshadow)">
+    <rect x="30" y="55" width="170" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <circle cx="65" cy="80" r="12" fill="none" stroke="#2e7de9" stroke-width="1.5"/>
+    <text x="65" y="85" text-anchor="middle" font-family="monospace" font-size="14" fill="#2e7de9">A</text>
+  </g>
+  <text x="85" y="82" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">Arch Linux</text>
+  <text x="50" y="105" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">+ BlackArch + Chaotic AUR</text>
+  <text x="50" y="120" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">300+ packages, 19 categories</text>
+
+  <!-- Niri -->
+  <g filter="url(#cardshadow)">
+    <rect x="220" y="55" width="170" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <rect x="240" y="70" width="20" height="20" rx="3" fill="none" stroke="#9854f1" stroke-width="1.5"/>
+    <rect x="247" y="77" width="8" height="8" rx="1" fill="#9854f1" opacity="0.5"/>
+  </g>
+  <text x="270" y="82" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">Niri</text>
+  <text x="240" y="105" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">Wayland compositor</text>
+  <text x="240" y="120" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">scrollable tiling + keyd</text>
+
+  <!-- Noctalia -->
+  <g filter="url(#cardshadow)">
+    <rect x="410" y="55" width="170" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <rect x="430" y="68" width="22" height="3" rx="1.5" fill="#007197"/>
+    <circle cx="441" cy="85" r="7" fill="none" stroke="#007197" stroke-width="1.5"/>
+  </g>
+  <text x="460" y="82" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">Noctalia</text>
+  <text x="430" y="105" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">shell, dock, 155 pinned apps</text>
+  <text x="430" y="120" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">Super key launcher via IPC</text>
+
+  <!-- SDDM -->
+  <g filter="url(#cardshadow)">
+    <rect x="600" y="55" width="130" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <rect x="618" y="69" width="18" height="14" rx="2" fill="none" stroke="#8c6c3e" stroke-width="1.5"/>
+    <circle cx="627" cy="76" r="3" fill="#8c6c3e" opacity="0.5"/>
+  </g>
+  <text x="643" y="82" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">SDDM</text>
+  <text x="618" y="105" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">5 themes + switcher</text>
+  <text x="618" y="120" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">Tokyo Night default</text>
+
+  <!-- Tokyo Night -->
+  <g filter="url(#cardshadow)">
+    <rect x="750" y="55" width="120" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <circle cx="778" cy="78" r="8" fill="none" stroke="#8c6c3e" stroke-width="1.5"/>
+    <circle cx="778" cy="78" r="3" fill="#8c6c3e" opacity="0.5"/>
+  </g>
+  <text x="792" y="82" font-family="'JetBrains Mono', monospace" font-size="10" fill="#3760bf" font-weight="600">Tokyo</text>
+  <text x="792" y="95" font-family="'JetBrains Mono', monospace" font-size="10" fill="#3760bf" font-weight="600">Night</text>
+  <text x="768" y="120" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">pywal + 23 walls</text>
+
+  <!-- Connection lines Row 1 -> Row 2 -->
+  <line x1="115" y1="135" x2="115" y2="160" stroke="#a8aecb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="305" y1="135" x2="305" y2="160" stroke="#a8aecb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="495" y1="135" x2="495" y2="160" stroke="#a8aecb" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- === Row 2: Terminal + Editor Layer === -->
+
+  <!-- Kitty -->
+  <g filter="url(#cardshadow)">
+    <rect x="30" y="160" width="170" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <text x="55" y="195" font-family="monospace" font-size="18" fill="#587539">$_</text>
+  </g>
+  <text x="80" y="192" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">Kitty</text>
+  <text x="50" y="215" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">terminal emulator</text>
+  <text x="50" y="228" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">GPU-accel, 0.92 opacity</text>
+
+  <!-- Zsh + Tmux -->
+  <g filter="url(#cardshadow)">
+    <rect x="220" y="160" width="170" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <text x="247" y="194" font-family="monospace" font-size="15" fill="#587539">Z</text>
+  </g>
+  <text x="262" y="192" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">Zsh + tmux</text>
+  <text x="240" y="215" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">Zinit + Starship</text>
+  <text x="240" y="228" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">80+ aliases, vi-mode</text>
+
+  <!-- Neovim -->
+  <g filter="url(#cardshadow)">
+    <rect x="410" y="160" width="170" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <text x="440" y="195" font-family="monospace" font-size="16" fill="#587539" font-weight="bold">N</text>
+  </g>
+  <text x="458" y="192" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">Neovim</text>
+  <text x="430" y="215" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">lazy.nvim, 16 LSPs</text>
+  <text x="430" y="228" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">DAP, Treesitter, cmp</text>
+
+  <!-- Git -->
+  <g filter="url(#cardshadow)">
+    <rect x="600" y="160" width="170" height="80" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <circle cx="628" cy="190" r="5" fill="none" stroke="#ff9e64" stroke-width="1.5"/>
+    <line x1="633" y1="190" x2="645" y2="190" stroke="#ff9e64" stroke-width="1.5"/>
+    <circle cx="650" cy="190" r="5" fill="none" stroke="#ff9e64" stroke-width="1.5"/>
+  </g>
+  <text x="660" y="192" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">Git</text>
+  <text x="618" y="215" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">delta, lazygit TUI</text>
+  <text x="618" y="228" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">30+ aliases</text>
+
+  <!-- Connection lines Row 2 -> Row 3 -->
+  <line x1="155" y1="240" x2="155" y2="270" stroke="#a8aecb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="450" y1="240" x2="450" y2="270" stroke="#a8aecb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="685" y1="240" x2="685" y2="270" stroke="#a8aecb" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- === Row 3: AI + Security Layer === -->
+
+  <!-- OpenCode + LM Studio -->
+  <g filter="url(#cardshadow)">
+    <rect x="30" y="270" width="250" height="80" rx="10" fill="#e1e2e7" stroke="#2e7de9" stroke-width="1" stroke-opacity="0.5"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <text x="55" y="302" font-family="monospace" font-size="18" fill="#2e7de9">AI</text>
+  </g>
+  <text x="80" y="300" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">OpenCode + LM Studio</text>
+  <text x="50" y="323" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">AI coding agent + local LLM inference</text>
+  <text x="50" y="336" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">Qwen, DeepSeek, Llama on :1234</text>
+
+  <!-- HexStrike AI -->
+  <g filter="url(#cardshadow)">
+    <rect x="300" y="270" width="250" height="80" rx="10" fill="#e1e2e7" stroke="#f52a65" stroke-width="1" stroke-opacity="0.5"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <path d="M325,290 L335,285 L345,290 L345,305 Q345,315 335,318 Q325,315 325,305 Z" fill="none" stroke="#f52a65" stroke-width="1.5"/>
+    <text x="335" y="305" text-anchor="middle" font-family="monospace" font-size="10" fill="#f52a65">H</text>
+  </g>
+  <text x="355" y="300" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">HexStrike AI</text>
+  <text x="320" y="323" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">150+ security tools via MCP</text>
+  <text x="320" y="336" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">Flask backend on :8888</text>
+
+  <!-- BlackArch + Kali Security -->
+  <g filter="url(#cardshadow)">
+    <rect x="570" y="270" width="300" height="80" rx="10" fill="#e1e2e7" stroke="#f52a65" stroke-width="1" stroke-opacity="0.5"/>
+  </g>
+  <g filter="url(#iconglow)">
+    <text x="595" y="302" font-family="monospace" font-size="16" fill="#f52a65">&#x2620;</text>
+  </g>
+  <text x="618" y="300" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3760bf" font-weight="600">BlackArch + Kali Tools</text>
+  <text x="590" y="323" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">nmap, metasploit, burp, empire, zap</text>
+  <text x="590" y="336" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0">300+ tools across 19 categories</text>
+
+  <!-- Connection lines Row 3 -> Row 4 -->
+  <line x1="450" y1="350" x2="450" y2="375" stroke="#a8aecb" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- === Row 4: Security Categories === -->
+
+  <g filter="url(#cardshadow)">
+    <rect x="30" y="375" width="840" height="52" rx="10" fill="#e1e2e7" stroke="#f52a65" stroke-width="0.5" stroke-opacity="0.3"/>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="9">
+    <text x="50" y="395" fill="#6172b0">categories:</text>
+    <text x="130" y="395" fill="#f52a65">recon</text>
+    <text x="167" y="395" fill="#a8aecb">|</text>
+    <text x="177" y="395" fill="#ff9e64">dns</text>
+    <text x="200" y="395" fill="#a8aecb">|</text>
+    <text x="210" y="395" fill="#8c6c3e">web</text>
+    <text x="235" y="395" fill="#a8aecb">|</text>
+    <text x="245" y="395" fill="#f52a65">exploit</text>
+    <text x="290" y="395" fill="#a8aecb">|</text>
+    <text x="300" y="395" fill="#9854f1">AD</text>
+    <text x="318" y="395" fill="#a8aecb">|</text>
+    <text x="328" y="395" fill="#2e7de9">passwords</text>
+    <text x="393" y="395" fill="#a8aecb">|</text>
+    <text x="403" y="395" fill="#007197">wireless</text>
+    <text x="455" y="395" fill="#a8aecb">|</text>
+    <text x="465" y="395" fill="#587539">privesc</text>
+    <text x="513" y="395" fill="#a8aecb">|</text>
+    <text x="523" y="395" fill="#ff9e64">reverse</text>
+    <text x="570" y="395" fill="#a8aecb">|</text>
+    <text x="580" y="395" fill="#9854f1">mobile</text>
+    <text x="622" y="395" fill="#a8aecb">|</text>
+    <text x="632" y="395" fill="#007197">forensics</text>
+    <text x="690" y="395" fill="#a8aecb">|</text>
+    <text x="700" y="395" fill="#8c6c3e">cloud</text>
+    <text x="735" y="395" fill="#a8aecb">|</text>
+    <text x="745" y="395" fill="#f52a65">stego</text>
+    <text x="778" y="395" fill="#a8aecb">|</text>
+    <text x="788" y="395" fill="#587539">fuzz</text>
+
+    <text x="130" y="415" fill="#2e7de9">MITM</text>
+    <text x="167" y="415" fill="#a8aecb">|</text>
+    <text x="177" y="415" fill="#9854f1">social-eng</text>
+    <text x="243" y="415" fill="#a8aecb">|</text>
+    <text x="253" y="415" fill="#8c6c3e">crypto</text>
+    <text x="295" y="415" fill="#a8aecb">|</text>
+    <text x="305" y="415" fill="#007197">secrets</text>
+    <text x="353" y="415" fill="#a8aecb">|</text>
+    <text x="363" y="415" fill="#ff9e64">wordlists</text>
+  </g>
+
+  <!-- === Row 5: Scripts Layer === -->
+
+  <g filter="url(#cardshadow)">
+    <rect x="30" y="445" width="840" height="40" rx="10" fill="#e1e2e7" stroke="#a8aecb" stroke-width="1"/>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="10">
+    <text x="50" y="470" fill="#6172b0">scripts:</text>
+    <text x="115" y="470" fill="#2e7de9">proj</text>
+    <text x="148" y="470" fill="#a8aecb">|</text>
+    <text x="160" y="470" fill="#9854f1">mkproj</text>
+    <text x="210" y="470" fill="#a8aecb">|</text>
+    <text x="222" y="470" fill="#007197">dev</text>
+    <text x="248" y="470" fill="#a8aecb">|</text>
+    <text x="260" y="470" fill="#587539">gclone</text>
+    <text x="310" y="470" fill="#a8aecb">|</text>
+    <text x="322" y="470" fill="#8c6c3e">cheat</text>
+    <text x="365" y="470" fill="#a8aecb">|</text>
+    <text x="377" y="470" fill="#ff9e64">wallpaper</text>
+    <text x="445" y="470" fill="#a8aecb">|</text>
+    <text x="457" y="470" fill="#f52a65">sddm-theme</text>
+    <text x="540" y="470" fill="#a8aecb">|</text>
+    <text x="552" y="470" fill="#2e7de9">hexstrike-mcp</text>
+    <text x="650" y="470" fill="#a8aecb">|</text>
+    <text x="662" y="470" fill="#9854f1">colorbars</text>
+    <text x="730" y="470" fill="#a8aecb">|</text>
+    <text x="742" y="470" fill="#007197">colorblocks</text>
+    <text x="825" y="470" fill="#a8aecb">|</text>
+    <text x="837" y="470" fill="#587539">pipes</text>
+  </g>
+
+  <!-- === Row 6: Stats bar === -->
+
+  <g font-family="'JetBrains Mono', monospace" font-size="10">
+    <text x="115" y="515" text-anchor="middle" fill="#2e7de9">300+</text>
+    <text x="115" y="528" text-anchor="middle" fill="#6172b0" font-size="8">packages</text>
+
+    <text x="270" y="515" text-anchor="middle" fill="#9854f1">21</text>
+    <text x="270" y="528" text-anchor="middle" fill="#6172b0" font-size="8">categories</text>
+
+    <text x="410" y="515" text-anchor="middle" fill="#007197">155</text>
+    <text x="410" y="528" text-anchor="middle" fill="#6172b0" font-size="8">pinned apps</text>
+
+    <text x="545" y="515" text-anchor="middle" fill="#587539">23</text>
+    <text x="545" y="528" text-anchor="middle" fill="#6172b0" font-size="8">wallpapers</text>
+
+    <text x="670" y="515" text-anchor="middle" fill="#8c6c3e">5</text>
+    <text x="670" y="528" text-anchor="middle" fill="#6172b0" font-size="8">SDDM themes</text>
+
+    <text x="800" y="515" text-anchor="middle" fill="#f52a65">16</text>
+    <text x="800" y="528" text-anchor="middle" fill="#6172b0" font-size="8">LSP servers</text>
+  </g>
+</svg>

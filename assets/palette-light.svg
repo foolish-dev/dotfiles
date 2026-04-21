@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="160" viewBox="0 0 900 160">
+  <defs>
+    <linearGradient id="pbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e1e2e7"/>
+      <stop offset="100%" style="stop-color:#d5d6db"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background (light; swatches still show the Tokyo Night dark palette) -->
+  <rect width="900" height="160" rx="12" fill="url(#pbg)"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#6172b0" letter-spacing="6">TOKYO NIGHT PALETTE</text>
+
+  <!-- Color swatches: these are the Tokyo Night dark palette swatches, intentionally unchanged -->
+  <g filter="url(#shadow)">
+    <rect x="55"  y="48" width="85" height="55" rx="8" fill="#1a1b26"/>
+    <rect x="155" y="48" width="85" height="55" rx="8" fill="#414868"/>
+    <rect x="255" y="48" width="85" height="55" rx="8" fill="#7aa2f7"/>
+    <rect x="355" y="48" width="85" height="55" rx="8" fill="#7dcfff"/>
+    <rect x="455" y="48" width="85" height="55" rx="8" fill="#bb9af7"/>
+    <rect x="555" y="48" width="85" height="55" rx="8" fill="#9ece6a"/>
+    <rect x="655" y="48" width="85" height="55" rx="8" fill="#e0af68"/>
+    <rect x="755" y="48" width="85" height="55" rx="8" fill="#f7768e"/>
+  </g>
+
+  <!-- Color labels -->
+  <g font-family="'JetBrains Mono', monospace" font-size="9" fill="#3760bf" text-anchor="middle">
+    <text x="97"  y="120">bg</text>
+    <text x="197" y="120">comment</text>
+    <text x="297" y="120">blue</text>
+    <text x="397" y="120">cyan</text>
+    <text x="497" y="120">purple</text>
+    <text x="597" y="120">green</text>
+    <text x="697" y="120">yellow</text>
+    <text x="797" y="120">red</text>
+  </g>
+
+  <!-- Hex values -->
+  <g font-family="'JetBrains Mono', monospace" font-size="9" fill="#6172b0" text-anchor="middle">
+    <text x="97"  y="140">#1a1b26</text>
+    <text x="197" y="140">#414868</text>
+    <text x="297" y="140">#7aa2f7</text>
+    <text x="397" y="140">#7dcfff</text>
+    <text x="497" y="140">#bb9af7</text>
+    <text x="597" y="140">#9ece6a</text>
+    <text x="697" y="140">#e0af68</text>
+    <text x="797" y="140">#f7768e</text>
+  </g>
+</svg>

@@ -21,23 +21,32 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
+      - name: Install shellcheck
+        run: sudo apt-get update -qq && sudo apt-get install -y shellcheck
+
       - name: Run shellcheck
-        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # 2.0.0
-        env:
-          # W: warnings and above; scripts are pragmatic, not academic.
-          SHELLCHECK_OPTS: -S warning
-        with:
-          scandir: .
-          # Skip .zshrc (zsh-only syntax shellcheck can't parse) and .git.
-          # .local/bin/ scripts are executable + have bash shebangs, so the
-          # action picks them up automatically via scandir.
-          ignore_paths: >-
-            .git
-            .zshrc
-          additional_files: >-
-            install.sh
-            deploy.sh
-            bootstrap.sh
+        run: |
+          set -e
+          # Enumerate shell scripts we actually want to lint: top-level *.sh
+          # plus anything in .local/bin with a bash/sh shebang. Skip .zshrc
+          # (zsh-specific parameter expansion that shellcheck can't parse)
+          # and anything under .git/. Honors .shellcheckrc at the repo root.
+          shopt -s nullglob
+          targets=()
+          for f in install.sh deploy.sh bootstrap.sh; do
+            [[ -f "$f" ]] && targets+=("$f")
+          done
+          for f in .local/bin/*; do
+            [[ -f "$f" ]] || continue
+            if head -1 "$f" | grep -qE '^#!.*(bash|sh)$|^#!.*/env (bash|sh)'; then
+              targets+=("$f")
+            fi
+          done
+          echo "Linting ${#targets[@]} scripts:"
+          printf '  %s\n' "${targets[@]}"
+          echo
+          shellcheck --severity=warning "${targets[@]}"
+        shell: bash
 
   markdownlint:
     name: Markdownlint
