@@ -1,0 +1,72 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - name: Run shellcheck
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # 2.0.0
+        env:
+          # W: warnings and above; scripts are pragmatic, not academic.
+          SHELLCHECK_OPTS: -S warning -x
+        with:
+          scandir: .
+          ignore_paths: .git
+          additional_files: >-
+            install.sh
+            deploy.sh
+            bootstrap.sh
+
+  markdownlint:
+    name: Markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - name: Run markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@05f32210e84442804257b2a6f20b273450ec8265 # v19
+        with:
+          globs: |
+            README.md
+            **/*.md
+            !**/node_modules/**
+
+  svg-validate:
+    name: SVG syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - name: Install libxml2-utils
+        run: sudo apt-get update -qq && sudo apt-get install -y libxml2-utils
+
+      - name: xmllint all SVGs
+        run: |
+          set -e
+          shopt -s globstar nullglob
+          fail=0
+          for svg in **/*.svg; do
+            if ! xmllint --noout "$svg" 2>/tmp/xmllint.err; then
+              echo "::error file=$svg::$(cat /tmp/xmllint.err)"
+              fail=1
+            fi
+          done
+          exit $fail
+        shell: bash

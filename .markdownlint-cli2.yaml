@@ -1,0 +1,21 @@
+# markdownlint-cli2 config
+# Keep rules pragmatic -- this is a README-heavy repo, not a spec document.
+config:
+  # Allow raw HTML (picture/img/p tags are used heavily for banners + cards)
+  MD033: false
+  # Headings with trailing punctuation are fine in this repo
+  MD026: false
+  # Line length: don't lint tables/URLs
+  MD013:
+    line_length: 200
+    tables: false
+    code_blocks: false
+  # First line doesn't need to be a heading (README opens with a banner)
+  MD041: false
+  # Duplicate headings: allow (sections reuse "Layout"/"Keybinds" under different contexts)
+  MD024:
+    siblings_only: true
+
+ignores:
+  - node_modules
+  - .git

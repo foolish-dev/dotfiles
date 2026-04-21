@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e1e2e7"/>
+      <stop offset="100%" style="stop-color:#d5d6db"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2e7de9"/>
+      <stop offset="50%" style="stop-color:#9854f1"/>
+      <stop offset="100%" style="stop-color:#007197"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2e7de9;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#2e7de9;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#9854f1;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="textglow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="subtleglow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#a8aecb" stroke-width="0.3" opacity="0.45"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Grid overlay -->
+  <rect width="900" height="300" rx="12" fill="url(#grid)"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="450" cy="130" rx="350" ry="80" fill="url(#glow)"/>
+
+  <!-- Decorative top line -->
+  <rect x="100" y="40" width="700" height="1.5" rx="1" fill="url(#accent)" opacity="0.7"/>
+
+  <!-- Decorative orbs -->
+  <circle cx="120" cy="40" r="3" fill="#f52a65" opacity="0.85"/>
+  <circle cx="135" cy="40" r="3" fill="#8c6c3e" opacity="0.85"/>
+  <circle cx="150" cy="40" r="3" fill="#587539" opacity="0.85"/>
+
+  <!-- Shield icon left -->
+  <g transform="translate(155, 95)" opacity="0.6">
+    <path d="M0,5 L15,0 L30,5 L30,20 Q30,35 15,40 Q0,35 0,20 Z" fill="none" stroke="#2e7de9" stroke-width="1.5"/>
+    <path d="M10,18 L14,22 L22,12" fill="none" stroke="#587539" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Terminal icon right -->
+  <g transform="translate(715, 95)" opacity="0.6">
+    <rect x="0" y="0" width="32" height="24" rx="3" fill="none" stroke="#2e7de9" stroke-width="1.5"/>
+    <path d="M7,8 L13,13 L7,18" fill="none" stroke="#9854f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="18" x2="24" y2="18" stroke="#007197" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Main title -->
+  <text x="450" y="140" text-anchor="middle" font-family="'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', monospace" font-size="62" font-weight="800" letter-spacing="12" fill="url(#accent)" filter="url(#textglow)">DOTFILES</text>
+
+  <!-- Subtitle line -->
+  <rect x="200" y="165" width="500" height="1" rx="0.5" fill="url(#accent)" opacity="0.35"/>
+
+  <!-- Subtitle -->
+  <text x="450" y="195" text-anchor="middle" font-family="'JetBrains Mono', 'Fira Code', 'SF Mono', monospace" font-size="13" fill="#6172b0" letter-spacing="3">ARCH LINUX + BLACKARCH + KALI TOOLS</text>
+
+  <!-- Component tags -->
+  <g font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="11" filter="url(#subtleglow)">
+    <text x="160" y="230" text-anchor="middle" fill="#2e7de9" opacity="0.9">NIRI</text>
+    <text x="210" y="230" text-anchor="middle" fill="#a8aecb">|</text>
+    <text x="268" y="230" text-anchor="middle" fill="#9854f1" opacity="0.9">NOCTALIA</text>
+    <text x="330" y="230" text-anchor="middle" fill="#a8aecb">|</text>
+    <text x="385" y="230" text-anchor="middle" fill="#007197" opacity="0.9">NEOVIM</text>
+    <text x="435" y="230" text-anchor="middle" fill="#a8aecb">|</text>
+    <text x="500" y="230" text-anchor="middle" fill="#8c6c3e" opacity="0.9">TOKYO NIGHT</text>
+    <text x="572" y="230" text-anchor="middle" fill="#a8aecb">|</text>
+    <text x="635" y="230" text-anchor="middle" fill="#f52a65" opacity="0.9">300+ TOOLS</text>
+    <text x="700" y="230" text-anchor="middle" fill="#a8aecb">|</text>
+    <text x="750" y="230" text-anchor="middle" fill="#587539" opacity="0.9">21 CATS</text>
+  </g>
+
+  <!-- Bottom decorative line -->
+  <rect x="100" y="258" width="700" height="1.5" rx="1" fill="url(#accent)" opacity="0.7"/>
+
+  <!-- Bottom dots -->
+  <circle cx="750" cy="258" r="3" fill="#2e7de9" opacity="0.9"/>
+  <circle cx="765" cy="258" r="3" fill="#9854f1" opacity="0.9"/>
+  <circle cx="780" cy="258" r="3" fill="#007197" opacity="0.9"/>
+</svg>

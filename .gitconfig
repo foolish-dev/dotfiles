@@ -2,11 +2,20 @@
 # Git Config -- Coding Workstation
 # ~/.gitconfig
 # =============================================================================
+#
+# Identity lives in ~/.gitconfig.local so this file stays generic across
+# machines and users. deploy.sh generates .gitconfig.local on first run
+# (prompting for name/email) and it is git-ignored by .gitignore_global.
+#
+# If .gitconfig.local is missing, commits will fail until you create it:
+#   git config --file ~/.gitconfig.local user.name  "Your Name"
+#   git config --file ~/.gitconfig.local user.email "you@example.com"
+#
+# Commit signing is opt-in -- set signingkey in ~/.gitconfig.local and
+# uncomment [commit] gpgsign below (or run: git config commit.gpgsign true).
 
-[user]
-    name = foolish-dev
-    email = cardoffools@gmail.com
-    signingkey = ~/.ssh/id_ed25519.pub
+[include]
+    path = ~/.gitconfig.local
 
 [init]
     defaultBranch = main
@@ -99,7 +108,7 @@
     l   = log --oneline --graph --decorate -20
     la  = log --oneline --graph --decorate --all
     ll  = log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(green)%an%Creset %s%C(auto)%d' --date=short -20
-    today = log --oneline --since='midnight' --author='foolish-dev'
+    today = "!git log --oneline --since='midnight' --author=\"$(git config user.name)\""
 
     # Branching
     co  = checkout
@@ -158,7 +167,7 @@
     contrib  = shortlog -sne
     fresh    = !git fetch --all --prune && git rebase origin/main
     sync     = !git fetch --all --prune && git pull --rebase && git push
-    cloc     = !git ls-files | xargs wc -l 2>/dev/null | tail -1
+    cloc     = !git ls-files -z | xargs -0 wc -l 2>/dev/null | tail -1
 
     # Interactive rebase last N commits
     reb = "!f() { git rebase -i HEAD~${1:-5}; }; f"
@@ -171,7 +180,10 @@
 
 [commit]
     verbose = true
-    gpgsign = true
+    # gpgsign is opt-in: set in ~/.gitconfig.local once you have a signing
+    # key configured + ~/.ssh/allowed_signers populated. Enabling it here
+    # unconditionally would block new users from committing.
+    # gpgsign = true
 
 [gpg]
     format = ssh

@@ -7,7 +7,6 @@ set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 
-RED='\033[0;31m'
 GRN='\033[0;32m'
 BLU='\033[0;34m'
 YLW='\033[1;33m'
@@ -72,6 +71,42 @@ link_item "$DOTFILES/.zshrc" "$HOME/.zshrc"
 link_item "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
 link_item "$DOTFILES/.gitignore_global" "$HOME/.gitignore_global"
 link_item "$DOTFILES/.editorconfig" "$HOME/.editorconfig"
+
+# ── Git identity (~/.gitconfig.local, not tracked) ─────────────────────────
+# The tracked .gitconfig [include]s ~/.gitconfig.local. We generate it here
+# so new users don't accidentally commit under the repo author's identity.
+GITCONFIG_LOCAL="$HOME/.gitconfig.local"
+if [[ ! -f "$GITCONFIG_LOCAL" ]]; then
+  info "Setting up git identity (~/.gitconfig.local) ..."
+  # Prefer environment, fall back to prompts. Skip prompts if stdin is not a tty.
+  git_name="${GIT_USER_NAME:-}"
+  git_email="${GIT_USER_EMAIL:-}"
+  if [[ -z "$git_name" && -t 0 ]]; then
+    read -rp "  git user.name  : " git_name
+  fi
+  if [[ -z "$git_email" && -t 0 ]]; then
+    read -rp "  git user.email : " git_email
+  fi
+  git_name="${git_name:-Your Name}"
+  git_email="${git_email:-you@example.com}"
+  cat >"$GITCONFIG_LOCAL" <<EOF
+# ~/.gitconfig.local -- per-machine identity + local overrides
+# Included by ~/.gitconfig. Not tracked in the dotfiles repo.
+[user]
+    name = $git_name
+    email = $git_email
+    # Uncomment and point at your signing key to sign commits:
+    # signingkey = ~/.ssh/id_ed25519.pub
+
+# Uncomment to sign every commit (requires signingkey + allowed_signers):
+# [commit]
+#     gpgsign = true
+EOF
+  chmod 600 "$GITCONFIG_LOCAL"
+  ok "Wrote $GITCONFIG_LOCAL (name=$git_name, email=$git_email)"
+else
+  ok "Existing ~/.gitconfig.local kept as-is."
+fi
 
 # ── Starship config (lives at ~/.config/starship.toml) ─────────────────────
 if [[ -f "$DOTFILES/.config/starship.toml" ]]; then

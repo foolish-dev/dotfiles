@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="assets/header.svg" alt="Dotfiles" width="900"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/header.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg"/>
+    <img src="assets/header.svg" alt="Dotfiles — Arch Linux + BlackArch + Niri + Noctalia + Tokyo Night" width="900"/>
+  </picture>
 </p>
 
 <p align="center">
@@ -86,11 +90,11 @@ cd ~/dotfiles
 
 First `nvim` launch auto-installs all plugins and LSP servers.
 
-> **After install:** override the git identity with your own — the tracked `.gitconfig` ships with the author's name/email:
+> **Git identity is automatic.** `deploy.sh` generates `~/.gitconfig.local` (git-ignored, per-machine) and prompts for your name + email. Override non-interactively with env vars:
 > ```bash
-> git config --global user.name  "Your Name"
-> git config --global user.email "you@example.com"
+> GIT_USER_NAME="Your Name" GIT_USER_EMAIL="you@example.com" ./deploy.sh
 > ```
+> Edit `~/.gitconfig.local` any time — it's `[include]`d by the tracked `.gitconfig`. Commit signing is opt-in (uncomment `signingkey` + `[commit] gpgsign`).
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
@@ -409,7 +413,7 @@ The installer adds the BlackArch repository and pulls 300+ tools across 19 categ
 | Reversing | rizin, cutter, angr, ropper, one_gadget, retdec, ghidra, radare2 |
 | Mobile | apktool, jadx, dex2jar, objection, drozer, apkleaks, mobsf |
 | Forensics | autopsy, yara, volatility3, bulk-extractor, oletools, regripper, pdf-parser |
-| Networking / MITM | mitmproxy, ettercap, dsniff, sslstrip, dns2tcp, iodine, ptunnel, hping, snmpcheck |
+| Networking / MITM | mitmproxy, ettercap, dsniff, sslstrip, dns2tcp, iodine, ptunnel, hping3, snmpcheck |
 | Social Eng | SET, gophish, evilginx2, king-phisher |
 | Crypto | hashpump, rsactftool, xortool, featherduster |
 | Stego | stegseek, zsteg, stegsolve, openstego, snow |

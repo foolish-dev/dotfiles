@@ -55,6 +55,9 @@ credentials.*
 secrets.*
 *.secret
 
+# Per-machine git identity (rendered by dotfiles/deploy.sh)
+.gitconfig.local
+
 # SSH / GPG keys
 id_rsa
 id_rsa.pub
