@@ -48,8 +48,8 @@ but security issues are taken seriously and will be patched quickly.
 ## Safe-use recommendations
 
 - **Read before piping:** the `curl | bash` one-liner in the README is a
-  convenience. For first-time installs, clone the repo and inspect `install.sh`
-  + `deploy.sh` before running.
+  convenience. For first-time installs, clone the repo and inspect both
+  `install.sh` and `deploy.sh` before running.
 - **Run in a VM first:** this configuration is designed for a dedicated
   offensive-security workstation. Do not deploy on your daily-driver box or
   work laptop unless you understand the surface area.

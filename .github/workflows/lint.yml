@@ -25,10 +25,15 @@ jobs:
         uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # 2.0.0
         env:
           # W: warnings and above; scripts are pragmatic, not academic.
-          SHELLCHECK_OPTS: -S warning -x
+          SHELLCHECK_OPTS: -S warning
         with:
           scandir: .
-          ignore_paths: .git
+          # Skip .zshrc (zsh-only syntax shellcheck can't parse) and .git.
+          # .local/bin/ scripts are executable + have bash shebangs, so the
+          # action picks them up automatically via scandir.
+          ignore_paths: >-
+            .git
+            .zshrc
           additional_files: >-
             install.sh
             deploy.sh

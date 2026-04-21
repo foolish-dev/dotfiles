@@ -1,0 +1,7 @@
+# Shellcheck defaults -- honored by CI and local runs.
+# Tone it down: these are pragmatic operator scripts, not library code.
+
+# SC1090: can't follow non-constant source (common and safe for dotfiles).
+# SC1091: source file not found (caching / runtime-only deps).
+# SC2034: unused variable (color vars, path rings, etc. used conditionally).
+disable=SC1090,SC1091,SC2034

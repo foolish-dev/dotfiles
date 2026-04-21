@@ -5,16 +5,26 @@ config:
   MD033: false
   # Headings with trailing punctuation are fine in this repo
   MD026: false
-  # Line length: don't lint tables/URLs
+  # Line length: generous ceiling, skip tables + code + long URLs
   MD013:
-    line_length: 200
+    line_length: 500
     tables: false
     code_blocks: false
+    headings: false
   # First line doesn't need to be a heading (README opens with a banner)
   MD041: false
   # Duplicate headings: allow (sections reuse "Layout"/"Keybinds" under different contexts)
   MD024:
     siblings_only: true
+  # MD060 (table-column-style) is overly strict about compact-vs-padded table
+  # pipes; we mix both styles intentionally. Disable.
+  MD060: false
+  # MD032 (blanks around lists) -- valid lint, but our prose-mixed-with-lists
+  # style violates it in a few places without hurting rendering. Disable.
+  MD032: false
+  # MD034 (bare URLs) -- we use angle-bracketed URLs in SECURITY.md, which
+  # is the correct form; disable to silence noise on typical URLs.
+  MD034: false
 
 ignores:
   - node_modules

@@ -91,16 +91,18 @@ cd ~/dotfiles
 First `nvim` launch auto-installs all plugins and LSP servers.
 
 > **Git identity is automatic.** `deploy.sh` generates `~/.gitconfig.local` (git-ignored, per-machine) and prompts for your name + email. Override non-interactively with env vars:
+>
 > ```bash
 > GIT_USER_NAME="Your Name" GIT_USER_EMAIL="you@example.com" ./deploy.sh
 > ```
+>
 > Edit `~/.gitconfig.local` any time — it's `[include]`d by the tracked `.gitconfig`. Commit signing is opt-in (uncomment `signingkey` + `[commit] gpgsign`).
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
 ## Layout
 
-```
+```text
 .config/
   niri/config.kdl              compositor keybinds, layout, window rules
   noctalia/
