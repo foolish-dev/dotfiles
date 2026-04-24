@@ -54,7 +54,7 @@
     tool = nvimdiff
 
 [mergetool "nvimdiff"]
-    cmd = nvim -d $LOCAL $REMOTE $MERGED -c 'wincmd J'
+    cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c 'wincmd J'
 
 [diff]
     algorithm = histogram
@@ -62,7 +62,7 @@
     tool = nvimdiff
 
 [difftool "nvimdiff"]
-    cmd = nvim -d $LOCAL $REMOTE
+    cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [pull]
     rebase = true
@@ -160,7 +160,7 @@
     wipe    = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
     # Search
-    grep  = grep -Ii
+    gi    = grep -Ii
     find  = !git ls-files | grep -i
 
     # Utility
@@ -169,14 +169,14 @@
     root     = rev-parse --show-toplevel
     upstream = !git rev-parse --abbrev-ref --symbolic-full-name @{u}
     contrib  = shortlog -sne
-    fresh    = !git fetch --all --prune && git rebase origin/main
+    fresh    = !git fetch --all --prune && git rebase @{u}
     sync     = !git fetch --all --prune && git pull --rebase && git push
     cloc     = !git ls-files -z | xargs -0 wc -l 2>/dev/null | tail -1
 
     # Interactive rebase last N commits
     reb = "!f() { git rebase -i HEAD~${1:-5}; }; f"
 
-    # Create a patch from staged changes
+    # Create a patch from the last commit
     patch = format-patch --stdout HEAD~1
 
     # Show file at specific commit

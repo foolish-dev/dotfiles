@@ -4,11 +4,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
     opts = {
       ensure_installed = {

@@ -18,7 +18,7 @@ return {
         sidebars  = "transparent",
         floats    = "dark",
       },
-      sidebars = { "qf", "help", "terminal", "packer", "NvimTree", "Trouble" },
+      sidebars = { "qf", "help", "terminal", "lazy", "neo-tree", "Trouble" },
       on_highlights = function(hl, c)
         hl.CursorLineNr = { fg = c.orange, bold = true }
         hl.LineNr        = { fg = c.dark3 }

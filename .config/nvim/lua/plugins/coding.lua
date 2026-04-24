@@ -90,7 +90,7 @@ return {
   -- ── Fugitive (git) ─────────────────────────────────────────────────────
   {
     "tpope/vim-fugitive",
-    cmd  = { "Git", "G", "Gdiff", "Gblame" },
+    cmd  = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
     keys = {
       { "<leader>gg", "<cmd>Git<cr>",      desc = "Git status (fugitive)" },
       { "<leader>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff split" },
@@ -138,28 +138,9 @@ return {
       { "<leader>rr", "<cmd>Rest run<cr>",     desc = "Run HTTP request" },
       { "<leader>rl", "<cmd>Rest run last<cr>", desc = "Re-run last request" },
     },
-    opts = {
-      env = {
-        enable  = true,
-        pattern = ".*%.env.*",
-      },
-      response = {
-        hooks = {
-          decode_url = true,
-          format     = true,
-        },
-      },
-      ui = {
-        winbar = true,
-        keybinds = {
-          prev = "H",
-          next = "L",
-        },
-      },
-      highlight = {
-        enable  = true,
-        timeout = 500,
-      },
-    },
+    -- rest.nvim v2+ uses a completely different config schema; the minimal
+    -- default opts work out of the box. Run :Rest env show to manage
+    -- environment files; :Rest run / :Rest last for requests.
+    opts = {},
   },
 }

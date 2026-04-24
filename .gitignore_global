@@ -83,8 +83,7 @@ venv/
 *.egg
 .eggs/
 
-# Rust
-target/
+# Rust (target/ already covered under build artifacts above)
 
 # Go
 vendor/

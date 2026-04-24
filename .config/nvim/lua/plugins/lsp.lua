@@ -63,6 +63,7 @@ return {
       -- Per-buffer keymaps, installed on every LspAttach (replaces the old
       -- `on_attach` parameter that each setup() call used to carry).
       vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("dotfiles-lsp-attach", { clear = true }),
         callback = function(ev)
           local map = function(mode, keys, func, desc)
             vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = "LSP: " .. desc })
@@ -222,7 +223,7 @@ return {
       },
       format_on_save = {
         timeout_ms = 500,
-        lsp_fallback = true,
+        lsp_format = "fallback",
       },
     },
   },

@@ -18,12 +18,16 @@ CPUQuota=80%
 MemoryMax=4G
 TasksMax=512
 
-# Minimal hardening for a loopback-only service
+# Hardening for a loopback-only service
 ProtectSystem=strict
 ProtectHome=read-only
 ReadWritePaths=%h/tools/hexstrike-ai
+InaccessiblePaths=%h/.ssh %h/.gnupg
 PrivateTmp=true
 NoNewPrivileges=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+IPAddressAllow=127.0.0.0/8 ::1
+IPAddressDeny=any
 
 [Install]
 WantedBy=default.target
