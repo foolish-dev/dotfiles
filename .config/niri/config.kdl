@@ -30,6 +30,18 @@ input {
         accel-profile "flat"
     }
 
+    // 2-in-1 convertible (GZ302): pen + touchscreen must map to the
+    // built-in display so pointer coordinates line up with what the user
+    // is touching/drawing on. Without `map-to-output`, niri spans the
+    // tablet surface across all connected outputs, which makes pen input
+    // unusable whenever an external monitor is plugged in.
+    tablet {
+        map-to-output "eDP-1"
+    }
+    touch {
+        map-to-output "eDP-1"
+    }
+
     // Warp the cursor when switching focus between monitors.
     warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="0%"
@@ -165,6 +177,17 @@ environment {
     GDK_BACKEND "wayland"
     GTK_THEME "Tokyonight-Dark"
     MOZ_ENABLE_WAYLAND "1"
+    // Electron apps (LM Studio, VSCode, Discord, Slack) default to XWayland
+    // unless told otherwise, which burns a second compositor hop and breaks
+    // HiDPI on the 2.5K Z13 panel. Forcing the Wayland Ozone backend gives
+    // native scaling + better touch input.
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    // Prefer Wayland for SDL (games, emulators) with an X11 fallback for
+    // anything still stuck on XWayland.
+    SDL_VIDEODRIVER "wayland,x11"
+    // Old AWT apps render outside their window frame under tiling WMs
+    // unless non-reparenting is forced.
+    _JAVA_AWT_WM_NONREPARENTING "1"
     XCURSOR_THEME "Bibata-Modern-Classic"
     XCURSOR_SIZE "24"
     // XDG
