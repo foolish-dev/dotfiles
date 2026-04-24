@@ -108,6 +108,11 @@
       "command": ["hexstrike-mcp"],
       "enabled": true,
       "timeout": 30000
+    },
+    // From heimdall_opencode — demo MCP, runs via `opencode x`.
+    "weather": {
+      "type": "local",
+      "command": ["opencode", "x", "@h1deya/mcp-server-weather"]
     }
   },
 

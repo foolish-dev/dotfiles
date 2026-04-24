@@ -1,0 +1,3 @@
+[submodule ".config/opencode/heimdall_opencode"]
+	path = .config/opencode/heimdall_opencode
+	url = https://github.com/SuperClaude-Org/heimdall_opencode.git
