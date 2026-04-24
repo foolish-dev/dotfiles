@@ -154,6 +154,12 @@ PKG_CORE=(
   sof-firmware
   pavucontrol
   pwvucontrol
+  # Power + tablet-mode integration. power-profiles-daemon feeds the
+  # Noctalia battery widget + provides balanced/performance profiles via
+  # D-Bus. iio-sensor-proxy surfaces the Z13 accelerometer so auto-rotate
+  # and ambient-light sensor work (2-in-1 convertible form factor).
+  power-profiles-daemon
+  iio-sensor-proxy
 )
 
 # Terminal / Shell / Prompt
@@ -596,6 +602,8 @@ sudo systemctl enable --now iwd 2>/dev/null || true
 sudo systemctl enable --now bluetooth 2>/dev/null || true
 sudo systemctl enable --now docker 2>/dev/null || true
 sudo systemctl enable sddm 2>/dev/null || true
+sudo systemctl enable --now power-profiles-daemon 2>/dev/null || true
+sudo systemctl enable --now iio-sensor-proxy 2>/dev/null || true
 systemctl --user enable --now pipewire pipewire-pulse wireplumber 2>/dev/null || true
 sudo usermod -aG docker "$USER" 2>/dev/null || true
 sudo usermod -aG wireshark "$USER" 2>/dev/null || true

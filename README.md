@@ -311,6 +311,22 @@ sysu restart hexstrike-server  # restart the backend
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
+## GZ302 / Strix Halo Tuning
+
+This repo ships hardware-aware defaults for the ROG Flow Z13 GZ302EA (AMD Ryzen AI Max+ 395 "Strix Halo"). All of it is DMI-gated or benign on other hardware.
+
+| Area | What ships |
+|---|---|
+| Boot | `amd-ucode` installed + `microcode` mkinitcpio hook (no separate initrd line); `MODULES=(amdgpu)` for early KMS; loader entry sets `amd_pstate=active amdgpu.dcdebugmask=0xe12 zswap.enabled=0` |
+| Memory | `systemd/zram-generator.conf` creates `/dev/zram0` at ~50% of RAM with zstd compression; `sysctl.d/99-gz302-zram.conf` tunes `vm.swappiness=180`, `vm.page-cluster=0`, and dirty-ratio bounds for a zram-only swap topology |
+| Power | `power-profiles-daemon` enabled (drives the Noctalia battery widget / profile switcher); `iio-sensor-proxy` enabled for Z13 accelerometer auto-rotate + ambient-light sensor |
+| Hardware control | `z13ctl` (AUR) drives keyboard RGB, fan curves, battery charge limit, boot sound -- installed + `z13ctl.socket`/`z13ctl.service` auto-enabled when DMI reports `ROG Flow Z13*` |
+| Display | Niri output block pre-configured for eDP-1: `2560x1600@180 scale 1.333 variable-refresh-rate` (FreeSync 48-180Hz) |
+
+`deploy.sh` applies the system-side bits (sysctl, zram config, loader entry behind `DEPLOY_LOADER=1`) and enables the user-level z13ctl units. `install.sh` pulls `amd-ucode`, `power-profiles-daemon`, `iio-sensor-proxy`, and -- only when DMI matches -- `z13ctl-bin`.
+
+<img src="assets/divider.svg" alt="" width="900"/>
+
 ## OpenCode Agents
 
 OpenCode is configured in `.config/opencode/opencode.json` with local providers (LM Studio + Ollama), the HexStrike AI MCP, Context7, and a weather MCP demo server. Agents live in `.config/opencode/agent/`.

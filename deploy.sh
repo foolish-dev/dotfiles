@@ -158,6 +158,31 @@ if [[ "$(cat /sys/class/dmi/id/product_name 2>/dev/null || true)" =~ ^ROG\ Flow\
     warn "  z13ctl units failed to enable"
 fi
 
+# ── sysctl (VM tuning for zram + Strix Halo APU) ──────────────────────────
+# /etc/sysctl.d/*.conf is read at boot and by `sysctl --system` at any time.
+# Copying files here is idempotent; sysctl --system picks up live changes.
+if [[ -d "$DOTFILES/etc/sysctl.d" ]]; then
+  info "Deploying sysctl drop-ins to /etc/sysctl.d/ ..."
+  for conf in "$DOTFILES/etc/sysctl.d"/*.conf; do
+    [[ -f "$conf" ]] || continue
+    sudo cp "$conf" "/etc/sysctl.d/$(basename "$conf")"
+    ok "  Copied $(basename "$conf")"
+  done
+  sudo sysctl --system >/dev/null 2>&1 || warn "  sysctl --system reported warnings"
+fi
+
+# ── zram-generator config ─────────────────────────────────────────────────
+# systemd-zram-generator watches /etc/systemd/zram-generator.conf and the
+# tracked config declares /dev/zram0 with zstd compression at ~50% of RAM.
+# The generator creates the swap device on next boot; `systemctl daemon-reload`
+# + `systemctl start systemd-zram-setup@zram0` applies it now.
+if [[ -f "$DOTFILES/etc/systemd/zram-generator.conf" ]]; then
+  info "Deploying zram-generator config ..."
+  sudo cp "$DOTFILES/etc/systemd/zram-generator.conf" /etc/systemd/zram-generator.conf
+  ok "  Copied zram-generator.conf"
+  sudo systemctl daemon-reload 2>/dev/null || true
+fi
+
 # ── mkinitcpio (produces the initramfs boot image) ────────────────────────
 # Deploying the config alone does not rebuild the image. Run
 # `sudo mkinitcpio -P` after changes, or let a kernel/package upgrade

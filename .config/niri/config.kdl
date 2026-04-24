@@ -36,13 +36,20 @@ input {
 }
 
 // ---------------------------------------------------------------------------
-// Outputs  (uncomment and adjust for your monitors)
+// Outputs
 // ---------------------------------------------------------------------------
-// output "eDP-1" {
-//     scale 1.0
-//     transform "normal"
-//     position x=0 y=0
-// }
+// Tuned for the ASUS ROG Flow Z13 (GZ302): 2560x1600 @ 180Hz touch panel,
+// AMD FreeSync. VRR eliminates frame tearing across 48-180Hz without
+// locking to a single refresh, and scale=1.333 is the sweet spot for the
+// 13.4" physical size (1920x1200 logical). Adjust for external monitors.
+output "eDP-1" {
+    mode "2560x1600@180.000"
+    scale 1.333
+    transform "normal"
+    position x=0 y=0
+    variable-refresh-rate
+}
+// Example second monitor -- uncomment and adjust:
 // output "HDMI-A-1" {
 //     scale 1.0
 //     position x=1920 y=0
