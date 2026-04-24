@@ -91,6 +91,7 @@ The `@hexstrike-analyst` agent has access to **150+ security tools**. Always:
 ## Troubleshooting
 
 **HexStrike server not responding?**
+
 ```bash
 # Check if running
 ps aux | grep hexstrike_server
