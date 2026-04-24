@@ -29,3 +29,5 @@ config:
 ignores:
   - node_modules
   - .git
+  # Vendored submodule: upstream markdown lints under their own rules.
+  - .config/opencode/heimdall_opencode

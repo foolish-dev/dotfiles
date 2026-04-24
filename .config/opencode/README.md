@@ -38,7 +38,7 @@ Commented-out stubs for `anthropic` and `google` exist in `opencode.json` for wh
 | Server | Type | Notes |
 |---|---|---|
 | `hexstrike-ai` | local stdio | `hexstrike-mcp` bridges to the Flask backend on `127.0.0.1:8888` (managed by `hexstrike-server.service`) |
-| `context7` | remote SSE | Library docs & code samples — `https://mcp.context7.com/sse` |
+| `context7` | remote (streamable HTTP) | Library docs & code samples — `https://mcp.context7.com/mcp` |
 | `weather` | local stdio | `@h1deya/mcp-server-weather` run via `opencode x` (demo, from heimdall_opencode) |
 
 ## Agents

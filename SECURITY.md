@@ -12,7 +12,7 @@ you care about.
   - [BlackArch](https://blackarch.org) — imports their strap via
     `curl -sL https://blackarch.org/strap.sh | sudo ...`
   - [Chaotic AUR](https://aur.chaotic.cx) — imports their keyring + mirrorlist
-- Installs **700+ packages**, many privileged (Metasploit, msfvenom, aircrack,
+- Installs **~370 packages** (many more transitively via BlackArch metapackages), many privileged (Metasploit, msfvenom, aircrack,
   tcpdump, ettercap, mimikatz, etc.)
 - Adds your user to the `docker` and `wireshark` groups (effectively root for
   container escape / raw packet capture)
@@ -66,7 +66,8 @@ but security issues are taken seriously and will be patched quickly.
 
 - No signature verification on the `bootstrap.sh` one-liner (pending release
   tagging).
-- No SBOM / dependency tracking for the 700+ packages installed — you inherit
-  whatever is in BlackArch and Chaotic AUR at install time.
+- No SBOM / dependency tracking for the ~370 explicit packages (plus their
+  BlackArch metapackage dependency closure) installed — you inherit whatever
+  is in BlackArch and Chaotic AUR at install time.
 - `.gitconfig` and SSH keys are the user's responsibility. `deploy.sh`
   generates `~/.gitconfig.local` but does not touch `~/.ssh/`.

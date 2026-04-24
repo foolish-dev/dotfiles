@@ -232,7 +232,7 @@ echo ""
 script_count=$(find "$DOTFILES/.local/bin" -maxdepth 1 -type f 2>/dev/null | wc -l)
 desktop_count=$(find "$DOTFILES/.local/share/applications" -maxdepth 1 -name '*.desktop' 2>/dev/null | wc -l)
 wallpaper_count=$(find "$DOTFILES/wallpapers" -maxdepth 1 -type f 2>/dev/null | wc -l)
-config_list=$(printf '%s,' "${CONFIG_DIRS[@]}" | sed 's/,$//; s|systemd/user|systemd/user|')
+config_list=$(printf '%s,' "${CONFIG_DIRS[@]}" | sed 's/,$//')
 
 info "Summary:"
 info "  Configs: ~/.config/{${config_list}}"

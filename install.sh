@@ -138,6 +138,8 @@ PKG_CORE=(
   qt6-declarative
   layer-shell-qt
   thunar
+  gvfs
+  firefox
   pipewire
   pipewire-audio
   pipewire-pulse
@@ -278,6 +280,7 @@ PKG_SEC=(
   sslscan
   testssl.sh
   sslyze
+  trivy
   net-snmp
   onesixtyone
   strace
