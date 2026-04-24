@@ -95,6 +95,24 @@ layout {
         off
     }
 
+    // Subtle drop shadow under every window -- adds depth over the wallpaper
+    // without reading as "elevated UI". Draws below the window (not behind)
+    // so the shadow never bleeds through rounded corners into the window body.
+    shadow {
+        on
+        softness 25
+        spread 4
+        offset x=0 y=6
+        draw-behind-window false
+        color "#0d0e14b3"
+    }
+
+    // Thin highlight showing where a moved window will land when dragging
+    // between columns. Tinted to match the Tokyo Night blue focus ring.
+    insert-hint {
+        color "#7aa2f766"
+    }
+
     struts {
         // left 0
         // right 0
