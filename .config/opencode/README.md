@@ -1,112 +1,87 @@
-# Open Code — ROG Zephyrus G14 Configuration
+# OpenCode Configuration
 
-This is the agent configuration for **Open Code** (opencode.ai) integrated into your dotfiles environment.
+OpenCode ([opencode.ai](https://opencode.ai)) agent + provider + MCP setup for this dotfiles environment. Authoritative config lives in [`opencode.json`](./opencode.json).
 
-## Quick Start
+## Layout
 
-```bash
-# 1. Ensure HexStrike server is running (for hexstrike-ai tools):
-cd ~/dotfiles && source hexstrike-env/bin/activate && python3 hexstrike_server.py --quiet &
-
-# 2. Restart Open Code and select this agent config:
-opencode restart
-# → In the UI, go to Settings → Agents → Select "Open Code — ROG Zephyrus G14 Optimized"
+```text
+.config/opencode/
+├── opencode.json         # providers, MCP servers, agents
+├── agent/                # agent markdown (prompt + frontmatter)
+│   ├── docs.md           # mirrored from heimdall_opencode
+│   └── git-committer.md  # mirrored from heimdall_opencode
+├── agents.json           # legacy agent metadata (kept for reference)
+├── agent_config.json     # legacy runtime config (kept for reference)
+├── heimdall_opencode/    # git submodule -- SuperClaude-Org/heimdall_opencode @ dev
+└── package.json          # auto-generated when opencode installs @opencode-ai/plugin
 ```
 
-## Tools Available
+`heimdall_opencode/` is a pinned, shallow submodule. It's the upstream source for the agents in `agent/` and the inspiration for the `weather` MCP demo in `opencode.json`. Refresh it with:
 
-### HexStrike AI MCP (`hexstrike-ai`)
+```bash
+git submodule update --remote --merge .config/opencode/heimdall_opencode
+```
 
-Access **150+ cybersecurity tools** via HTTP API at `http://127.0.0.1:8888`:
+## Providers
 
-| Tool | Use Case | Example Command |
-|------|----------|-----------------|
-| `nmap` / `rustscan` / `masscan` | Port scanning & service detection | `/hexstrike rustscan -r 192.168.1.0/24 --top-ports 1000` |
-| `nikto` / `zap` / `nuclei` | Web vulnerability scanning | `/hexstrike nuclei -u https://target.com --severity high,medium --tags cve,rce,lfi` |
-| `sqlmap` | SQL injection testing | `/hexstrike sqlmap -u "http://target/page?id=1"` |
-| `dirsearch` / `ffuf` / `gobuster` | Directory/file discovery | `/hexstrike dirsearch -u https://target.com --extensions php,html,js,txt,json --threads 50` |
-| `wafw00f` | WAF fingerprinting | `/hexstrike wafw00f target.com` |
+Both providers are local and must be running before use.
 
-**Command reference:** See the full list in [`agents.json`](./agents.json).
+| Key | Endpoint | Use |
+|---|---|---|
+| `ollama` | `http://127.0.0.1:11434/v1` | Default (`jaahas/crow:9b` tool-capable) |
+| `lmstudio` | `http://127.0.0.1:1234/v1` | Gemma/Qwen/Crow heretic variants (see `opencode.json` for capabilities) |
 
-### SuperClaude Sequential Thinking (`superclaude-sequential-thinking`)
+Commented-out stubs for `anthropic` and `google` exist in `opencode.json` for when API keys are available.
 
-Multi-step problem solving with systematic code analysis:
+## MCP Servers
 
-| Command | Use Case |
-|---------|----------|
-| `/sc:pm` | Project management session (task breakdown, progress tracking) |
-| `/sc:research` | Deep research with systematic information gathering |
-| `/sc:implement` | Code implementation assistance |
-| `/sc:code-review` | Code review and improvement suggestions |
-
-### SuperClaude Context7 (`superclaude-context7`)
-
-Official library documentation search across npm, pypi, maven, crates.io.
-
-**Command:** `/sc:context7 search "package-name"` — Search for docs/examples
-
-### LM Studio Models (`lmstudio`)
-
-Local LLM inference with these models configured:
-
-| Model | VRAM (4-bit) | Use Case |
-|-------|--------------|----------|
-| `crow-9b-heretic-4.6` | ~7GB | Default — open-source coding assistant |
-| `qwen3.5-9b-claude-4.6...` | ~8GB | Bilingual (EN/Chinese) reasoning + thinking model |
-| `gemma-3-12b-it-heretic` | ~7GB | Google's open model for code tasks |
-
-### SuperClaude Playwright / Chrome DevTools
-
-Additional MCP servers for E2E testing and debugging (see [`agents.json`](./agents.json)).
+| Server | Type | Notes |
+|---|---|---|
+| `hexstrike-ai` | local stdio | `hexstrike-mcp` bridges to the Flask backend on `127.0.0.1:8888` (managed by `hexstrike-server.service`) |
+| `context7` | remote SSE | Library docs & code samples — `https://mcp.context7.com/sse` |
+| `weather` | local stdio | `@h1deya/mcp-server-weather` run via `opencode x` (demo, from heimdall_opencode) |
 
 ## Agents
 
-| Agent | Description | Entry Point |
-|-------|-------------|-------------|
-| `@hexstrike-analyst` | Security research assistant — conducts authorized vulnerability assessments and CTF recon | `/hexstrike analyze --help` |
-| `@superclaude-architect` | Codebase architect — understands, diagrams, navigates complex projects | `/sc:pm` |
-| `@superclaude-expert` | Library documentation & testing expert | `/sc:context7 search query` |
+| Key | Mode | Tools | Purpose |
+|---|---|---|---|
+| `hexstrike-analyst-context7` | primary | hexstrike-ai, context7 | Authorized pentest / CTF recon with HexStrike + docs lookup |
+| `superclaude-architect-context7` | primary | context7 | Codebase architect with Context7 library research |
+| `build` | primary | hexstrike-ai, context7 | Build systems, CI/CD, infrastructure code |
+| `analyze` | primary | hexstrike-ai, context7 | Security-focused code review |
+| `docs` | subagent | — | Documentation writer (from heimdall_opencode) |
+| `git-committer` | subagent | — | Conventional commits + push helper (from heimdall_opencode) |
 
-## Mode Settings
+Invoke from chat with `@<key>` (e.g. `@build`, `@git-committer`). Don't prefix the key with `@` in `opencode.json`.
 
-```json
-{
-  "default": "direct",        // Use tools directly when appropriate
-  "explanations": true,       // Explain reasoning/decisions
-  "thinkAloud": false,        // Don't stream internal thoughts (unless asked)
-  "avoidBragging": true,      // No self-congratulation
-  "verboseReasoning": false   // Concise output by default
-}
-```
+## HexStrike Quick Reference
 
-## Security Notice
+Once the `hexstrike-server.service` is running, the `hexstrike-analyst-context7` agent can drive 150+ security tools. A few common commands the agent has at its disposal:
 
-The `@hexstrike-analyst` agent has access to **150+ security tools**. Always:
+| Tool | Example |
+|---|---|
+| `rustscan` / `nmap` / `masscan` | `rustscan -r 192.168.1.0/24 --top-ports 1000` |
+| `nuclei` / `nikto` / `zaproxy` | `nuclei -u https://target -severity high,medium` |
+| `sqlmap` | `sqlmap -u "http://target/page?id=1"` |
+| `ffuf` / `gobuster` / `dirsearch` | `ffuf -w wordlist.txt -u https://target/FUZZ` |
+| `wafw00f` | `wafw00f target.com` |
 
-- Verify authorization before scanning any target
-- Use for CTF challenges, authorized pentesting engagements, or educational exercises only
-- Respect rate limits and avoid aggressive scanning of internet-exposed systems
+**Authorization reminder:** only scan systems you own or have written permission to test.
 
 ## Troubleshooting
 
-**HexStrike server not responding?**
-
 ```bash
-# Check if running
-ps aux | grep hexstrike_server
-
-# Restart
-cd ~/dotfiles && source hexstrike-env/bin/activate && python3 hexstrike_server.py --quiet &
-
-# Health check (wait ~10s after restart)
+# HexStrike backend
+systemctl --user status hexstrike-server
+systemctl --user restart hexstrike-server
 curl -s http://127.0.0.1:8888/health | jq '.'
+
+# LM Studio
+lms-status                        # curl /v1/models
+lms-server                        # start headless server on :1234
+
+# Submodule empty after a plain `git clone`
+git submodule update --init --recursive --depth 1
 ```
 
-**LM Studio not responding?**
-- Check LM Studio is running and models are loaded in the UI
-- Default model: `crow-9b-heretic-4.6` at `http://127.0.0.1:1234/v1`
-
----
-
-For the full dotfiles setup guide, see [`README.md`](../../dotfiles/README.md).
+For the full dotfiles setup guide see the [repo README](../../README.md).

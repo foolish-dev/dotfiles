@@ -309,6 +309,28 @@ sysu restart hexstrike-server  # restart the backend
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
+## OpenCode Agents
+
+OpenCode is configured in `.config/opencode/opencode.json` with local providers (LM Studio + Ollama), the HexStrike AI MCP, Context7, and a weather MCP demo server. Agents live in `.config/opencode/agent/`.
+
+| Agent | Purpose |
+|---|---|
+| `hexstrike-analyst-context7` | Authorized pentest / CTF recon via HexStrike + Context7 docs |
+| `superclaude-architect-context7` | Large-codebase architect with Context7 lookups |
+| `build` | Build systems, CI/CD, infrastructure code |
+| `analyze` | Security-focused code review |
+| `docs` | Documentation-writing agent (from heimdall_opencode) |
+| `git-committer` | Conventional commits + push helper (from heimdall_opencode) |
+
+The [`SuperClaude-Org/heimdall_opencode`](https://github.com/SuperClaude-Org/heimdall_opencode) fork ships curated agents and MCP wiring. It's vendored as a pinned git submodule at `.config/opencode/heimdall_opencode/` so the agent pack travels with the repo. `bootstrap.sh` clones with `--recurse-submodules --shallow-submodules`; `install.sh` re-inits the submodule as a safety net for existing clones.
+
+```bash
+# Refresh to the latest upstream heimdall commit on its dev branch
+git submodule update --remote --merge .config/opencode/heimdall_opencode
+```
+
+<img src="assets/divider.svg" alt="" width="900"/>
+
 ## Pywal
 
 [pywal](https://github.com/dylanaraps/pywal) generates a color scheme from your wallpaper and applies it to kitty, noctalia, and the terminal.

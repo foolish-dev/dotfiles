@@ -41,6 +41,19 @@ EOF
 
 banner
 
+# ── Submodules (heimdall_opencode agent pack) ─────────────────────────────
+# Safety net for users who cloned without `--recurse-submodules`. No-op when
+# the submodule is already initialised.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "$SCRIPT_DIR/.gitmodules" ]] && git -C "$SCRIPT_DIR" rev-parse --git-dir &>/dev/null; then
+  if [[ -z "$(ls -A "$SCRIPT_DIR/.config/opencode/heimdall_opencode" 2>/dev/null)" ]]; then
+    info "Bootstrapping git submodules (heimdall_opencode) ..."
+    git -C "$SCRIPT_DIR" submodule update --init --recursive --depth 1 ||
+      warn "  submodule init failed; heimdall_opencode agents may be missing"
+    ok "Submodules ready."
+  fi
+fi
+
 # ── AUR helper ─────────────────────────────────────────────────────────────
 if command -v yay &>/dev/null; then
   AUR="yay"

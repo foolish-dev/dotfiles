@@ -70,7 +70,10 @@ fi
 
 if [[ ! -d "$DOTFILES_DIR" ]]; then
   info "Cloning dotfiles to $DOTFILES_DIR..."
-  git clone https://github.com/foolish-dev/dotfiles.git "$DOTFILES_DIR"
+  # --recurse-submodules pulls heimdall_opencode (agent pack + MCP source).
+  # --shallow-submodules keeps the submodule to the pinned commit (no history).
+  git clone --recurse-submodules --shallow-submodules \
+    https://github.com/foolish-dev/dotfiles.git "$DOTFILES_DIR"
   ok "Cloned."
 fi
 
