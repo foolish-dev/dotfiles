@@ -104,6 +104,10 @@ fi
 
 # Core Wayland / Niri / Noctalia
 PKG_CORE=(
+  # amd-ucode: CPU microcode updates. Loaded by the `microcode` hook in
+  # mkinitcpio.conf (no separate initrd line needed). Safe no-op if a given
+  # machine is Intel -- Intel users should swap to `intel-ucode` manually.
+  amd-ucode
   niri
   noctalia-qs
   noctalia-shell
