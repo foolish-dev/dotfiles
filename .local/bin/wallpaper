@@ -15,7 +15,7 @@ wal -i "$IMAGE" -n -q          # -n = skip setting wallpaper, -q = quiet
 echo "[+] pywal colors generated"
 
 # ── 2. Set wallpaper via awww ─────────────────────────────────────────────
-if awww query &>/dev/null 2>&1; then
+if awww query &>/dev/null; then
   awww img "$IMAGE" \
     --transition-type grow \
     --transition-pos 0.5,0.5 \

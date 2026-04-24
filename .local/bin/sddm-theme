@@ -54,7 +54,9 @@ fi
 # Other installed SDDM themes
 for dir in "$SDDM_THEMES"/*/; do
   name="$(basename "$dir")"
-  [[ "$name" == "sddm-astronaut-theme" ]] && continue
+  # Skip both the packaged and local astronaut dirs -- their variants are
+  # already enumerated from the Themes/*.conf glob above.
+  [[ "$name" == "sddm-astronaut-theme" || "$name" == "sddm-astronaut-local" ]] && continue
   [[ -f "$dir/Main.qml" || -f "$dir/theme.conf" ]] && THEMES["$name"]="standalone:$dir"
 done
 

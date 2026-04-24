@@ -36,6 +36,17 @@ EOF
   echo ""
 }
 
+# ── Cleanup trap ───────────────────────────────────────────────────────────
+# Collect temp dirs created during the run so they're removed on any exit.
+_TEMP_DIRS=()
+mktempdir() { local d; d=$(mktemp -d); _TEMP_DIRS+=("$d"); printf '%s' "$d"; }
+cleanup() {
+  for d in "${_TEMP_DIRS[@]}"; do
+    [[ -d "$d" ]] && rm -rf "$d"
+  done
+}
+trap cleanup EXIT
+
 # ── Require Arch ───────────────────────────────────────────────────────────
 [[ -f /etc/arch-release ]] || fail "This script is for Arch Linux only."
 
@@ -62,10 +73,9 @@ elif command -v paru &>/dev/null; then
 else
   info "Installing yay (AUR helper) ..."
   sudo pacman -S --needed --noconfirm base-devel git
-  tmpdir=$(mktemp -d)
-  git clone https://aur.archlinux.org/yay-bin.git "$tmpdir/yay-bin"
-  (cd "$tmpdir/yay-bin" && makepkg -si --noconfirm)
-  rm -rf "$tmpdir"
+  yay_tmp=$(mktempdir)
+  git clone https://aur.archlinux.org/yay-bin.git "$yay_tmp/yay-bin"
+  (cd "$yay_tmp/yay-bin" && makepkg -si --noconfirm)
   AUR="yay"
 fi
 ok "AUR helper: $AUR"
@@ -73,11 +83,10 @@ ok "AUR helper: $AUR"
 # ── BlackArch repository ──────────────────────────────────────────────────
 if ! pacman -Sl blackarch &>/dev/null; then
   info "Adding BlackArch repository ..."
-  tmpdir=$(mktemp -d)
-  curl -sL https://blackarch.org/strap.sh -o "$tmpdir/strap.sh"
-  chmod +x "$tmpdir/strap.sh"
-  sudo "$tmpdir/strap.sh"
-  rm -rf "$tmpdir"
+  ba_tmp=$(mktempdir)
+  curl -sL https://blackarch.org/strap.sh -o "$ba_tmp/strap.sh"
+  chmod +x "$ba_tmp/strap.sh"
+  sudo "$ba_tmp/strap.sh"
   sudo pacman -Sy
   ok "BlackArch repo added."
 else
@@ -252,7 +261,9 @@ PKG_SEC=(
   rustscan
   wireshark-qt
   tcpdump
-  netcat
+  # openbsd-netcat is preferred over gnu-netcat: both provide /usr/bin/nc
+  # and conflict with each other. The OpenBSD variant is the de facto
+  # standard in pentesting / CTF tooling.
   openbsd-netcat
   bind
   whois
@@ -563,10 +574,10 @@ install_pkgs() {
   local log="/tmp/install-${slug}.log"
   info "Installing ${BLD}$label${RST} (${#pkgs[@]} packages) -- log: $log"
   : > "$log"
-  if ! $AUR -S --needed --noconfirm "${pkgs[@]}" >>"$log" 2>&1; then
+  if ! "$AUR" -S --needed --noconfirm "${pkgs[@]}" >>"$log" 2>&1; then
     warn "Batch install had failures (see $log); retrying individually ..."
     for pkg in "${pkgs[@]}"; do
-      $AUR -S --needed --noconfirm "$pkg" >>"$log" 2>&1 || warn "  skip: $pkg (see $log)"
+      "$AUR" -S --needed --noconfirm "$pkg" >>"$log" 2>&1 || warn "  skip: $pkg (see $log)"
     done
   fi
   ok "$label done."

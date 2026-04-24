@@ -5,6 +5,12 @@
 # =============================================================================
 set -euo pipefail
 
+on_error() {
+  local line=$1
+  warn "bootstrap.sh failed at line $line. Check the output above for details."
+}
+trap 'on_error $LINENO' ERR
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -99,7 +105,7 @@ echo ""
 printf "${GREEN}${BOLD}"
 cat <<'EOF'
    ╔═══════════════════════════════════════════════════════════════════╗
-   ║                     Installation complete!                        ║
+   ║                      Installation complete!                       ║
    ╚═══════════════════════════════════════════════════════════════════╝
 EOF
 printf "${NC}\n"
