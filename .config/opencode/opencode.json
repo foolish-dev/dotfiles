@@ -16,9 +16,9 @@
         "baseURL": "http://127.0.0.1:11434/v1"
       },
       "models": {
-        // Completion-only — Ollama reports capabilities=[completion].
-        // Do not use with agents that call tools.
-        "crow-9b-heretic-4.6:latest": {
+        // Local build (Modelfile uses Qwen-style JSON tool template).
+        // Ollama reports capabilities=[completion, tools].
+        "crow-9b-heretic:q5_k_m": {
           "name": "420",
           "tool_call": true
         },

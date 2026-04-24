@@ -217,6 +217,20 @@ if [[ -f "$DOTFILES/etc/systemd/zram-generator.conf" ]]; then
   sudo systemctl daemon-reload 2>/dev/null || true
 fi
 
+# ── ollama systemd drop-in (Strix Halo Vulkan offload) ────────────────────
+# `extra/ollama` ships only CPU GGML libs, but the binary honours the env
+# vars below once the AUR `ollama-vulkan-bin` package is installed (handled
+# by install.sh on Z13). Drop-in is harmless on machines without the GPU
+# build -- ollama just falls back to CPU.
+if [[ -f "$DOTFILES/etc/systemd/system/ollama.service.d/gpu.conf" ]]; then
+  info "Deploying ollama Vulkan drop-in ..."
+  sudo mkdir -p /etc/systemd/system/ollama.service.d
+  sudo cp "$DOTFILES/etc/systemd/system/ollama.service.d/gpu.conf" \
+    /etc/systemd/system/ollama.service.d/gpu.conf
+  ok "  Copied ollama gpu.conf"
+  sudo systemctl daemon-reload 2>/dev/null || true
+fi
+
 # ── mkinitcpio (produces the initramfs boot image) ────────────────────────
 # Deploying the config alone does not rebuild the image. Run
 # `sudo mkinitcpio -P` after changes, or let a kernel/package upgrade

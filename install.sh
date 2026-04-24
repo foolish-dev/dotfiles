@@ -587,6 +587,10 @@ install_pkgs "BlackArch" "${PKG_BLACKARCH[@]}"
 # on this binary. Gate by DMI so non-Z13 machines stay clean.
 if [[ "$(cat /sys/class/dmi/id/product_name 2>/dev/null || true)" =~ ^ROG\ Flow\ Z13 ]]; then
   install_pkgs "ROG Flow Z13 hardware control" z13ctl-bin
+  # extra/ollama is CPU-only; the AUR variant ships libggml-vulkan.so so the
+  # Strix Halo iGPU (Radeon 8060S) can be offloaded to via RADV. Pair with
+  # /etc/systemd/system/ollama.service.d/gpu.conf (deployed by deploy.sh).
+  install_pkgs "Local LLM (Vulkan iGPU offload)" ollama-vulkan-bin
 else
   info "Skipping Z13 hardware packages (DMI product != 'ROG Flow Z13 *')."
 fi
