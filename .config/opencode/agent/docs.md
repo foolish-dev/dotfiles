@@ -1,7 +1,7 @@
 ---
-model: openai/gpt-5
-reasoningEffort: medium
 description: ALWAYS use this when writing docs
+mode: subagent
+reasoningEffort: medium
 ---
 
 You are an expert technical documentation writer
