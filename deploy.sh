@@ -28,7 +28,7 @@ link_item() {
       return # already linked
     fi
     mkdir -p "$BACKUP_DIR"
-    local rel="${dest#$HOME/}"
+    local rel="${dest#"$HOME"/}"
     mkdir -p "$BACKUP_DIR/$(dirname "$rel")"
     mv "$dest" "$BACKUP_DIR/$rel"
     warn "Backed up: ~/$rel -> $BACKUP_DIR/$rel"
@@ -255,7 +255,8 @@ if [[ -d "$DOTFILES/etc/sddm.conf.d" ]]; then
   info "Deploying SDDM config to /etc/sddm.conf.d/ ..."
   sudo mkdir -p /etc/sddm.conf.d
   for conf in "$DOTFILES/etc/sddm.conf.d"/*; do
-    [[ -f "$conf" ]] && sudo cp "$conf" "/etc/sddm.conf.d/$(basename "$conf")"
+    [[ -f "$conf" ]] || continue
+    sudo cp "$conf" "/etc/sddm.conf.d/$(basename "$conf")"
     ok "  Copied $(basename "$conf")"
   done
 fi
