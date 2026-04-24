@@ -58,8 +58,10 @@ bindkey '^r' history-incremental-search-backward
 # ── PATH ───────────────────────────────────────────────────────────────────
 typeset -U path
 path=(
+  $HOME/.opencode/bin
   $HOME/.local/bin
   $HOME/.cargo/bin
+  $HOME/.lmstudio/bin
   $HOME/go/bin
   /opt/metasploit-framework/bin
   /opt/ghidra
@@ -390,7 +392,9 @@ recon() {
 }
 
 # ── Prompt (Starship) ─────────────────────────────────────────────────────
-eval "$(starship init zsh)"
+if command -v starship &>/dev/null; then
+  eval "$(starship init zsh)"
+fi
 
 # ── Zoxide (smart cd) ─────────────────────────────────────────────────────
 if command -v zoxide &>/dev/null; then
@@ -424,11 +428,4 @@ else
 BANNER
   printf '\e[0m\n'
 fi
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
-# opencode
-export PATH="$HOME/.opencode/bin:$PATH"
 
