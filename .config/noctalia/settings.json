@@ -822,7 +822,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "",
+        "directory": "~/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
