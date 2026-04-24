@@ -142,6 +142,24 @@
       ]
     },
 
+    "@superclaude-architect-context7": {
+      "description": "SuperClaude architect enhanced with Context7 library research — for security codebases, dependency analysis, and architecture documentation",
+      "entryPoint": "/sc:pm",
+      "context": [
+        "You have systematic access to read/edit files across the entire codebase",
+        "Use multi-step reasoning to understand architecture before suggesting changes",
+        "Leverage Mermaid/Krux for diagrams when explaining complex systems",
+        "Use Context7 to find library documentation and real-world usage examples for unfamiliar dependencies"
+      ],
+      "commands": [
+        "/sc:pm — Start project management session (breakdown tasks, track progress)",
+        "/sc:research — Deep research mode with Context7 for dependency analysis",
+        "/sc:context7 search npm package-name — Find library documentation/examples via Context7",
+        "/sc:implement — Implementation assistance with systematic planning",
+        "/sc:code-review — Code review and improvement suggestions"
+      ]
+    },
+
     "@superclaude-expert": {
       "description": "SuperClaude domain expert — context7 + playwright integration for library research and testing",
       "entryPoint": "/sc:context7 search query",

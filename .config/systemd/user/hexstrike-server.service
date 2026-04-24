@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=%h/tools/hexstrike-ai
-ExecStart=%h/tools/hexstrike-ai/hexstrike-env/bin/python3 %h/tools/hexstrike-ai/hexstrike_server.py --host 127.0.0.1 --port 8888
+ExecStart=%h/tools/hexstrike-ai/hexstrike-env/bin/python3 %h/tools/hexstrike-ai/hexstrike_server.py --port 8888
 Restart=on-failure
 RestartSec=5
 Environment=HEXSTRIKE_HOST=127.0.0.1

@@ -429,3 +429,6 @@ fi
 export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+# opencode
+export PATH=/home/fool/.opencode/bin:$PATH

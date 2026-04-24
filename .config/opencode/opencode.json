@@ -1,6 +1,46 @@
 {
   "$schema": "https://opencode.ai/config.json",
+
+  // Default to the tools-capable Crow variant so agents work out of the box.
+  // Override per-session with `--model provider/id`.
+  "model": "ollama/jaahas/crow:9b",
+
+  // ── AI Provider Configuration ────────────────────────────────
+  // Ollama is already installed — use locally with Crow models.
+  // Model IDs must match `ollama list` output exactly.
   "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      },
+      "models": {
+        // Completion-only — Ollama reports capabilities=[completion].
+        // Do not use with agents that call tools.
+        "crow-9b-heretic-4.6:latest": {
+          "name": "420",
+          "tool_call": true
+        },
+        // Supports tools + thinking — use this for agent workflows.
+        "jaahas/crow:9b": {
+          "name": "Crow 9B — General coding assistant",
+          "tool_call": true
+        },
+        // Qwen 3.5 9B heretic — pulled from agentajul namespace (17 GB).
+        // Ollama manifest declares capabilities=[completion] only; tool
+        // requests via /v1/chat/completions are rejected server-side even
+        // though the underlying qwen3.5 architecture supports them (verified
+        // on LM Studio). Use for non-tool chat, or rebuild via Modelfile
+        // with a tools-compatible template to enable agent workflows.
+        "agentajul/qwen3.5-heretic-9b:latest": {
+          "name": "Qwen 3.5 9B Heretic — Uncensored reasoning (Ollama; non-tool)",
+          "tool_call": true,
+          "reasoning": true
+        }
+      }
+    },
+
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "LM Studio (local)",
@@ -8,24 +48,125 @@
         "baseURL": "http://127.0.0.1:1234/v1"
       },
       "models": {
+        // Same base model as the Ollama Heretic — completion-only.
         "crow-9b-heretic-4.6": {
-          "name": "Crow 9B Heretic (local)"
+          "name": "Crow 9B Heretic (LM Studio) — Security-focused coding assistant",
+          "tool_call": true
         },
-        "qwen3.5-9b-claude-4.6-os-auto-variable-heretic-uncensored-thinking-max-neocode-imatrix": {
-          "name": "Qwen 3.5 9B Heretic (local)"
-        },
+        // Gemma 3 12B heretic ablation — verified tool-calling via LM Studio endpoint.
         "gemma-3-12b-it-heretic": {
-          "name": "Gemma 3 12B IT Heretic (local)"
+          "name": "Gemma 3 12B IT Heretic — Uncensored coding/chat (12B)",
+          "tool_call": true
+        },
+        // Qwen 3.5 9B heretic thinking variant — verified tool-calling via LM Studio endpoint.
+        "qwen3.5-9b-claude-4.6-os-auto-variable-heretic-uncensored-thinking-max-neocode-imatrix": {
+          "name": "Qwen 3.5 9B Heretic Thinking — Bilingual reasoning (EN/Chinese), tools-capable",
+          "tool_call": true,
+          "reasoning": true
         }
       }
     }
+
+    // Alternative: Claude for heavier tasks when needed (requires API key):
+    /*
+    "anthropic": {
+      "npm": "@ai-sdk/anthropic",
+      "name": "Claude (remote)",
+      "options": { "apiKey": "{env:ANTHROPIC_API_KEY}" },
+      "models": {
+        "claude-opus-4-7":         { "name": "Claude Opus 4.7" },
+        "claude-sonnet-4-6":       { "name": "Claude Sonnet 4.6" },
+        "claude-haiku-4-5-20251001": { "name": "Claude Haiku 4.5" }
+      }
+    }
+    */
+
+    // Alternative: Google for cheaper inference (requires API key):
+    /*
+    "google": {
+      "npm": "@ai-sdk/google",
+      "name": "Google (remote)",
+      "options": { "apiKey": "{env:GOOGLE_API_KEY}" },
+      "models": {
+        "gemini-2.0-flash": { "name": "Gemini 2.0 Flash" },
+        "gemini-1.5-pro":   { "name": "Gemini 1.5 Pro" }
+      }
+    }
+    */
   },
+
+  // ── MCP Server Configuration ─────────────────────────────────
+  // Servers referenced by agents below. Defining them here makes
+  // `context7` / `hexstrike-ai` resolvable as tool names.
   "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/sse"
+    },
     "hexstrike-ai": {
       "type": "local",
       "command": ["hexstrike-mcp"],
       "enabled": true,
       "timeout": 30000
+    }
+  },
+
+  // ── Agent Configuration ──────────────────────────────────────
+  // Agent keys are the identifier used after `@` in chat (e.g. `@build`).
+  // Don't prefix keys with `@` — opencode adds it when you invoke.
+  "agent": {
+    // Security research — requires hexstrike_server.py running at 127.0.0.1:8888.
+    // Commands surfaced (documentation):
+    //   /hexstrike analyze TARGET      — comprehensive security analysis
+    //   /hexstrike nmap -t TARGET_IP   — full Nmap service detection
+    //   /hexstrike rustscan -r TARGET  — fast port enumeration
+    //   /hexstrike nikto -h URL        — web vuln assessment
+    //   /hexstrike nuclei -u URL       — CVE-based scanning
+    //   /hexstrike sqlmap -u URL       — SQL injection testing
+    //   /hexstrike ffuf / gobuster / dirsearch — fuzzing & discovery
+    //   /hexstrike wafw00f TARGET      — WAF fingerprinting
+    "hexstrike-analyst-context7": {
+      "description": "Security research assistant with HexStrike tools + Context7 library analysis for CVE references and dependency scanning",
+      "mode": "primary",
+      "prompt": "You have access to 150+ security tools via the HexStrike AI server at http://127.0.0.1:8888.\nAlways verify authorization before running any scan or exploit against a target.\nUse this agent for CTF challenges, authorized pentesting engagements, and educational exercises only.\nYou also have access to Context7 MCP for library documentation search — use it when encountering unfamiliar dependencies in security codebases.",
+      "tools": {
+        "hexstrike-ai": true,
+        "context7": true
+      }
+    },
+
+    // Commands surfaced (documentation):
+    //   /sc:pm         — project management session
+    //   /sc:research   — deep research with Context7
+    //   /sc:implement  — implementation assistance
+    //   /sc:code-review
+    "superclaude-architect-context7": {
+      "description": "Codebase architect enhanced with Context7 library research — for understanding unfamiliar dependencies in large projects",
+      "mode": "primary",
+      "prompt": "You have systematic access to read/edit files across the entire codebase.\nUse multi-step reasoning to understand architecture before suggesting changes.\nLeverage Mermaid/Krux for diagrams when explaining complex systems.",
+      "tools": {
+        "context7": true
+      }
+    },
+
+    // Migrated from the deprecated top-level `mode` block.
+    // `tools` keyed by MCP server name gates access; `true` = allow.
+    "build": {
+      "description": "Specializes in understanding build systems, CI/CD pipelines, and infrastructure code",
+      "mode": "primary",
+      "tools": {
+        "hexstrike-ai": true,
+        "context7": true
+      }
+    },
+
+    "analyze": {
+      "description": "Security-focused analysis of codebases for vulnerabilities and security issues",
+      "mode": "primary",
+      "tools": {
+        "hexstrike-ai": true,
+        "context7": true
+      }
     }
   }
 }
