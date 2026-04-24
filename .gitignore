@@ -22,6 +22,8 @@ secrets.*
 .cache/
 .local/state/
 .config/systemd/user/*.wants/
+# systemd-generated Alias= symlinks (e.g. wireplumber → pipewire-session-manager)
+.config/systemd/user/pipewire-session-manager.service
 *.log
 *.swp
 *.swo
