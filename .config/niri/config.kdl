@@ -71,7 +71,7 @@ output "eDP-1" {
 // Layout
 // ---------------------------------------------------------------------------
 layout {
-    gaps 8
+    gaps 10
 
     center-focused-column "never"
 
@@ -88,11 +88,20 @@ layout {
     focus-ring {
         width 2
         active-color "#7aa2f7"
-        inactive-color "#3b4261"
+        inactive-color "#24283b"
     }
 
     border {
         off
+    }
+
+    shadow {
+        on
+        softness 12
+        spread 2
+        offset x=0 y=4
+        color "#00000064"
+        inactive-color "#00000032"
     }
 
     struts {
@@ -224,13 +233,51 @@ animations {
     }
 
     window-open {
-        duration-ms 200
+        duration-ms 180
         curve "ease-out-expo"
+        custom-shader r"
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                // Fade in + slight scale-up from center
+                float progress = niri_clamped_progress;
+                float scale = mix(0.96, 1.0, progress);
+                vec2 center = vec2(0.5, 0.5);
+                vec2 uv = (coords_tex.st - center) / scale + center;
+
+                if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
+                    return vec4(0.0);
+
+                color = texture2D(niri_tex, uv);
+                color *= progress;
+                return color;
+            }
+        "
     }
 
     window-close {
         duration-ms 150
         curve "ease-out-quad"
+        custom-shader r"
+            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                // Fade out + slight shrink toward center
+                float progress = 1.0 - niri_clamped_progress;
+                float scale = mix(0.98, 1.0, progress);
+                vec2 center = vec2(0.5, 0.5);
+                vec2 uv = (coords_tex.st - center) / scale + center;
+
+                if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
+                    return vec4(0.0);
+
+                color = texture2D(niri_tex, uv);
+                color *= progress;
+                return color;
+            }
+        "
     }
 
     horizontal-view-movement {
@@ -243,6 +290,10 @@ animations {
 
     window-resize {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.001
     }
 }
 

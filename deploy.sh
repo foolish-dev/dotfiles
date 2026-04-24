@@ -55,6 +55,7 @@ CONFIG_DIRS=(
   "systemd/user"
   opencode
   wal
+  fastfetch
   neofetch
   gtk-3.0
   gtk-4.0
