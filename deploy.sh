@@ -156,6 +156,9 @@ if [[ "$(cat /sys/class/dmi/id/product_name 2>/dev/null || true)" =~ ^ROG\ Flow\
   info "Enabling z13ctl socket + service (ROG Flow Z13 hardware controller) ..."
   systemctl --user enable --now z13ctl.socket z13ctl.service 2>/dev/null ||
     warn "  z13ctl units failed to enable"
+  info "Enabling z13-battery-limit.service (charge ceiling 80%) ..."
+  systemctl --user enable --now z13-battery-limit.service 2>/dev/null ||
+    warn "  z13-battery-limit.service failed to enable"
 fi
 
 # ── sysctl (VM tuning for zram + Strix Halo APU) ──────────────────────────

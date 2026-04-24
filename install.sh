@@ -231,6 +231,18 @@ PKG_DEV=(
   tree-sitter-cli
   opencode-bin
   lmstudio-bin
+  # GPU + media acceleration for Strix Halo's Radeon 8060S (RDNA 3.5):
+  #   vulkan-radeon     -> RADV, the Vulkan ICD used by LM Studio /
+  #                        llama.cpp Vulkan backend for iGPU inference.
+  #   vulkan-tools      -> vulkaninfo (verify the ICD is loaded).
+  #   libva-utils       -> vainfo (verify VA-API hardware decode).
+  #   mesa-utils        -> glxinfo + eglinfo for OpenGL diagnostics.
+  #   mangohud          -> overlay for CPU/GPU/framerate during testing.
+  vulkan-radeon
+  vulkan-tools
+  libva-utils
+  mesa-utils
+  mangohud
 )
 
 # Cybersecurity / Pentesting (core tools -- available in official + chaotic-aur)
