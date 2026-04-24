@@ -36,6 +36,7 @@
 
 | Layer | Tool |
 |---|---|
+| Hardware | ASUS ROG Flow Z13 (GZ302EA, AMD Ryzen AI Max+ 395 "Strix Halo") — tuned but distro-agnostic everywhere except Z13-specific units |
 | Distro | Arch Linux + [BlackArch](https://blackarch.org) + [Chaotic AUR](https://aur.chaotic.cx) repos |
 | Compositor | [Niri](https://github.com/YaLTeR/niri) (scrollable tiling, Wayland) |
 | Desktop Shell | [Noctalia](https://github.com/noctalia-dev/noctalia-shell) (bar, dock, panels, notifications, lock screen) |
@@ -48,6 +49,7 @@
 | AI Security | [HexStrike AI](https://github.com/0x4m4/hexstrike-ai) MCP (150+ security tools via MCP) |
 | Audio | PipeWire + WirePlumber (pipewire-pulse, pipewire-alsa, pipewire-jack) |
 | Network | NetworkManager + iwd backend |
+| Laptop HW control | [z13ctl](https://github.com/dahui/z13ctl) — keyboard RGB, fan curves, battery charge limit, boot sound (DMI-gated, Z13 only) |
 | Git | delta side-by-side diffs, 30+ aliases, lazygit TUI |
 | Launcher | Noctalia app launcher (`Mod+Space` / `Mod+D`) + Fuzzel |
 | Display Manager | [SDDM](https://github.com/sddm/sddm) (5 themes, cyberpunk default, `sddm-theme` switcher) |

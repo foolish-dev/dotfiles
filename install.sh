@@ -558,6 +558,17 @@ install_pkgs "Development" "${PKG_DEV[@]}"
 install_pkgs "Cybersecurity" "${PKG_SEC[@]}"
 install_pkgs "BlackArch" "${PKG_BLACKARCH[@]}"
 
+# ── Hardware-specific: ASUS ROG Flow Z13 (GZ302) ──────────────────────────
+# z13ctl drives keyboard/lightbar RGB, fan curves, battery charge limit,
+# boot sound, and panel overdrive on the 2025 Strix Halo Z13. The tracked
+# systemd user units in .config/systemd/user/z13ctl.{service,socket} rely
+# on this binary. Gate by DMI so non-Z13 machines stay clean.
+if [[ "$(cat /sys/class/dmi/id/product_name 2>/dev/null || true)" =~ ^ROG\ Flow\ Z13 ]]; then
+  install_pkgs "ROG Flow Z13 hardware control" z13ctl-bin
+else
+  info "Skipping Z13 hardware packages (DMI product != 'ROG Flow Z13 *')."
+fi
+
 # ── Set default shell ──────────────────────────────────────────────────────
 if [[ "$SHELL" != */zsh ]]; then
   info "Setting zsh as default shell ..."

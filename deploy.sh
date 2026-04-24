@@ -149,6 +149,15 @@ systemctl --user daemon-reload 2>/dev/null || true
 systemctl --user enable --now hexstrike-server.service 2>/dev/null ||
   warn "  hexstrike-server.service failed to start (run install.sh first)"
 
+# Z13-specific: only enable if DMI matches AND the binary exists, so
+# deploying this repo on non-Z13 hardware is a no-op instead of a failure.
+if [[ "$(cat /sys/class/dmi/id/product_name 2>/dev/null || true)" =~ ^ROG\ Flow\ Z13 ]] \
+  && command -v z13ctl &>/dev/null; then
+  info "Enabling z13ctl socket + service (ROG Flow Z13 hardware controller) ..."
+  systemctl --user enable --now z13ctl.socket z13ctl.service 2>/dev/null ||
+    warn "  z13ctl units failed to enable"
+fi
+
 # ── mkinitcpio (produces the initramfs boot image) ────────────────────────
 # Deploying the config alone does not rebuild the image. Run
 # `sudo mkinitcpio -P` after changes, or let a kernel/package upgrade
