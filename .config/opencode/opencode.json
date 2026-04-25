@@ -18,7 +18,7 @@
       "models": {
         // Local build (Modelfile uses Qwen-style JSON tool template).
         // Ollama reports capabilities=[completion, tools].
-        "crow-9b-heretic:q5_k_m": {
+        "crow-9b-heretic-4.6": {
           "name": "420",
           "tool_call": true
         },
