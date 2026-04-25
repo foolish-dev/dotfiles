@@ -68,12 +68,10 @@
   <img src="screenshots/desktop.png" alt="Niri + Noctalia desktop (cafe-at-night wallpaper)" width="900"/>
 </p>
 
-<!-- Additional panels — uncomment as screenshots land in ./screenshots/:
 | | |
 |---|---|
 | <img src="screenshots/noctalia-launcher.png" alt="Launcher" width="440"/> | <img src="screenshots/nvim.png" alt="Neovim" width="440"/> |
 | <img src="screenshots/noctalia-control.png" alt="Control Center" width="440"/> | <img src="screenshots/terminal.png" alt="Terminal" width="440"/> |
--->
 
 <img src="assets/divider.svg" alt="" width="900"/>
 
