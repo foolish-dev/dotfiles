@@ -241,11 +241,15 @@ if [[ -d "$DOTFILES/etc/mkinitcpio" ]]; then
   if [[ -f "$DOTFILES/etc/mkinitcpio/mkinitcpio.conf" ]]; then
     sudo cp "$DOTFILES/etc/mkinitcpio/mkinitcpio.conf" /etc/mkinitcpio.conf
     ok "  Copied mkinitcpio.conf"
+    warn "  !!! IMPORTANT: You must run 'sudo mkinitcpio -P' to rebuild the initramfs image.
+          The current boot image has NOT been updated and will still use the old config."
   fi
   if [[ -f "$DOTFILES/etc/mkinitcpio/linux.preset" ]]; then
     sudo mkdir -p /etc/mkinitcpio.d
     sudo cp "$DOTFILES/etc/mkinitcpio/linux.preset" /etc/mkinitcpio.d/linux.preset
     ok "  Copied linux.preset"
+    warn "  !!! IMPORTANT: You must run 'sudo mkinitcpio -P' to rebuild the initramfs image.
+          The current boot image has NOT been updated and will still use the old config."
   fi
 fi
 
