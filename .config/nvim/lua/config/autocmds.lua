@@ -64,7 +64,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- ── Auto-open Neo-tree + opencode on startup ───────────────────────────────
+-- ── Auto-open Neo-tree on startup (opencode is a lazy plugin) ─────────────
 autocmd("VimEnter", {
   group = augroup("AutoOpenLayout", { clear = true }),
   callback = function()
@@ -83,10 +83,6 @@ autocmd("VimEnter", {
     local file_win = vim.api.nvim_get_current_win()
     vim.schedule(function()
       vim.cmd("Neotree show")
-      local ok, err = pcall(function() require("opencode").toggle() end)
-      if not ok then
-        vim.notify("opencode autoload failed: " .. tostring(err), vim.log.levels.WARN)
-      end
       if vim.api.nvim_win_is_valid(file_win) then
         vim.api.nvim_set_current_win(file_win)
       end
