@@ -11,7 +11,6 @@ OpenCode ([opencode.ai](https://opencode.ai)) agent + provider + MCP setup for t
 │   ├── docs.md           # mirrored from heimdall_opencode
 │   └── git-committer.md  # mirrored from heimdall_opencode
 ├── agents.json           # legacy agent metadata (kept for reference)
-├── agent_config.json     # legacy runtime config (kept for reference)
 ├── heimdall_opencode/    # git submodule -- SuperClaude-Org/heimdall_opencode @ dev
 └── package.json          # auto-generated when opencode installs @opencode-ai/plugin
 ```
