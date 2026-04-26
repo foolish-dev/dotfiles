@@ -28,7 +28,7 @@ link_item() {
       return # already linked
     fi
     mkdir -p "$BACKUP_DIR"
-    local rel="${dest#$HOME/}"
+    local rel="${dest#"$HOME"/}"
     mkdir -p "$BACKUP_DIR/$(dirname "$rel")"
     mv "$dest" "$BACKUP_DIR/$rel"
     warn "Backed up: ~/$rel -> $BACKUP_DIR/$rel"
@@ -333,7 +333,7 @@ info "  Apps:    ~/.local/share/applications/ (${desktop_count} desktop entries)
 info "  Walls:   ~/Pictures/Wallpapers/ (${wallpaper_count} wallpapers)"
 info "  Boot:    /boot/loader/ (tracked; deploy with DEPLOY_LOADER=1)"
 info "  Image:   /etc/mkinitcpio.conf + linux.preset (run mkinitcpio -P to rebuild)"
-info "  SDDM:   /etc/sddm.conf.d/niri.conf + astronaut cyberpunk theme"
+info "  SDDM:    /etc/sddm.conf.d/niri.conf + astronaut cyberpunk theme"
 info ""
 if [[ -d "$BACKUP_DIR" ]]; then
   info "  Backups: $BACKUP_DIR"

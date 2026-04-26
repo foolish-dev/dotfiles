@@ -23,7 +23,7 @@ info() { printf "${BLUE}[*]${NC} %s\n" "$*"; }
 ok() { printf "${GREEN}[+]${NC} %s\n" "$*"; }
 warn() { printf "${RED}[!]${NC} %s\n" "$*"; }
 banner() {
-  printf "${CYAN}"
+  printf '%b' "$CYAN"
   cat <<'EOF'
         ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
         ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
@@ -32,8 +32,8 @@ banner() {
         ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
         ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
 EOF
-  printf "${NC}\n"
-  printf "${BOLD}        Arch Linux + BlackArch  //  Niri + Noctalia  //  Tokyo Night${NC}\n\n"
+  printf '%b\n' "$NC"
+  printf '%b        Arch Linux + BlackArch  //  Niri + Noctalia  //  Tokyo Night%b\n\n' "$BOLD" "$NC"
 }
 
 # ── Preflight checks ──────────────────────────────────────────────────────────
@@ -102,13 +102,13 @@ echo ""
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
-printf "${GREEN}${BOLD}"
+printf '%b%b' "$GREEN" "$BOLD"
 cat <<'EOF'
    ╔═══════════════════════════════════════════════════════════════════╗
    ║                      Installation complete!                       ║
    ╚═══════════════════════════════════════════════════════════════════╝
 EOF
-printf "${NC}\n"
+printf '%b\n' "$NC"
 
 info "Next steps:"
 info "  1. Log out"
