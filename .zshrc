@@ -19,7 +19,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
+zlight antimatter Aloxaf/fzf-tab
 zinit light agkozak/zsh-z                      # smart directory jumping
 
 # ── Completion system ──────────────────────────────────────────────────────
@@ -29,8 +29,8 @@ zinit cdreplay -q
 zstyle ':completion:*'                matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*'                list-colors  "${(s.:.)LS_COLORS}"
 zstyle ':completion:*'                menu         no
-zstyle ':fzf-tab:complete:cd:*'       fzf-preview  'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*'       fzf-preview "eza -1 --color=always $realpath"
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview "eza -1 --color=always $realpath"
 
 # ── History ────────────────────────────────────────────────────────────────
 HISTFILE=~/.zsh_history
@@ -428,4 +428,9 @@ else
 BANNER
   printf '\e[0m\n'
 fi
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/fool/.lmstudio/bin"
+# End of LM Studio CLI section
 
