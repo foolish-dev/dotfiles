@@ -203,6 +203,11 @@ environment {
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_TYPE "wayland"
     XDG_SESSION_DESKTOP "niri"
+
+    // IBus input method support for Korean Hangul + dead keys/Compose.
+    // GTK_IM_MODULE="simple" tells GTK 4 apps to use the simple IME
+    // backend, which correctly handles dead key sequences and Compose.
+    GTK_IM_MODULE "simple"
 }
 
 // ---------------------------------------------------------------------------
@@ -212,13 +217,20 @@ spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "awww-daemon"
 spawn-at-startup "xwayland-satellite"
 
-// Clipboard manager
+IBus input method setup (Korean Hangul + general IME). Run this once to
+configure IBus with your preferred layout. After running, restart Niri or log out/in
+for the changes to take effect:
+# im-config -c ibus --set-layout="korean,us"  # Korean first, then English
+# im-config -c ibus --enable
+# im-config -c ibus --show-statusbar=true
+
+Clipboard manager
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
-// Idle / lock is handled by noctalia-shell's built-in idle daemon
-// (Control Center → Idle).
+Idle / lock is handled by noctalia-shell's built-in idle daemon
+(Control Center → Idle).
 
-// Polkit agent
+Polkit agent
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 // ---------------------------------------------------------------------------
@@ -230,6 +242,15 @@ animations {
 
     workspace-switch {
         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    // Swaync-client notification animations (status icons, tray).
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.001
+    }
+
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
     }
 
     window-open {
@@ -298,12 +319,59 @@ animations {
 }
 
 // ---------------------------------------------------------------------------
+// Swaync-client notification daemon (status icons, tray)
+// ---------------------------------------------------------------------------
+notifications {
+    position "top-right"
+
+    // Position within the top bar — options: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
+    // For a clean look on wide displays, top-center or top-right works well.
+
+    show-in-menubar true
+    // Show notification icons in the system tray (top-right status area).
+    // Set to false if you prefer the "quick settings" style where only the bell icon appears.
+
+    disable-when-typing true
+    // Mute notifications while typing — prevents alerts from interrupting work.
+
+    show-number-in-menubar true
+    // Show unread notification count on the tray icon.
+
+    sound-enable false
+    // Disable system beep for all notifications (useful in shared environments).
+
+    animation-enabled true
+    // Enable entrance/exit animations when notifications appear or disappear.
+
+    disable-draw-border true
+    // Hide borders around tray icons for a cleaner look.
+
+    max-icon-size 160
+    // Maximum size of notification icons in the tray (px). Adjust if icons are too small/large.
+
+    click-action "notification-click"
+    // Action to take when clicking on an icon — "notification-click" opens the clicked app's notifications panel.
+}
+
+// ---------------------------------------------------------------------------
 // Gestures
 // ---------------------------------------------------------------------------
 gestures {
     hot-corners {
         off
     }
+
+    // Swipe gestures for workspace navigation + window dismissal.
+    // Three-finger vertical swipe: switch between workspaces (left/right = forward/backward).
+    // Four-finger vertical swipe: open/close overview (workspace switcher).
+    // Swipe-to-dismiss windows when dragging them out of view — useful for closing apps without using Q.
+    swipe-to-dismiss {
+        off
+    }
+
+    // Scroll gestures: three-finger horizontal scroll moves the workspace view left/right,
+    // allowing quick navigation between columns and workspaces. Useful on trackpads with limited space.
+    scroll-gesture-enabled true
 }
 
 // ---------------------------------------------------------------------------
