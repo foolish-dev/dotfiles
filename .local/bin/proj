@@ -5,7 +5,7 @@
 # =============================================================================
 set -euo pipefail
 
-PROJ_DIRS=("$HOME/projects" "$HOME/code" "$HOME/src" "$HOME/work" "$HOME/repos")
+PROJ_DIRS=("$HOME/Projects" "$HOME/projects" "$HOME/code" "$HOME/src" "$HOME/work" "$HOME/repos")
 
 dirs=()
 for d in "${PROJ_DIRS[@]}"; do

@@ -2,7 +2,7 @@
 # pipes -- animated pipes screensaver (simple version)
 # Press Ctrl+C to exit
 declare -i f=75 s=13 r=2000 t=0 c=1 n=0 l=0
-declare -ir w h
+declare -i w h
 w=$(tput cols)
 h=$(tput lines)
 declare -a v=( [00]="\x83" [01]="\x8f" [03]="\x93"

@@ -8,7 +8,13 @@ set -euo pipefail
 
 NAME="${1:?Usage: mkproj <name> [python|rust|go|node|c|shell|empty]}"
 TYPE="${2:-empty}"
-BASE="${PROJ_DIR:-$HOME/projects}"
+BASE="${PROJ_DIR:-}"
+if [[ -z "$BASE" ]]; then
+  for cand in "$HOME/Projects" "$HOME/projects" "$HOME/code" "$HOME/src" "$HOME/work" "$HOME/repos"; do
+    [[ -d "$cand" ]] && { BASE="$cand"; break; }
+  done
+  BASE="${BASE:-$HOME/Projects}"
+fi
 
 DIR="$BASE/$NAME"
 mkdir -p "$DIR"
