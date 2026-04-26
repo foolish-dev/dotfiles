@@ -352,7 +352,7 @@ binds {
     // ── Noctalia Launcher ─────────────────────────────────────────────
     Mod+Space           { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     // ── Reload ────────────────────────────────────────────────────────
-    Mod+Shift+C         { spawn "niri" "msg" "action" "reload-config"; }
+    Mod+Shift+C         { spawn "niri" "msg" "action" "load-config-file"; }
 
     // ── Window Focus ──────────────────────────────────────────────────
     Mod+H               { focus-column-left; }
