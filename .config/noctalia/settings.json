@@ -822,7 +822,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/fool/Pictures/Wallpapers",
+        "directory": "~/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
